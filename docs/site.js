@@ -405,35 +405,69 @@
     const pins = [...list.querySelectorAll(".audience-pin")];
     if (!pins.length) return;
 
+    const countEl = document.getElementById("audience-stack-count");
     const desktop = window.matchMedia("(min-width: 861px)");
     let ticking = false;
 
-    const clear = () => {
-      pins.forEach((pin) => pin.classList.remove("is-behind", "is-active"));
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const reset = () => {
+      pins.forEach((pin) => {
+        pin.classList.remove("is-behind", "is-active");
+        const card = pin.querySelector(".audience-row");
+        if (!card) return;
+        card.style.removeProperty("--stack-scale");
+        card.style.removeProperty("--stack-y");
+        card.style.removeProperty("--stack-bright");
+        card.style.removeProperty("--stack-depth");
+      });
+      if (countEl) countEl.textContent = "1";
     };
 
     const update = () => {
       ticking = false;
+
       if (reducedMotion || !desktop.matches) {
-        clear();
+        reset();
         return;
       }
 
       const header = document.querySelector(".site-header");
-      const stickyLine =
-        (header?.getBoundingClientRect().height || 72) + 28;
-
+      const stickTop = (header?.getBoundingClientRect().height || 72) + 16;
+      const viewport = window.innerHeight || 800;
       let active = 0;
+
       pins.forEach((pin, index) => {
         const card = pin.querySelector(".audience-row");
         if (!card) return;
-        if (card.getBoundingClientRect().top <= stickyLine) active = index;
+
+        const next = pins[index + 1];
+        const rect = pin.getBoundingClientRect();
+        const stuck = rect.top <= stickTop + 1;
+
+        if (stuck) active = index;
+
+        let progress = 0;
+        if (next) {
+          const nextTop = next.getBoundingClientRect().top;
+          progress = clamp(1 - (nextTop - stickTop) / (viewport * 0.55), 0, 1);
+        }
+
+        const scale = 1 - progress * 0.07;
+        const lift = progress * 10;
+        const bright = 1 - progress * 0.06;
+
+        card.style.setProperty("--stack-scale", scale.toFixed(4));
+        card.style.setProperty("--stack-y", `${lift.toFixed(1)}px`);
+        card.style.setProperty("--stack-bright", bright.toFixed(4));
+        card.style.setProperty("--stack-depth", progress.toFixed(4));
+
+        pin.classList.toggle("is-behind", progress > 0.08);
+        pin.classList.toggle("is-active", false);
       });
 
-      pins.forEach((pin, index) => {
-        pin.classList.toggle("is-active", index === active);
-        pin.classList.toggle("is-behind", index < active);
-      });
+      pins[active]?.classList.add("is-active");
+      if (countEl) countEl.textContent = String(active + 1);
     };
 
     const onScroll = () => {
@@ -443,8 +477,7 @@
     };
 
     const bind = () => {
-      clear();
-      if (reducedMotion || !desktop.matches) return;
+      reset();
       update();
     };
 
