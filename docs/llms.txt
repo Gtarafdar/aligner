@@ -16,9 +16,13 @@ Aligner runs in Chrome (Manifest V3). Settings stay on the user’s device. No a
 ## Who it’s for
 
 - UI & layout designers — rulers, guides, grids, measure for aligned layouts
+- Responsive work — device-width preview beside the tool grid
 - Front-end polish — Inspect for box model, CSS, contrast without DevTools overload
+- Structure reviews — Wireframe grayscale structural preview
 - Media / content — Media Manager to scan and download page images
 - Brand / visual QA — Color Picker and Palette from the live UI
+- Accessibility reviewers — automated a11y audit with severity filters
+- Performance-minded designers — Page Speed / Core Web Vitals on the live page
 - QA & testers — Page Controls, Fake Filler, Cache Cleaner
 - WordPress developers — WP Tools suite (roles, ACF, notices, sidebar, menu search)
 - AI IDE workflows — Design System exports DESIGN.md / SKILL.md

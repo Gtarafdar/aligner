@@ -406,8 +406,11 @@
     if (!pins.length) return;
 
     const countEl = document.getElementById("audience-stack-count");
+    const totalEl = document.getElementById("audience-stack-total");
     const desktop = window.matchMedia("(min-width: 861px)");
     let ticking = false;
+
+    if (totalEl) totalEl.textContent = String(pins.length);
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
