@@ -3,11 +3,22 @@
   const FALLBACK_ZIP =
     `https://github.com/${REPO}/releases/latest/download/aligner.zip`;
   const FALLBACK_TAG = "latest";
+  const QUEST_KEYS = [
+    "overview",
+    "layout",
+    "inspect",
+    "color",
+    "quality",
+    "utilities",
+    "wordpress",
+  ];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const downloadBtns = document.querySelectorAll("[data-download-zip]");
   const versionEls = document.querySelectorAll("[data-release-version]");
   const releaseNote = document.getElementById("release-note");
   const starBtn = document.getElementById("star-github");
+  const unlocked = new Set();
 
   function setDownloads(url, label) {
     downloadBtns.forEach((btn) => {
@@ -143,10 +154,162 @@
     }
   }
 
+  function animateCounters() {
+    const nodes = document.querySelectorAll("[data-count-to]");
+    if (!nodes.length) return;
+
+    const run = (el) => {
+      const target = Number(el.getAttribute("data-count-to") || "0");
+      if (reducedMotion) {
+        el.textContent = String(target);
+        return;
+      }
+      const duration = 900;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          run(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+  }
+
+  function unlockQuest(key) {
+    if (!QUEST_KEYS.includes(key) || unlocked.has(key)) return;
+    unlocked.add(key);
+
+    const badge = document.querySelector(`[data-badge="${key}"]`);
+    badge?.classList.add("is-unlocked");
+
+    const count = unlocked.size;
+    const total = QUEST_KEYS.length;
+    const countEl = document.getElementById("quest-count");
+    const fill = document.getElementById("quest-fill");
+    const hint = document.getElementById("quest-hint");
+
+    if (countEl) countEl.textContent = String(count);
+    if (fill) fill.style.width = `${Math.round((count / total) * 100)}%`;
+    if (hint) {
+      hint.textContent =
+        count >= total
+          ? "All tool groups unlocked. Ready to download and explore in Chrome."
+          : `${total - count} group${total - count === 1 ? "" : "s"} left on the explorer path.`;
+    }
+  }
+
+  function setupRevealAndQuest() {
+    const reveals = document.querySelectorAll("[data-reveal]");
+    if (reducedMotion) {
+      reveals.forEach((el) => el.classList.add("is-visible"));
+      QUEST_KEYS.forEach(unlockQuest);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          const quest = entry.target.getAttribute("data-quest");
+          if (quest) unlockQuest(quest);
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  }
+
+  function setupScrollChrome() {
+    const bar = document.getElementById("scroll-progress");
+    const topBtn = document.getElementById("scroll-top");
+    const ring = document.getElementById("scroll-top-fg");
+    const circumference = 97.4;
+
+    const sync = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (bar) bar.style.width = `${ratio * 100}%`;
+      if (ring) ring.style.strokeDashoffset = String(circumference * (1 - ratio));
+      if (topBtn) {
+        const show = window.scrollY > 480;
+        topBtn.hidden = !show;
+        topBtn.classList.toggle("is-visible", show);
+      }
+    };
+
+    topBtn?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+
+    window.addEventListener("scroll", sync, { passive: true });
+    sync();
+  }
+
+  function setupPresetPlay() {
+    const chips = document.querySelectorAll("[data-preset]");
+    const feedback = document.getElementById("preset-feedback");
+    if (!chips.length) return;
+
+    const clearSpotlight = () => {
+      document
+        .querySelectorAll(".is-spotlight")
+        .forEach((el) => el.classList.remove("is-spotlight"));
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        clearSpotlight();
+
+        const groups = (chip.getAttribute("data-groups") || "")
+          .split(",")
+          .map((g) => g.trim())
+          .filter(Boolean);
+
+        groups.forEach((group) => {
+          document
+            .querySelectorAll(`[data-group="${group}"], #${group}`)
+            .forEach((el) => el.classList.add("is-spotlight"));
+        });
+
+        const label = chip.querySelector("strong")?.textContent || "preset";
+        if (feedback) {
+          feedback.textContent = `“${label}” spotlighted ${groups.length} group${
+            groups.length === 1 ? "" : "s"
+          }. Scroll up to see them glow.`;
+        }
+
+        const first = document.querySelector(`#${groups[0]}`) || document.querySelector(`[data-group="${groups[0]}"]`);
+        first?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+      });
+    });
+  }
+
   if (starBtn) {
     starBtn.href = `https://github.com/${REPO}`;
   }
 
   loadLatestRelease();
   wireScreenshotLightbox();
+  animateCounters();
+  setupRevealAndQuest();
+  setupScrollChrome();
+  setupPresetPlay();
 })();

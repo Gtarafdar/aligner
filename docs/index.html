@@ -118,6 +118,7 @@
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="wrap">
@@ -184,8 +185,22 @@
             <li>Free &amp; open source</li>
             <li>WordPress helper optional</li>
           </ul>
+          <div class="stat-row" aria-label="Tool counts">
+            <div class="stat">
+              <strong data-count-to="18">0</strong>
+              <span>core tools</span>
+            </div>
+            <div class="stat">
+              <strong data-count-to="13">0</strong>
+              <span>WordPress actions</span>
+            </div>
+            <div class="stat">
+              <strong data-count-to="5">0</strong>
+              <span>workspace presets</span>
+            </div>
+          </div>
         </div>
-        <figure class="hero-visual">
+        <figure class="hero-visual reveal" data-reveal>
           <img
             src="assets/09-feature-panel.png"
             width="1200"
@@ -195,7 +210,7 @@
         </figure>
       </section>
 
-      <section class="section wrap" id="features">
+      <section class="section wrap reveal" id="features" data-reveal data-quest="overview">
         <div class="section-head">
           <h2>Everything in Aligner</h2>
           <p>
@@ -204,8 +219,33 @@
           </p>
         </div>
 
+        <aside class="quest-panel" id="quest-panel" aria-live="polite">
+          <div class="quest-top">
+            <div>
+              <p class="eyebrow">Explorer path</p>
+              <strong>Unlock tool groups as you scroll</strong>
+            </div>
+            <div class="quest-meter">
+              <span id="quest-count">0</span><span class="quest-den">/7</span>
+            </div>
+          </div>
+          <div class="quest-track" aria-hidden="true">
+            <div class="quest-fill" id="quest-fill"></div>
+          </div>
+          <ul class="quest-badges" id="quest-badges">
+            <li data-badge="overview">Overview</li>
+            <li data-badge="layout">Layout</li>
+            <li data-badge="inspect">Inspect</li>
+            <li data-badge="color">Color</li>
+            <li data-badge="quality">Quality</li>
+            <li data-badge="utilities">Utilities</li>
+            <li data-badge="wordpress">WordPress</li>
+          </ul>
+          <p class="quest-hint" id="quest-hint">Scroll the map to earn badges.</p>
+        </aside>
+
         <div class="roster">
-          <article class="roster-group">
+          <article class="roster-group reveal" data-reveal data-group="layout">
             <h3>Layout</h3>
             <p class="roster-lead">Align and mark the page while you design.</p>
             <dl class="roster-list">
@@ -217,7 +257,7 @@
             </dl>
           </article>
 
-          <article class="roster-group">
+          <article class="roster-group reveal" data-reveal data-group="inspect">
             <h3>Inspect</h3>
             <p class="roster-lead">Understand structure and breakpoints.</p>
             <dl class="roster-list">
@@ -227,7 +267,7 @@
             </dl>
           </article>
 
-          <article class="roster-group">
+          <article class="roster-group reveal" data-reveal data-group="color">
             <h3>Color &amp; media</h3>
             <p class="roster-lead">Sample colors and pull page assets.</p>
             <dl class="roster-list">
@@ -237,7 +277,7 @@
             </dl>
           </article>
 
-          <article class="roster-group">
+          <article class="roster-group reveal" data-reveal data-group="quality">
             <h3>Quality</h3>
             <p class="roster-lead">Catch issues before you ship.</p>
             <dl class="roster-list">
@@ -248,7 +288,7 @@
             </dl>
           </article>
 
-          <article class="roster-group">
+          <article class="roster-group reveal" data-reveal data-group="utilities">
             <h3>Utilities</h3>
             <p class="roster-lead">Everyday helpers while testing.</p>
             <dl class="roster-list">
@@ -258,7 +298,7 @@
             </dl>
           </article>
 
-          <article class="roster-group accent">
+          <article class="roster-group accent reveal" data-reveal data-group="wordpress">
             <h3>WordPress</h3>
             <p class="roster-lead">
               Builder panel for WP sites. Role &amp; Theme switcher need the helper plugin.
@@ -282,7 +322,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="layout">
+      <section class="section wrap catalog reveal" id="layout" data-reveal data-quest="layout">
         <div class="section-head">
           <h2>Layout</h2>
           <p>Align, measure, and mark the page while you design.</p>
@@ -295,31 +335,31 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Rulers</h3>
             <p><strong>What:</strong> Pixel rulers along the viewport edges.</p>
             <p><strong>Why:</strong> Quick distance checks without leaving the page.</p>
             <p><strong>How:</strong> Toggle from the popup, then drag origin if needed.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Guides</h3>
             <p><strong>What:</strong> Straight or free-draw alignment lines.</p>
             <p><strong>Why:</strong> Keep columns, baselines, and edges consistent.</p>
             <p><strong>How:</strong> Enable Guides, place lines, lock when settled.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Grids</h3>
             <p><strong>What:</strong> Column and baseline overlays.</p>
             <p><strong>Why:</strong> Validate rhythm against a layout system.</p>
             <p><strong>How:</strong> Choose columns/gutters in popup controls.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Measure</h3>
             <p><strong>What:</strong> Point or rectangle measurements.</p>
             <p><strong>Why:</strong> Capture exact sizes between elements.</p>
             <p><strong>How:</strong> Turn on Measure and click the page surface.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Drawing</h3>
             <p><strong>What:</strong> Temporary annotation marks on the page.</p>
             <p><strong>Why:</strong> Leave visual notes during review passes.</p>
@@ -328,7 +368,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="inspect">
+      <section class="section wrap catalog reveal" id="inspect" data-reveal data-quest="inspect">
         <div class="section-head">
           <h2>Inspect</h2>
           <p>Understand structure, breakpoints, and wireframe intent.</p>
@@ -339,19 +379,19 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Inspect</h3>
             <p><strong>What:</strong> Hover inspection for box model and type.</p>
             <p><strong>Why:</strong> See spacing and typography without DevTools noise.</p>
             <p><strong>How:</strong> Enable Inspect and move across elements.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Responsive</h3>
             <p><strong>What:</strong> Device-width preview helpers.</p>
             <p><strong>Why:</strong> Check layouts at common breakpoints quickly.</p>
             <p><strong>How:</strong> Toggle Responsive and pick a device width.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Wireframe</h3>
             <p><strong>What:</strong> Structural wireframe rendering of the page.</p>
             <p><strong>Why:</strong> Review hierarchy without visual decoration.</p>
@@ -360,7 +400,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="color">
+      <section class="section wrap catalog reveal" id="color" data-reveal data-quest="color">
         <div class="section-head">
           <h2>Color &amp; media</h2>
           <p>Sample colors, build palettes, and pull page assets.</p>
@@ -371,19 +411,19 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Color Picker</h3>
             <p><strong>What:</strong> Eyedropper and color history for the page.</p>
             <p><strong>Why:</strong> Match brand colors from live UI.</p>
             <p><strong>How:</strong> Enable Color Picker and sample the screen.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Palette</h3>
             <p><strong>What:</strong> Generated palette from page colors.</p>
             <p><strong>Why:</strong> Turn a live site into a reusable swatch set.</p>
             <p><strong>How:</strong> Run Palette and copy the groups you need.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Media</h3>
             <p><strong>What:</strong> Inventory of images, video, SVG, and more.</p>
             <p><strong>Why:</strong> Audit and download assets from the current page.</p>
@@ -392,7 +432,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="quality">
+      <section class="section wrap catalog reveal" id="quality" data-reveal data-quest="quality">
         <div class="section-head">
           <h2>Quality</h2>
           <p>Catch accessibility, consistency, and performance issues early.</p>
@@ -404,25 +444,25 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Accessibility</h3>
             <p><strong>What:</strong> Issue scan with severity filters.</p>
             <p><strong>Why:</strong> Surface barriers before shipping.</p>
             <p><strong>How:</strong> Enable Accessibility and review highlighted findings.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Design Check</h3>
             <p><strong>What:</strong> Consistency checks for type, color, spacing.</p>
             <p><strong>Why:</strong> Spot drift across a page system.</p>
             <p><strong>How:</strong> Run Design Check and triage highlighted mismatches.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Page Speed</h3>
             <p><strong>What:</strong> Local performance diagnostics for the tab.</p>
             <p><strong>Why:</strong> Find heavy assets and slow paths while designing.</p>
             <p><strong>How:</strong> Open Page Speed and run against the current page.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Design System</h3>
             <p><strong>What:</strong> Extracted tokens and UI patterns from the page.</p>
             <p><strong>Why:</strong> Document what the live UI is actually using.</p>
@@ -431,7 +471,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="utilities">
+      <section class="section wrap catalog reveal" id="utilities" data-reveal data-quest="utilities">
         <div class="section-head">
           <h2>Utilities</h2>
           <p>Everyday helpers for cache, timing, and page behavior.</p>
@@ -442,19 +482,19 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Cache Cleaner</h3>
             <p><strong>What:</strong> Selective browsing-data cleanup.</p>
             <p><strong>Why:</strong> Clear stale state while testing changes.</p>
             <p><strong>How:</strong> Choose data types and run a clean pass.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Page Load Timer</h3>
             <p><strong>What:</strong> Visible load timing for the current navigation.</p>
             <p><strong>Why:</strong> Compare perceived speed after edits.</p>
             <p><strong>How:</strong> Enable the timer and reload the page.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
             <h3>Page Controls</h3>
             <p><strong>What:</strong> Temporary page behavior controls while testing.</p>
             <p><strong>Why:</strong> Isolate issues without changing source code.</p>
@@ -463,7 +503,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="wordpress">
+      <section class="section wrap catalog reveal" id="wordpress" data-reveal data-quest="wordpress">
         <div class="section-head">
           <h2>WordPress</h2>
           <p>Admin-aware tools for builders working on WordPress sites.</p>
@@ -484,7 +524,7 @@
           </ul>
         </div>
         <div class="detail-grid">
-          <article class="card wide">
+          <article class="card wide reveal" data-reveal>
             <h3>WP Tools panel</h3>
             <p>
               <strong>What:</strong> A floating panel for admin shortcuts, detection,
@@ -511,7 +551,7 @@
               <li>Copy report</li>
             </ul>
           </article>
-          <article class="card wide helper-card">
+          <article class="card wide helper-card reveal" data-reveal>
             <h3>Aligner WP Tools Helper</h3>
             <p>
               Optional WordPress plugin bundled inside Aligner and in GitHub Releases.
@@ -565,7 +605,7 @@
         </div>
       </section>
 
-      <section class="section wrap catalog" id="workspace">
+      <section class="section wrap catalog reveal" id="workspace" data-reveal data-quest="workspace">
         <div class="section-head">
           <h2>Workspace</h2>
           <p>
@@ -580,96 +620,97 @@
             <li>Minimal</li>
           </ul>
         </div>
-        <div class="detail-grid">
-          <article class="card">
-            <h3>All tools</h3>
-            <p>Everything visible in the popup.</p>
-          </article>
-          <article class="card">
-            <h3>Designer</h3>
-            <p>Layout, inspect, and color &amp; media groups.</p>
-          </article>
-          <article class="card">
-            <h3>WordPress</h3>
-            <p>WP Tools plus utilities for builder workflows.</p>
-          </article>
-          <article class="card">
-            <h3>QA</h3>
-            <p>Inspect, quality, and utilities for review passes.</p>
-          </article>
-          <article class="card">
-            <h3>Minimal</h3>
-            <p>Layout and inspect only — a quieter daily popup.</p>
-          </article>
+        <div class="preset-play" id="preset-play">
+          <button type="button" class="preset-chip is-active" data-preset="all" data-groups="layout,inspect,color,quality,utilities,wordpress">
+            <strong>All tools</strong>
+            <span>Everything visible</span>
+          </button>
+          <button type="button" class="preset-chip" data-preset="designer" data-groups="layout,inspect,color">
+            <strong>Designer</strong>
+            <span>Layout · inspect · color</span>
+          </button>
+          <button type="button" class="preset-chip" data-preset="wordpress" data-groups="wordpress,utilities">
+            <strong>WordPress</strong>
+            <span>WP Tools · utilities</span>
+          </button>
+          <button type="button" class="preset-chip" data-preset="qa" data-groups="inspect,quality,utilities">
+            <strong>QA</strong>
+            <span>Inspect · quality · utilities</span>
+          </button>
+          <button type="button" class="preset-chip" data-preset="minimal" data-groups="layout,inspect">
+            <strong>Minimal</strong>
+            <span>Layout · inspect</span>
+          </button>
         </div>
+        <p class="preset-feedback" id="preset-feedback" aria-live="polite">Click a preset to spotlight matching tool groups above.</p>
       </section>
 
-      <section class="section wrap" id="screenshots">
+      <section class="section wrap reveal" id="screenshots" data-reveal>
         <div class="section-head">
           <h2>In action</h2>
           <p>Real captures of Aligner tools on a live page. Click any image to enlarge.</p>
         </div>
         <div class="shot-grid">
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/01-popup-overview.png" alt="WP Tools panel with quick actions" loading="lazy" />
             <figcaption>WP Tools — quick actions &amp; detection</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/02-rulers.png" alt="Pixel rulers over a page with Aligner popup" loading="lazy" />
             <figcaption>Rulers — pixel-perfect edges</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/10-workspace-tools.png" alt="Element Inspector box model" loading="lazy" />
             <figcaption>Inspect — box model &amp; details</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/12-active-tools.png" alt="Media Manager scanning page images" loading="lazy" />
             <figcaption>Media — scan &amp; download assets</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/15-responsive.png" alt="Accessibility Checker score" loading="lazy" />
             <figcaption>Accessibility — audit score</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/17-contrast-check.png" alt="Page Speed Score metrics" loading="lazy" />
             <figcaption>Page Speed — Core Web Vitals</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/18-media-manager.png" alt="Design System typography tokens" loading="lazy" />
             <figcaption>Design System — tokens &amp; exports</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/13-measurement-rulers.png" alt="Color Picker sampling a page color" loading="lazy" />
             <figcaption>Color Picker — HEX, RGB, HSL</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/14-drawing-wordpress.png" alt="Palette Generator with page colors" loading="lazy" />
             <figcaption>Palette — extract page colors</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/16-inspect.png" alt="Design Check typography issues" loading="lazy" />
             <figcaption>Design Check — consistency scan</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/19-color-picker.png" alt="Wireframe Generator preview" loading="lazy" />
             <figcaption>Wireframe — structural preview</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/20-palette.png" alt="Cache Cleaner settings" loading="lazy" />
             <figcaption>Cache Cleaner — site data cleanup</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/21-accessibility.png" alt="Page Load Timer metrics" loading="lazy" />
             <figcaption>Page Load Timer — milestones</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot reveal" data-reveal>
             <img src="assets/22-design-check.png" alt="Page Controls toggles" loading="lazy" />
             <figcaption>Page Controls — disable elements</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="section wrap" id="install">
+      <section class="section wrap reveal" id="install" data-reveal>
         <div class="section-head">
           <h2>Install in under a minute</h2>
           <p>
@@ -752,7 +793,7 @@
         </div>
       </section>
 
-      <section class="section wrap" id="faq">
+      <section class="section wrap reveal" id="faq" data-reveal>
         <div class="section-head">
           <h2>FAQ</h2>
           <p>Straight answers for install, privacy, and WordPress.</p>
@@ -810,7 +851,7 @@
         </div>
       </section>
 
-      <section class="section wrap" id="maker">
+      <section class="section wrap reveal" id="maker" data-reveal>
         <div class="section-head">
           <h2>About the maker</h2>
         </div>
@@ -910,7 +951,7 @@
         </table>
       </section>
 
-      <section class="section wrap" id="support">
+      <section class="section wrap reveal" id="support" data-reveal>
         <div class="support">
           <h2>If it saves you a trip to DevTools, give it a star</h2>
           <p>
@@ -955,6 +996,14 @@
       <img id="shot-lightbox-img" alt="" />
       <p id="shot-lightbox-caption"></p>
     </dialog>
+
+    <button type="button" class="scroll-top" id="scroll-top" hidden aria-label="Scroll to top">
+      <svg class="scroll-top-ring" viewBox="0 0 36 36" aria-hidden="true">
+        <circle class="scroll-top-bg" cx="18" cy="18" r="15.5" />
+        <circle class="scroll-top-fg" id="scroll-top-fg" cx="18" cy="18" r="15.5" />
+      </svg>
+      <span>↑</span>
+    </button>
 
     <script src="site.js" defer></script>
   </body>
