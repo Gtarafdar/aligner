@@ -623,8 +623,13 @@ h1 {
 }
 
 .audience-list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 28px;
+}
+
+.audience-pin {
+  min-width: 0;
 }
 
 .audience-row {
@@ -639,6 +644,69 @@ h1 {
     linear-gradient(135deg, rgba(15, 107, 92, 0.06), transparent 42%),
     var(--color-surface);
   box-shadow: var(--shadow);
+}
+
+@media (min-width: 861px) {
+  .audience-list[data-stack] {
+    gap: 0;
+    padding-bottom: 8vh;
+  }
+
+  .audience-list[data-stack] .audience-pin {
+    position: relative;
+    z-index: calc(1 + var(--i, 0));
+    min-height: max(560px, 68vh);
+    margin-bottom: -22vh;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .audience-list[data-stack] .audience-pin:last-child {
+    min-height: auto;
+    margin-bottom: 0;
+    padding-bottom: 8px;
+  }
+
+  .audience-list[data-stack] .audience-row {
+    position: sticky;
+    top: calc(var(--header-offset) + 18px + (var(--i, 0) * 8px));
+    width: 100%;
+    transform-origin: center top;
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 280ms ease,
+      filter 280ms ease;
+  }
+
+  .audience-list[data-stack] .audience-pin.is-behind .audience-row {
+    transform: scale(0.955);
+    filter: brightness(0.96);
+    box-shadow: 0 10px 28px rgba(20, 32, 27, 0.06);
+  }
+
+  .audience-list[data-stack] .audience-pin.is-active .audience-row {
+    box-shadow:
+      0 22px 48px rgba(20, 32, 27, 0.12),
+      0 0 0 1px rgba(15, 107, 92, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audience-list[data-stack] .audience-pin {
+    min-height: auto;
+    margin-bottom: 0;
+  }
+
+  .audience-list[data-stack] {
+    gap: 28px;
+    padding-bottom: 0;
+  }
+
+  .audience-list[data-stack] .audience-row {
+    position: static;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 
 .audience-row.reverse {
@@ -860,6 +928,23 @@ h1 {
   .audience-row.reverse .audience-copy,
   .audience-row.reverse .audience-shot {
     order: initial;
+  }
+
+  .audience-list[data-stack] {
+    gap: 28px;
+    padding-bottom: 0;
+  }
+
+  .audience-list[data-stack] .audience-pin {
+    min-height: auto;
+    margin-bottom: 0;
+    display: block;
+  }
+
+  .audience-list[data-stack] .audience-row {
+    position: static;
+    transform: none;
+    filter: none;
   }
 
   .quest-badges {

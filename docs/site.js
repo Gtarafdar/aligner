@@ -398,6 +398,62 @@
     setActive("overview");
   }
 
+  function setupAudienceStack() {
+    const list = document.querySelector(".audience-list[data-stack]");
+    if (!list) return;
+
+    const pins = [...list.querySelectorAll(".audience-pin")];
+    if (!pins.length) return;
+
+    const desktop = window.matchMedia("(min-width: 861px)");
+    let ticking = false;
+
+    const clear = () => {
+      pins.forEach((pin) => pin.classList.remove("is-behind", "is-active"));
+    };
+
+    const update = () => {
+      ticking = false;
+      if (reducedMotion || !desktop.matches) {
+        clear();
+        return;
+      }
+
+      const header = document.querySelector(".site-header");
+      const stickyLine =
+        (header?.getBoundingClientRect().height || 72) + 28;
+
+      let active = 0;
+      pins.forEach((pin, index) => {
+        const card = pin.querySelector(".audience-row");
+        if (!card) return;
+        if (card.getBoundingClientRect().top <= stickyLine) active = index;
+      });
+
+      pins.forEach((pin, index) => {
+        pin.classList.toggle("is-active", index === active);
+        pin.classList.toggle("is-behind", index < active);
+      });
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    const bind = () => {
+      clear();
+      if (reducedMotion || !desktop.matches) return;
+      update();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", bind);
+    desktop.addEventListener("change", bind);
+    bind();
+  }
+
   if (starBtn) {
     starBtn.href = `https://github.com/${REPO}`;
   }
@@ -407,6 +463,7 @@
   animateCounters();
   setupRevealAndQuest();
   setupStickyQuest();
+  setupAudienceStack();
   setupScrollChrome();
   setupPresetPlay();
 })();

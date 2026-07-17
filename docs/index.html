@@ -911,8 +911,8 @@
         </div>
       </section>
 
-      <section class="section wrap reveal" id="for-whom" data-reveal>
-        <div class="section-head">
+      <section class="section wrap" id="for-whom">
+        <div class="section-head reveal" data-reveal>
           <h2>Who it’s for</h2>
           <p>
             Same toolkit, different jobs. Each row is a real friction point — and the
@@ -920,8 +920,10 @@
           </p>
         </div>
 
-        <div class="audience-list">
-          <article class="audience-row reveal" data-reveal>
+        <div class="audience-list" data-stack>
+          
+          <div class="audience-pin" style="--i: 0;" data-stack-index="0">
+            <article class="audience-row">
             <div class="audience-copy">
               <p class="audience-who">UI &amp; layout designers</p>
               <h3>Measure once. Align for real.</h3>
@@ -945,8 +947,11 @@
               <figcaption>Grids &amp; rulers — measurement for aligned layouts</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reverse reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 1;" data-stack-index="1">
+            <article class="audience-row reverse">
             <div class="audience-copy">
               <p class="audience-who">Front-end polish &amp; inspect work</p>
               <h3>Understand the box without drowning in DevTools.</h3>
@@ -970,8 +975,11 @@
               <figcaption>Inspect — box model and element details</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 2;" data-stack-index="2">
+            <article class="audience-row">
             <div class="audience-copy">
               <p class="audience-who">Media, content &amp; marketing folks</p>
               <h3>Pull the images you already see on the page.</h3>
@@ -995,8 +1003,11 @@
               <figcaption>Media — scan and download page assets</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reverse reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 3;" data-stack-index="3">
+            <article class="audience-row reverse">
             <div class="audience-copy">
               <p class="audience-who">Brand, color &amp; visual QA</p>
               <h3>Sample real colors from the live UI.</h3>
@@ -1020,8 +1031,11 @@
               <figcaption>Color Picker — HEX, RGB, and HSL from the page</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 4;" data-stack-index="4">
+            <article class="audience-row">
             <div class="audience-copy">
               <p class="audience-who">QA, builders &amp; anyone testing forms</p>
               <h3>Isolate bugs. Fill forms. Clear stale cache.</h3>
@@ -1045,8 +1059,11 @@
               <figcaption>Page Controls — Fake Filler and temporary test toggles</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reverse reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 5;" data-stack-index="5">
+            <article class="audience-row reverse">
             <div class="audience-copy">
               <p class="audience-who">WordPress developers &amp; builders</p>
               <h3>wp-admin without the hassle stack.</h3>
@@ -1071,8 +1088,11 @@
               <figcaption>WP Tools — quick actions without leaving the page</figcaption>
             </figure>
           </article>
+          </div>
 
-          <article class="audience-row reveal" data-reveal>
+          
+          <div class="audience-pin" style="--i: 6;" data-stack-index="6">
+            <article class="audience-row">
             <div class="audience-copy">
               <p class="audience-who">Designers working with AI IDEs</p>
               <h3>Hand Cursor, Claude, or Codex the real design system.</h3>
@@ -1096,9 +1116,11 @@
               <figcaption>Design System — DESIGN.md and SKILL.md for AI IDEs</figcaption>
             </figure>
           </article>
+          </div>
         </div>
       </section>
-<section class="section wrap reveal" id="faq" data-reveal>
+
+      <section class="section wrap reveal" id="faq" data-reveal>
         <div class="section-head">
           <h2>FAQ</h2>
           <p>Straight answers for install, privacy, and WordPress.</p>
