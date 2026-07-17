@@ -117,6 +117,12 @@ img {
   color: var(--color-ink);
 }
 
+.nav a.btn.star,
+.nav a.btn.star:hover,
+.nav a.btn.star:focus-visible {
+  color: #fff;
+}
+
 .btn {
   border: 0;
   border-radius: 999px;
@@ -155,6 +161,13 @@ img {
 .btn.star {
   background: #111827;
   color: #fff;
+}
+
+.btn.star:hover,
+.btn.star:focus-visible {
+  color: #fff;
+  background: #0b1220;
+  transform: translateY(-1px) scale(1.02);
 }
 
 .hero {
@@ -997,10 +1010,6 @@ h1 {
 
 .btn.solid:hover::after {
   transform: translateX(120%);
-}
-
-.btn.star:hover {
-  transform: translateY(-1px) scale(1.02);
 }
 
 .hero-visual {
