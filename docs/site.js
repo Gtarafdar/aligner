@@ -71,9 +71,82 @@
     }
   }
 
+  function setupShotLightbox() {
+    const dialog = document.getElementById("shot-lightbox");
+    const img = document.getElementById("shot-lightbox-img");
+    const caption = document.getElementById("shot-lightbox-caption");
+    const closeBtn = document.getElementById("shot-lightbox-close");
+    if (!dialog || !img || !caption) return null;
+
+    const close = () => {
+      if (typeof dialog.close === "function") dialog.close();
+      else dialog.removeAttribute("open");
+    };
+
+    closeBtn?.addEventListener("click", close);
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) close();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && dialog.open) close();
+    });
+
+    return (src, text) => {
+      img.src = src;
+      img.alt = text || "Product screenshot";
+      caption.textContent = text || "";
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+    };
+  }
+
+  function wireScreenshotLightbox() {
+    const open = setupShotLightbox();
+    if (!open) return;
+
+    document.querySelectorAll(".shot").forEach((figure) => {
+      const img = figure.querySelector("img");
+      const caption = figure.querySelector("figcaption");
+      if (!img) return;
+
+      figure.tabIndex = 0;
+      figure.setAttribute("role", "button");
+      const label = caption?.textContent?.trim() || img.alt || "Open screenshot";
+      figure.setAttribute("aria-label", `Open screenshot: ${label}`);
+
+      const show = () => open(img.currentSrc || img.src, label);
+      figure.addEventListener("click", show);
+      figure.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          show();
+        }
+      });
+    });
+
+    const hero = document.querySelector(".hero-visual");
+    const heroImg = hero?.querySelector("img");
+    if (hero && heroImg) {
+      hero.tabIndex = 0;
+      hero.setAttribute("role", "button");
+      hero.setAttribute("aria-label", "Open hero screenshot");
+      const showHero = () =>
+        open(heroImg.currentSrc || heroImg.src, heroImg.alt || "Aligner preview");
+      hero.addEventListener("click", showHero);
+      hero.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          showHero();
+        }
+      });
+    }
+  }
+
   if (starBtn) {
     starBtn.href = `https://github.com/${REPO}`;
   }
 
   loadLatestRelease();
+  wireScreenshotLightbox();
 })();

@@ -607,7 +607,7 @@
       <section class="section wrap" id="screenshots">
         <div class="section-head">
           <h2>In action</h2>
-          <p>Real captures of Aligner tools on a live page.</p>
+          <p>Real captures of Aligner tools on a live page. Click any image to enlarge.</p>
         </div>
         <div class="shot-grid">
           <figure class="shot">
@@ -947,6 +947,14 @@
         </div>
       </div>
     </footer>
+
+    <dialog class="shot-lightbox" id="shot-lightbox" aria-label="Screenshot preview">
+      <button type="button" class="shot-lightbox-close" id="shot-lightbox-close" aria-label="Close">
+        ×
+      </button>
+      <img id="shot-lightbox-img" alt="" />
+      <p id="shot-lightbox-caption"></p>
+    </dialog>
 
     <script src="site.js" defer></script>
   </body>
