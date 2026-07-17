@@ -259,7 +259,8 @@ h1 {
   line-height: 1.55;
 }
 
-.feature-grid {
+.feature-grid,
+.detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 12px;
@@ -274,16 +275,165 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.card.wide {
+  grid-column: 1 / -1;
+}
+
 .card h3 {
   margin: 0 0 8px;
   font-size: 1.15rem;
 }
 
 .card p {
-  margin: 0;
+  margin: 0 0 8px;
   color: var(--color-ink-soft);
   font-size: 0.94rem;
   line-height: 1.5;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.feature-tags li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid var(--color-line);
+}
+
+.roster {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.roster-group {
+  min-width: 0;
+  padding: 18px 18px 14px;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow);
+}
+
+.roster-group.accent {
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(160deg, rgba(33, 117, 155, 0.1), transparent 42%),
+    var(--color-surface);
+}
+
+.roster-group h3 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+
+.roster-lead {
+  margin: 0 0 12px;
+  color: var(--color-ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.roster-list {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.roster-group.accent .roster-list {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 0 18px;
+}
+
+.roster-list > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 38%) minmax(0, 1fr);
+  gap: 8px 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--color-line);
+  align-items: baseline;
+}
+
+.roster-list dt {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+}
+
+.roster-list dd {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.helper-card {
+  background:
+    linear-gradient(135deg, rgba(15, 107, 92, 0.08), transparent 40%),
+    var(--color-surface);
+}
+
+.helper-needs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin: 14px 0 0;
+}
+
+.helper-needs strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-ink);
+}
+
+.helper-needs ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.helper-needs li + li {
+  margin-top: 8px;
+}
+
+.helper-note {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .roster {
+    grid-template-columns: 1fr;
+  }
+
+  .roster-group.accent {
+    grid-column: auto;
+  }
+
+  .roster-list > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 
 .shot-grid {

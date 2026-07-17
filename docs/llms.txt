@@ -5,14 +5,53 @@
 - Website: https://gtarafdar.github.io/aligner/
 - Source: https://github.com/Gtarafdar/aligner
 - Latest ZIP: https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip
+- Helper ZIP: https://github.com/Gtarafdar/aligner/releases/latest/download/aligner-wp-tools-helper.zip
 - License: MIT
 - Author: Gobinda Tarafdar (https://gtarafdar.com/bio/)
 
 ## Summary
 
-Aligner runs in Chrome (Manifest V3). Tools include rulers, guides, grids, measure, drawing, inspect, responsive preview, wireframe, color picker, palette, media manager, accessibility, design check, page speed, design system, cache cleaner, page load timer, page controls, and WordPress WP Tools (optional helper plugin for Role switcher and private Theme switcher).
+Aligner runs in Chrome (Manifest V3). Settings stay on the user’s device. No account. No analytics endpoint ships in the repository.
 
-Settings and history stay on the user’s device. No account. No analytics endpoint ships in the repository.
+## Feature inventory
+
+### Layout
+- Rulers — pixel rulers on the viewport edges
+- Guides — alignment lines you place and lock
+- Grids — column and baseline overlays
+- Measure — point or rectangle distances and area
+- Drawing — temporary arrows, shapes, and notes
+
+### Inspect
+- Inspect — box model, type, and element details
+- Responsive — device-width preview for common sizes
+- Wireframe — grayscale structural page view
+
+### Color & media
+- Color Picker — eyedropper with HEX, RGB, HSL history
+- Palette — extract and save colors from the page
+- Media — scan, preview, and download images / SVG / video
+
+### Quality
+- Accessibility — automated a11y audit with severity filters
+- Design Check — typography, color, and spacing consistency
+- Page Speed — Core Web Vitals and performance score
+- Design System — extract tokens; export DESIGN.md / SKILL.md
+
+### Utilities
+- Cache Cleaner — clear site browsing data selectively
+- Page Load Timer — navigation timing and paint milestones
+- Page Controls — temporarily disable images, JS, popups, and more
+
+### WordPress (WP Tools)
+- Admin bar toggle, Admin / front switcher, Smart page editor
+- Role switcher (needs Aligner WP Tools Helper)
+- Theme switcher / private preview (needs helper)
+- ACF Tools, Theme & plugin detector, Update backlog
+- Admin menu search, Hide admin notices, Classic Customizer, Sidebar shrink
+
+### Workspace presets
+All tools · Designer · WordPress · QA · Minimal — hide popup groups without deleting saved settings.
 
 ## Install
 
@@ -23,7 +62,7 @@ Settings and history stay on the user’s device. No account. No analytics endpo
 
 ## For humans
 
-Prefer the landing page FAQ and README: https://gtarafdar.github.io/aligner/
+Prefer the landing page: https://gtarafdar.github.io/aligner/
 
 ## Related projects by the same maker
 

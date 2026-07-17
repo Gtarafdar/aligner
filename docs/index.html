@@ -126,7 +126,10 @@
           <span>Aligner</span>
         </a>
         <nav class="nav" aria-label="Primary">
-          <a href="#features">Features</a>
+          <a href="#features">Overview</a>
+          <a href="#layout">Tools</a>
+          <a href="#wordpress">WordPress</a>
+          <a href="#screenshots">Screenshots</a>
           <a href="#install">Install</a>
           <a href="#faq">FAQ</a>
           <a href="#maker">Maker</a>
@@ -194,39 +197,409 @@
 
       <section class="section wrap" id="features">
         <div class="section-head">
-          <h2>What you get</h2>
+          <h2>Everything in Aligner</h2>
           <p>
-            Eighteen core tools plus a WordPress suite. Use Aligner Home inside the
-            extension for the full guide, or skim the groups below.
+            Quick map of every tool — the same inventory as Aligner Home inside the
+            extension. Hide whole groups anytime with Workspace presets after install.
           </p>
         </div>
-        <div class="feature-grid">
-          <article class="card">
+
+        <div class="roster">
+          <article class="roster-group">
             <h3>Layout</h3>
-            <p>Rulers, Guides, Grids, Measure, and Drawing for alignment and mark-up.</p>
+            <p class="roster-lead">Align and mark the page while you design.</p>
+            <dl class="roster-list">
+              <div><dt>Rulers</dt><dd>Pixel rulers on the viewport edges</dd></div>
+              <div><dt>Guides</dt><dd>Alignment lines you place and lock</dd></div>
+              <div><dt>Grids</dt><dd>Column and baseline overlays</dd></div>
+              <div><dt>Measure</dt><dd>Point or rectangle distances and area</dd></div>
+              <div><dt>Drawing</dt><dd>Temporary arrows, shapes, and notes</dd></div>
+            </dl>
           </article>
+
+          <article class="roster-group">
+            <h3>Inspect</h3>
+            <p class="roster-lead">Understand structure and breakpoints.</p>
+            <dl class="roster-list">
+              <div><dt>Inspect</dt><dd>Box model, type, and element details</dd></div>
+              <div><dt>Responsive</dt><dd>Device-width preview for common sizes</dd></div>
+              <div><dt>Wireframe</dt><dd>Grayscale structural page view</dd></div>
+            </dl>
+          </article>
+
+          <article class="roster-group">
+            <h3>Color &amp; media</h3>
+            <p class="roster-lead">Sample colors and pull page assets.</p>
+            <dl class="roster-list">
+              <div><dt>Color Picker</dt><dd>Eyedropper with HEX, RGB, HSL history</dd></div>
+              <div><dt>Palette</dt><dd>Extract and save colors from the page</dd></div>
+              <div><dt>Media</dt><dd>Scan, preview, and download images / SVG / video</dd></div>
+            </dl>
+          </article>
+
+          <article class="roster-group">
+            <h3>Quality</h3>
+            <p class="roster-lead">Catch issues before you ship.</p>
+            <dl class="roster-list">
+              <div><dt>Accessibility</dt><dd>Automated a11y audit with severity filters</dd></div>
+              <div><dt>Design Check</dt><dd>Typography, color, and spacing consistency</dd></div>
+              <div><dt>Page Speed</dt><dd>Core Web Vitals and performance score</dd></div>
+              <div><dt>Design System</dt><dd>Extract tokens; export DESIGN.md / SKILL.md</dd></div>
+            </dl>
+          </article>
+
+          <article class="roster-group">
+            <h3>Utilities</h3>
+            <p class="roster-lead">Everyday helpers while testing.</p>
+            <dl class="roster-list">
+              <div><dt>Cache Cleaner</dt><dd>Clear site browsing data selectively</dd></div>
+              <div><dt>Page Load Timer</dt><dd>Navigation timing and paint milestones</dd></div>
+              <div><dt>Page Controls</dt><dd>Temporarily disable images, JS, popups, and more</dd></div>
+            </dl>
+          </article>
+
+          <article class="roster-group accent">
+            <h3>WordPress</h3>
+            <p class="roster-lead">
+              Builder panel for WP sites. Role &amp; Theme switcher need the helper plugin.
+            </p>
+            <dl class="roster-list">
+              <div><dt>WP Tools</dt><dd>Floating panel with quick actions and detection</dd></div>
+              <div><dt>Admin bar toggle</dt><dd>Hide or show the WP toolbar</dd></div>
+              <div><dt>Admin / front switcher</dt><dd>Jump between site and wp-admin</dd></div>
+              <div><dt>Smart page editor</dt><dd>Open the right editor or page builder</dd></div>
+              <div><dt>Role switcher</dt><dd>Preview as one user per role (helper)</dd></div>
+              <div><dt>Theme switcher</dt><dd>Private theme preview only for you (helper)</dd></div>
+              <div><dt>ACF Tools</dt><dd>Copy field names and PHP snippets</dd></div>
+              <div><dt>Theme &amp; plugin detector</dt><dd>Scan assets on the current page</dd></div>
+              <div><dt>Update backlog</dt><dd>Copy updates from Dashboard → Updates</dd></div>
+              <div><dt>Admin menu search</dt><dd>Filter the left admin menu</dd></div>
+              <div><dt>Hide admin notices</dt><dd>Clean wp-admin and restore when needed</dd></div>
+              <div><dt>Classic Customizer</dt><dd>Additional CSS even on block themes</dd></div>
+              <div><dt>Sidebar shrink</dt><dd>Collapse the admin sidebar</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="layout">
+        <div class="section-head">
+          <h2>Layout</h2>
+          <p>Align, measure, and mark the page while you design.</p>
+          <ul class="feature-tags">
+            <li>Rulers</li>
+            <li>Guides</li>
+            <li>Grids</li>
+            <li>Measure</li>
+            <li>Drawing</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card">
+            <h3>Rulers</h3>
+            <p><strong>What:</strong> Pixel rulers along the viewport edges.</p>
+            <p><strong>Why:</strong> Quick distance checks without leaving the page.</p>
+            <p><strong>How:</strong> Toggle from the popup, then drag origin if needed.</p>
+          </article>
+          <article class="card">
+            <h3>Guides</h3>
+            <p><strong>What:</strong> Straight or free-draw alignment lines.</p>
+            <p><strong>Why:</strong> Keep columns, baselines, and edges consistent.</p>
+            <p><strong>How:</strong> Enable Guides, place lines, lock when settled.</p>
+          </article>
+          <article class="card">
+            <h3>Grids</h3>
+            <p><strong>What:</strong> Column and baseline overlays.</p>
+            <p><strong>Why:</strong> Validate rhythm against a layout system.</p>
+            <p><strong>How:</strong> Choose columns/gutters in popup controls.</p>
+          </article>
+          <article class="card">
+            <h3>Measure</h3>
+            <p><strong>What:</strong> Point or rectangle measurements.</p>
+            <p><strong>Why:</strong> Capture exact sizes between elements.</p>
+            <p><strong>How:</strong> Turn on Measure and click the page surface.</p>
+          </article>
+          <article class="card">
+            <h3>Drawing</h3>
+            <p><strong>What:</strong> Temporary annotation marks on the page.</p>
+            <p><strong>Why:</strong> Leave visual notes during review passes.</p>
+            <p><strong>How:</strong> Pick a drawing tool and sketch overlays.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="inspect">
+        <div class="section-head">
+          <h2>Inspect</h2>
+          <p>Understand structure, breakpoints, and wireframe intent.</p>
+          <ul class="feature-tags">
+            <li>Inspect</li>
+            <li>Responsive</li>
+            <li>Wireframe</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
           <article class="card">
             <h3>Inspect</h3>
-            <p>Inspect, Responsive device preview, and Wireframe structural views.</p>
+            <p><strong>What:</strong> Hover inspection for box model and type.</p>
+            <p><strong>Why:</strong> See spacing and typography without DevTools noise.</p>
+            <p><strong>How:</strong> Enable Inspect and move across elements.</p>
           </article>
           <article class="card">
-            <h3>Color &amp; media</h3>
-            <p>Color Picker, Palette extraction, and Media Manager downloads.</p>
+            <h3>Responsive</h3>
+            <p><strong>What:</strong> Device-width preview helpers.</p>
+            <p><strong>Why:</strong> Check layouts at common breakpoints quickly.</p>
+            <p><strong>How:</strong> Toggle Responsive and pick a device width.</p>
           </article>
           <article class="card">
-            <h3>Quality</h3>
-            <p>Accessibility, Design Check, Page Speed, and Design System exports.</p>
+            <h3>Wireframe</h3>
+            <p><strong>What:</strong> Structural wireframe rendering of the page.</p>
+            <p><strong>Why:</strong> Review hierarchy without visual decoration.</p>
+            <p><strong>How:</strong> Enable Wireframe for a stripped composition view.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="color">
+        <div class="section-head">
+          <h2>Color &amp; media</h2>
+          <p>Sample colors, build palettes, and pull page assets.</p>
+          <ul class="feature-tags">
+            <li>Color Picker</li>
+            <li>Palette</li>
+            <li>Media</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card">
+            <h3>Color Picker</h3>
+            <p><strong>What:</strong> Eyedropper and color history for the page.</p>
+            <p><strong>Why:</strong> Match brand colors from live UI.</p>
+            <p><strong>How:</strong> Enable Color Picker and sample the screen.</p>
           </article>
           <article class="card">
-            <h3>Utilities</h3>
-            <p>Cache Cleaner, Page Load Timer, and Page Controls for testing.</p>
+            <h3>Palette</h3>
+            <p><strong>What:</strong> Generated palette from page colors.</p>
+            <p><strong>Why:</strong> Turn a live site into a reusable swatch set.</p>
+            <p><strong>How:</strong> Run Palette and copy the groups you need.</p>
+          </article>
+          <article class="card">
+            <h3>Media</h3>
+            <p><strong>What:</strong> Inventory of images, video, SVG, and more.</p>
+            <p><strong>Why:</strong> Audit and download assets from the current page.</p>
+            <p><strong>How:</strong> Open Media Manager and scan the tab.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="quality">
+        <div class="section-head">
+          <h2>Quality</h2>
+          <p>Catch accessibility, consistency, and performance issues early.</p>
+          <ul class="feature-tags">
+            <li>Accessibility</li>
+            <li>Design Check</li>
+            <li>Page Speed</li>
+            <li>Design System</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card">
+            <h3>Accessibility</h3>
+            <p><strong>What:</strong> Issue scan with severity filters.</p>
+            <p><strong>Why:</strong> Surface barriers before shipping.</p>
+            <p><strong>How:</strong> Enable Accessibility and review highlighted findings.</p>
+          </article>
+          <article class="card">
+            <h3>Design Check</h3>
+            <p><strong>What:</strong> Consistency checks for type, color, spacing.</p>
+            <p><strong>Why:</strong> Spot drift across a page system.</p>
+            <p><strong>How:</strong> Run Design Check and triage highlighted mismatches.</p>
+          </article>
+          <article class="card">
+            <h3>Page Speed</h3>
+            <p><strong>What:</strong> Local performance diagnostics for the tab.</p>
+            <p><strong>Why:</strong> Find heavy assets and slow paths while designing.</p>
+            <p><strong>How:</strong> Open Page Speed and run against the current page.</p>
+          </article>
+          <article class="card">
+            <h3>Design System</h3>
+            <p><strong>What:</strong> Extracted tokens and UI patterns from the page.</p>
+            <p><strong>Why:</strong> Document what the live UI is actually using.</p>
+            <p><strong>How:</strong> Scan with Design System and export what you need.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="utilities">
+        <div class="section-head">
+          <h2>Utilities</h2>
+          <p>Everyday helpers for cache, timing, and page behavior.</p>
+          <ul class="feature-tags">
+            <li>Cache Cleaner</li>
+            <li>Page Load Timer</li>
+            <li>Page Controls</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card">
+            <h3>Cache Cleaner</h3>
+            <p><strong>What:</strong> Selective browsing-data cleanup.</p>
+            <p><strong>Why:</strong> Clear stale state while testing changes.</p>
+            <p><strong>How:</strong> Choose data types and run a clean pass.</p>
+          </article>
+          <article class="card">
+            <h3>Page Load Timer</h3>
+            <p><strong>What:</strong> Visible load timing for the current navigation.</p>
+            <p><strong>Why:</strong> Compare perceived speed after edits.</p>
+            <p><strong>How:</strong> Enable the timer and reload the page.</p>
+          </article>
+          <article class="card">
+            <h3>Page Controls</h3>
+            <p><strong>What:</strong> Temporary page behavior controls while testing.</p>
+            <p><strong>Why:</strong> Isolate issues without changing source code.</p>
+            <p><strong>How:</strong> Toggle the controls you need for the session.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="wordpress">
+        <div class="section-head">
+          <h2>WordPress</h2>
+          <p>Admin-aware tools for builders working on WordPress sites.</p>
+          <ul class="feature-tags">
+            <li>WP Tools</li>
+            <li>Admin bar toggle</li>
+            <li>Admin / front switcher</li>
+            <li>Smart page editor</li>
+            <li>Role switcher</li>
+            <li>Theme switcher</li>
+            <li>ACF Tools</li>
+            <li>Theme &amp; plugin detector</li>
+            <li>Update backlog</li>
+            <li>Admin menu search</li>
+            <li>Hide admin notices</li>
+            <li>Classic Customizer</li>
+            <li>Sidebar shrink</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card wide">
+            <h3>WP Tools panel</h3>
+            <p>
+              <strong>What:</strong> A floating panel for admin shortcuts, detection,
+              backlog, notices, and switchers on WordPress tabs.
+            </p>
+            <p>
+              <strong>Why:</strong> Keep WordPress builder chores in one place instead
+              of hunting admin screens.
+            </p>
+            <p>
+              <strong>How:</strong> Enable WP Tools on a WordPress tab while logged in.
+              Most actions work with normal WordPress admin access. Role switcher and
+              Theme switcher need the optional helper plugin below.
+            </p>
+            <ul class="feature-tags">
+              <li>Hide / show admin bar</li>
+              <li>Dashboard &amp; View site</li>
+              <li>Edit page / Smart editor</li>
+              <li>Scan theme / plugins</li>
+              <li>Additional CSS</li>
+              <li>Role switcher</li>
+              <li>Theme switcher</li>
+              <li>Shrink sidebar</li>
+              <li>Copy report</li>
+            </ul>
+          </article>
+          <article class="card wide helper-card">
+            <h3>Aligner WP Tools Helper</h3>
+            <p>
+              Optional WordPress plugin bundled inside Aligner and in GitHub Releases.
+              Install it only when you need the advanced switcher features. Requires
+              WordPress admin access with permission to upload and activate plugins.
+            </p>
+            <div class="helper-needs">
+              <div>
+                <strong>Needs the helper</strong>
+                <ul>
+                  <li>
+                    <strong>Role switcher</strong> — securely switch to one sample user
+                    per role and switch back, when the site does not already provide a
+                    trusted user-switching link.
+                  </li>
+                  <li>
+                    <strong>Theme switcher</strong> — privately preview installed themes
+                    in your browser only, without changing the public active theme for
+                    visitors.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <strong>Works without the helper</strong>
+                <ul>
+                  <li>Admin bar toggle, Dashboard / View site, Smart page editor</li>
+                  <li>Theme &amp; plugin detector, Update backlog, Admin notices</li>
+                  <li>Classic Customizer, Admin menu search, Sidebar shrink, ACF tools</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cta-row" style="margin-top: 14px">
+              <a
+                class="btn solid"
+                href="https://github.com/Gtarafdar/aligner/releases/latest/download/aligner-wp-tools-helper.zip"
+                >Download helper ZIP</a
+              >
+              <a
+                class="btn ghost"
+                href="https://wordpress.org/documentation/article/manage-plugins/#manual-plugin-installation"
+                target="_blank"
+                rel="noopener"
+                >Plugin upload help</a
+              >
+            </div>
+            <p class="helper-note">
+              After download: WordPress Admin → Plugins → Add New → Upload Plugin →
+              choose the ZIP → Activate → reload the site page in Aligner.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap catalog" id="workspace">
+        <div class="section-head">
+          <h2>Workspace</h2>
+          <p>
+            Hide what you do not need. Keep what you use. Visibility only changes the
+            popup — saved feature settings stay intact when you turn a group back on.
+          </p>
+          <ul class="feature-tags">
+            <li>All tools</li>
+            <li>Designer</li>
+            <li>WordPress</li>
+            <li>QA</li>
+            <li>Minimal</li>
+          </ul>
+        </div>
+        <div class="detail-grid">
+          <article class="card">
+            <h3>All tools</h3>
+            <p>Everything visible in the popup.</p>
+          </article>
+          <article class="card">
+            <h3>Designer</h3>
+            <p>Layout, inspect, and color &amp; media groups.</p>
           </article>
           <article class="card">
             <h3>WordPress</h3>
-            <p>
-              WP Tools panel: admin bar, smart editor, detector, backlog, Role &amp;
-              Theme switcher (helper plugin optional).
-            </p>
+            <p>WP Tools plus utilities for builder workflows.</p>
+          </article>
+          <article class="card">
+            <h3>QA</h3>
+            <p>Inspect, quality, and utilities for review passes.</p>
+          </article>
+          <article class="card">
+            <h3>Minimal</h3>
+            <p>Layout and inspect only — a quieter daily popup.</p>
           </article>
         </div>
       </section>
@@ -264,6 +637,34 @@
           <figure class="shot">
             <img src="assets/18-media-manager.png" alt="Design System typography tokens" loading="lazy" />
             <figcaption>Design System — tokens &amp; exports</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/13-measurement-rulers.png" alt="Color Picker sampling a page color" loading="lazy" />
+            <figcaption>Color Picker — HEX, RGB, HSL</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/14-drawing-wordpress.png" alt="Palette Generator with page colors" loading="lazy" />
+            <figcaption>Palette — extract page colors</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/16-inspect.png" alt="Design Check typography issues" loading="lazy" />
+            <figcaption>Design Check — consistency scan</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/19-color-picker.png" alt="Wireframe Generator preview" loading="lazy" />
+            <figcaption>Wireframe — structural preview</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/20-palette.png" alt="Cache Cleaner settings" loading="lazy" />
+            <figcaption>Cache Cleaner — site data cleanup</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/21-accessibility.png" alt="Page Load Timer metrics" loading="lazy" />
+            <figcaption>Page Load Timer — milestones</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/22-design-check.png" alt="Page Controls toggles" loading="lazy" />
+            <figcaption>Page Controls — disable elements</figcaption>
           </figure>
         </div>
       </section>
