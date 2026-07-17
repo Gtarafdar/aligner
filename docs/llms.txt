@@ -1,0 +1,40 @@
+# Aligner
+
+> Free MIT-licensed Chrome extension for visual design, measurement, quality checks, and WordPress builder tools.
+
+- Website: https://gtarafdar.github.io/aligner/
+- Source: https://github.com/Gtarafdar/aligner
+- Latest ZIP: https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip
+- License: MIT
+- Author: Gobinda Tarafdar (https://gtarafdar.com/bio/)
+
+## Summary
+
+Aligner runs in Chrome (Manifest V3). Tools include rulers, guides, grids, measure, drawing, inspect, responsive preview, wireframe, color picker, palette, media manager, accessibility, design check, page speed, design system, cache cleaner, page load timer, page controls, and WordPress WP Tools (optional helper plugin for Role switcher and private Theme switcher).
+
+Settings and history stay on the user’s device. No account. No analytics endpoint ships in the repository.
+
+## Install
+
+1. Download aligner.zip from GitHub Releases.
+2. Unzip permanently.
+3. chrome://extensions → Developer mode → Load unpacked → select folder with manifest.json.
+4. Updates: re-download latest ZIP and Reload the extension (Store auto-update only after a Web Store listing).
+
+## For humans
+
+Prefer the landing page FAQ and README: https://gtarafdar.github.io/aligner/
+
+## Related projects by the same maker
+
+- WPBakery — https://wpbakery.com/
+- Docscriber — https://thedocscriber.com/
+- TheRecaller — https://therecaller.com/
+- TheEditra — https://theeditra.com/
+- The Quill Press — https://thequillpress.com/
+- Costlas — https://costlas.com/
+- Auto AFK Slack — https://gtarafdar.github.io/auto-afk-slack/
+- Slack Teammate Time — https://gtarafdar.github.io/slack-teammate-local-time/
+- FinderFlow — https://gtarafdar.github.io/FinderFlow/
+- Slack Agent Bridge — https://gtarafdar.github.io/slack-agent-bridge/
+- Broken Link Checker — https://gtarafdar.github.io/broken-link-checker/

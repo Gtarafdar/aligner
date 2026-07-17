@@ -371,6 +371,9 @@ function setupEventListeners() {
     .getElementById("open-workspace-settings-empty")
     ?.addEventListener("click", openWorkspace);
   document.getElementById("open-aligner-home")?.addEventListener("click", openHome);
+  document
+    .getElementById("open-aligner-home-footer")
+    ?.addEventListener("click", openHome);
 
   // Clear guides button
   const clearGuidesButton = document.getElementById("clear-guides");

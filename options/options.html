@@ -115,7 +115,14 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">Rulers, Guides, Grids, Measure, Drawing</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>Rulers</strong>,
+                  <strong>Guides</strong>,
+                  <strong>Grids</strong>,
+                  <strong>Measure</strong>,
+                  <strong>Drawing</strong>
+                </p>
               </div>
               <div class="setting-item">
                 <div class="setting-header">
@@ -125,7 +132,12 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">Inspect, Responsive, Wireframe</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>Inspect</strong>,
+                  <strong>Responsive</strong>,
+                  <strong>Wireframe</strong>
+                </p>
               </div>
               <div class="setting-item">
                 <div class="setting-header">
@@ -135,7 +147,12 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">Color Picker, Palette, Media Manager</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>Color Picker</strong>,
+                  <strong>Palette</strong>,
+                  <strong>Media</strong>
+                </p>
               </div>
               <div class="setting-item">
                 <div class="setting-header">
@@ -145,7 +162,13 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">Accessibility, Design Check, Page Speed, Design System</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>Accessibility</strong>,
+                  <strong>Design Check</strong>,
+                  <strong>Page Speed</strong>,
+                  <strong>Design System</strong>
+                </p>
               </div>
               <div class="setting-item">
                 <div class="setting-header">
@@ -155,7 +178,12 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">Cache Cleaner, Page Load Timer, Page Controls</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>Cache Cleaner</strong>,
+                  <strong>Page Load Timer</strong>,
+                  <strong>Page Controls</strong>
+                </p>
               </div>
               <div class="setting-item">
                 <div class="setting-header">
@@ -165,7 +193,22 @@
                     <span class="slider"></span>
                   </label>
                 </div>
-                <p class="setting-help">WP Tools panel and WordPress control toggles</p>
+                <p class="setting-help">
+                  Features in this group:
+                  <strong>WP Tools</strong>,
+                  <strong>Admin bar toggle</strong>,
+                  <strong>Admin / front switcher</strong>,
+                  <strong>Smart page editor</strong>,
+                  <strong>Role switcher</strong>,
+                  <strong>Theme switcher</strong>,
+                  <strong>ACF Tools</strong>,
+                  <strong>Theme &amp; plugin detector</strong>,
+                  <strong>Update backlog</strong>,
+                  <strong>Admin menu search</strong>,
+                  <strong>Hide admin notices</strong>,
+                  <strong>Classic Customizer</strong>,
+                  <strong>Sidebar shrink</strong>
+                </p>
               </div>
             </div>
 
@@ -177,9 +220,26 @@
                 <p class="setting-help">
                   Open the welcome dashboard for feature guides and onboarding.
                 </p>
-                <button type="button" class="button" id="open-aligner-home-options" style="margin-top:10px;">
-                  Open Aligner Home
-                </button>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+                  <button type="button" class="button" id="open-aligner-home-options">
+                    Open Aligner Home
+                  </button>
+                  <a
+                    class="button secondary"
+                    href="https://gtarafdar.github.io/aligner/"
+                    target="_blank"
+                    rel="noopener"
+                    >Website</a
+                  >
+                  <a
+                    class="button secondary"
+                    id="check-aligner-updates"
+                    href="https://github.com/Gtarafdar/aligner/releases/latest"
+                    target="_blank"
+                    rel="noopener"
+                    >Check for updates</a
+                  >
+                </div>
               </div>
             </div>
           </section>
@@ -1315,7 +1375,10 @@
       </div>
 
       <footer class="options-footer">
-        <button class="button secondary" id="reset-button">
+        <button class="button" id="open-aligner-home-footer">
+          Aligner Home
+        </button>
+        <button class="button secondary" id="reset-button" style="margin-left: 8px">
           Reset to Defaults
         </button>
         <button
@@ -1323,14 +1386,14 @@
           id="export-button"
           style="margin-left: 8px"
         >
-          📤 Export Settings
+          Export Settings
         </button>
         <button
           class="button secondary"
           id="import-button"
           style="margin-left: 8px"
         >
-          📥 Import Settings
+          Import Settings
         </button>
         <input
           type="file"

@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner — Free Chrome Extension for Design, Measure &amp; WordPress Tools</title>
+    <meta
+      name="description"
+      content="Aligner is a free MIT Chrome extension for visual design and measurement: rulers, grids, inspect, color, accessibility, page speed, and WordPress builder tools. Local-first. Open source."
+    />
+    <meta
+      name="keywords"
+      content="Aligner, Chrome extension, web design tools, rulers, grids, WordPress tools, accessibility checker, page speed, color picker, MIT"
+    />
+    <meta name="author" content="Gobinda Tarafdar" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://gtarafdar.github.io/aligner/" />
+    <link rel="icon" href="assets/icon128.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/icon128.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aligner" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://gtarafdar.github.io/aligner/" />
+    <meta
+      property="og:title"
+      content="Aligner — Free Chrome Extension for Design, Measure &amp; WordPress Tools"
+    />
+    <meta
+      property="og:description"
+      content="Rulers, grids, inspect, color, quality checks, utilities, and WordPress tools in one free, open-source Chrome extension."
+    />
+    <meta
+      property="og:image"
+      content="https://gtarafdar.github.io/aligner/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="750" />
+    <meta property="og:image:alt" content="Aligner responsive preview and tool grid on a live page" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Gtarafdarr" />
+    <meta name="twitter:creator" content="@Gtarafdarr" />
+    <meta
+      name="twitter:title"
+      content="Aligner — Free Chrome Extension for Design, Measure &amp; WordPress Tools"
+    />
+    <meta
+      name="twitter:description"
+      content="Visual design toolkit for the browser. Free and open source under MIT."
+    />
+    <meta
+      name="twitter:image"
+      content="https://gtarafdar.github.io/aligner/assets/og-image.png"
+    />
+
+    <meta name="theme-color" content="#0f6b5c" />
+    <link rel="llms" href="https://gtarafdar.github.io/aligner/llms.txt" />
+    <link rel="alternate" type="text/plain" title="LLM summary" href="llms.txt" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "Aligner",
+            "applicationCategory": "BrowserApplication",
+            "operatingSystem": "Chrome",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "license": "https://opensource.org/licenses/MIT",
+            "url": "https://gtarafdar.github.io/aligner/",
+            "downloadUrl": "https://github.com/Gtarafdar/aligner/releases/latest",
+            "author": {
+              "@type": "Person",
+              "name": "Gobinda Tarafdar",
+              "url": "https://gtarafdar.com/bio/"
+            },
+            "description": "Free Chrome extension for visual design, measurement, quality checks, and WordPress builder tools."
+          },
+          {
+            "@type": "WebSite",
+            "name": "Aligner",
+            "url": "https://gtarafdar.github.io/aligner/",
+            "description": "Landing page and install guide for the Aligner Chrome extension."
+          },
+          {
+            "@type": "Person",
+            "name": "Gobinda Tarafdar",
+            "jobTitle": "Product Marketing Specialist",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "WPBakery",
+              "url": "https://wpbakery.com/"
+            },
+            "sameAs": [
+              "https://x.com/Gtarafdarr",
+              "https://www.linkedin.com/in/gobinda-tarafdar/",
+              "https://github.com/Gtarafdar",
+              "https://gtarafdar.com/bio/"
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <img src="assets/icon128.png" width="36" height="36" alt="" />
+          <span>Aligner</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#install">Install</a>
+          <a href="#faq">FAQ</a>
+          <a href="#maker">Maker</a>
+          <a
+            id="star-github"
+            class="btn star"
+            href="https://github.com/Gtarafdar/aligner"
+            target="_blank"
+            rel="noopener"
+            >★ Star on GitHub</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap">
+        <div>
+          <p class="eyebrow">Chrome extension · fully local · MIT</p>
+          <h1>Design, measure, and ship — without leaving the tab.</h1>
+          <p class="lede">
+            Aligner packs layout tools, inspect, color &amp; media, quality checks,
+            utilities, and WordPress builder helpers into one free extension. Hide
+            what you do not need with Workspace. Keep settings on your machine.
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn solid"
+              data-download-zip
+              href="https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip"
+            >
+              <span data-label>Download ZIP</span>
+            </a>
+            <a
+              class="btn ghost"
+              href="https://github.com/Gtarafdar/aligner"
+              target="_blank"
+              rel="noopener"
+              >View source</a
+            >
+            <a
+              class="btn ghost"
+              href="https://github.com/Gtarafdar/aligner/stargazers"
+              target="_blank"
+              rel="noopener"
+              >★ Star</a
+            >
+          </div>
+          <ul class="meta-pills">
+            <li>Manifest V3</li>
+            <li>Version <span data-release-version>1.1.0</span></li>
+            <li>Free &amp; open source</li>
+            <li>WordPress helper optional</li>
+          </ul>
+        </div>
+        <figure class="hero-visual">
+          <img
+            src="assets/09-feature-panel.png"
+            width="1200"
+            height="750"
+            alt="Aligner Responsive preview beside the tool grid on a live WordPress page"
+          />
+        </figure>
+      </section>
+
+      <section class="section wrap" id="features">
+        <div class="section-head">
+          <h2>What you get</h2>
+          <p>
+            Eighteen core tools plus a WordPress suite. Use Aligner Home inside the
+            extension for the full guide, or skim the groups below.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>Layout</h3>
+            <p>Rulers, Guides, Grids, Measure, and Drawing for alignment and mark-up.</p>
+          </article>
+          <article class="card">
+            <h3>Inspect</h3>
+            <p>Inspect, Responsive device preview, and Wireframe structural views.</p>
+          </article>
+          <article class="card">
+            <h3>Color &amp; media</h3>
+            <p>Color Picker, Palette extraction, and Media Manager downloads.</p>
+          </article>
+          <article class="card">
+            <h3>Quality</h3>
+            <p>Accessibility, Design Check, Page Speed, and Design System exports.</p>
+          </article>
+          <article class="card">
+            <h3>Utilities</h3>
+            <p>Cache Cleaner, Page Load Timer, and Page Controls for testing.</p>
+          </article>
+          <article class="card">
+            <h3>WordPress</h3>
+            <p>
+              WP Tools panel: admin bar, smart editor, detector, backlog, Role &amp;
+              Theme switcher (helper plugin optional).
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section wrap" id="screenshots">
+        <div class="section-head">
+          <h2>In action</h2>
+          <p>Real captures of Aligner tools on a live page.</p>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="assets/01-popup-overview.png" alt="WP Tools panel with quick actions" loading="lazy" />
+            <figcaption>WP Tools — quick actions &amp; detection</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/02-rulers.png" alt="Pixel rulers over a page with Aligner popup" loading="lazy" />
+            <figcaption>Rulers — pixel-perfect edges</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/10-workspace-tools.png" alt="Element Inspector box model" loading="lazy" />
+            <figcaption>Inspect — box model &amp; details</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/12-active-tools.png" alt="Media Manager scanning page images" loading="lazy" />
+            <figcaption>Media — scan &amp; download assets</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/15-responsive.png" alt="Accessibility Checker score" loading="lazy" />
+            <figcaption>Accessibility — audit score</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/17-contrast-check.png" alt="Page Speed Score metrics" loading="lazy" />
+            <figcaption>Page Speed — Core Web Vitals</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/18-media-manager.png" alt="Design System typography tokens" loading="lazy" />
+            <figcaption>Design System — tokens &amp; exports</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section wrap" id="install">
+        <div class="section-head">
+          <h2>Install in under a minute</h2>
+          <p>
+            Chrome Web Store listing may come later. Until then, load the open-source
+            ZIP like any developer extension.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Download the package</h3>
+              <p>
+                Grab
+                <a data-download-zip href="https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip"
+                  >aligner.zip</a
+                >
+                from this page or
+                <a href="https://github.com/Gtarafdar/aligner/releases" target="_blank" rel="noopener"
+                  >GitHub Releases</a
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Unzip somewhere permanent</h3>
+              <p>Do not delete the folder after install — Chrome loads the extension from that path.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Load unpacked</h3>
+              <p>
+                Open <code>chrome://extensions</code>, enable Developer mode, click
+                <strong>Load unpacked</strong>, and select the unzipped folder that
+                contains <code>manifest.json</code>.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Open Aligner Home</h3>
+              <p>
+                Pin the icon, open a page, then use the popup footer
+                <strong>Home</strong> link — or Settings → Workspace → Open Aligner Home.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="update-box" id="updates">
+          <h3 style="margin: 0 0 8px; font-family: var(--font-display)">Stay up to date</h3>
+          <p id="release-note">
+            Chrome only auto-updates extensions from the Chrome Web Store. For the
+            GitHub ZIP build: download the latest release, replace your unpacked
+            folder contents, then click Reload on <code>chrome://extensions</code>.
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn solid"
+              data-download-zip
+              href="https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip"
+              ><span data-label>Download latest ZIP</span></a
+            >
+            <a
+              class="btn ghost"
+              href="https://github.com/Gtarafdar/aligner/releases"
+              target="_blank"
+              rel="noopener"
+              >All releases</a
+            >
+            <a
+              class="btn ghost"
+              href="https://github.com/Gtarafdar/aligner/watchers"
+              target="_blank"
+              rel="noopener"
+              >Watch releases on GitHub</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="faq">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Straight answers for install, privacy, and WordPress.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Is Aligner free?</summary>
+            <p>
+              Yes. Aligner is free and open source under the
+              <a href="https://github.com/Gtarafdar/aligner/blob/main/LICENSE">MIT License</a>.
+            </p>
+          </details>
+          <details>
+            <summary>Does it upload my browsing data?</summary>
+            <p>
+              No analytics or account system ships in this project. Settings stay in
+              Chrome storage on your device. See
+              <a href="https://github.com/Gtarafdar/aligner/blob/main/PRIVACY.md">PRIVACY.md</a>.
+            </p>
+          </details>
+          <details>
+            <summary>How do I update after installing from ZIP?</summary>
+            <p>
+              Download the newest <code>aligner.zip</code> from Releases, replace the
+              files in your unpacked folder, then hit Reload in
+              <code>chrome://extensions</code>. Watch the GitHub repo for release
+              notifications. Store auto-update will apply once a Chrome Web Store
+              listing exists.
+            </p>
+          </details>
+          <details>
+            <summary>What is the WordPress helper plugin?</summary>
+            <p>
+              Optional. Most WP Tools work with normal admin access. Role switcher and
+              private Theme switcher need
+              <strong>Aligner WP Tools Helper</strong> (ZIP bundled in the extension
+              and Releases). Install via Plugins → Add New → Upload.
+            </p>
+          </details>
+          <details>
+            <summary>Will it slow my browser?</summary>
+            <p>
+              Tools run on the tab where you enable them. Use Workspace presets to hide
+              groups you do not need so the popup stays light.
+            </p>
+          </details>
+          <details>
+            <summary>Is this affiliated with Google or WordPress.com?</summary>
+            <p>
+              No. Independent project by Gobinda Tarafdar. Chrome is a trademark of
+              Google LLC. WordPress is a registered trademark of the WordPress
+              Foundation. WPBakery is a product of Rain-Task Ltd.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section wrap" id="maker">
+        <div class="section-head">
+          <h2>About the maker</h2>
+        </div>
+        <div class="maker">
+          <img
+            src="assets/gobinda-tarafdar.png"
+            width="140"
+            height="140"
+            alt="Portrait of Gobinda Tarafdar"
+          />
+          <div>
+            <h2>Gobinda Tarafdar</h2>
+            <p class="role">
+              WordPress product marketer · stubborn problem-solver · lifelong Harry Potter devotee
+            </p>
+            <p>
+              By day I am the Product Marketing Specialist at
+              <a href="https://wpbakery.com/" target="_blank" rel="noopener">WPBakery</a>,
+              the page builder that quietly powers a sizeable corner of the WordPress
+              universe. Before that, I helped a single plugin cross
+              <strong>400,000+ active users</strong>.
+            </p>
+            <p>
+              When the day-job owl flies home, I tinker on my own workshop of spells.
+              Aligner is one of them — a visual toolkit so designers and WordPress
+              builders can measure, inspect, and ship without juggling a dozen tabs.
+            </p>
+            <div class="socials">
+              <a class="btn ghost" href="https://x.com/Gtarafdarr" target="_blank" rel="noopener">X / Twitter</a>
+              <a
+                class="btn ghost"
+                href="https://www.linkedin.com/in/gobinda-tarafdar/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+              <a class="btn ghost" href="https://gtarafdar.com/donate" target="_blank" rel="noopener">Donate</a>
+              <a class="btn ghost" href="https://github.com/Gtarafdar" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin: 28px 0 8px; font-family: var(--font-display)">Also from the workshop</h3>
+        <table class="workshop">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://wpbakery.com/" target="_blank" rel="noopener">WPBakery</a></td>
+              <td>Page builder I do product marketing for</td>
+            </tr>
+            <tr>
+              <td><a href="https://thedocscriber.com/" target="_blank" rel="noopener">Docscriber</a></td>
+              <td>Documentation, conjured</td>
+            </tr>
+            <tr>
+              <td><a href="https://therecaller.com/" target="_blank" rel="noopener">TheRecaller</a></td>
+              <td>A memory charm for what you forget online</td>
+            </tr>
+            <tr>
+              <td><a href="https://theeditra.com/" target="_blank" rel="noopener">TheEditra</a></td>
+              <td>AI video editor</td>
+            </tr>
+            <tr>
+              <td><a href="https://thequillpress.com/" target="_blank" rel="noopener">The Quill Press</a></td>
+              <td>Tech news, Daily Prophet style</td>
+            </tr>
+            <tr>
+              <td><a href="https://costlas.com/" target="_blank" rel="noopener">Costlas</a></td>
+              <td>Cost of living for 140+ countries</td>
+            </tr>
+            <tr>
+              <td><a href="https://gtarafdar.github.io/auto-afk-slack/" target="_blank" rel="noopener">Auto AFK Slack</a></td>
+              <td>Lock your Mac, Slack goes AFK</td>
+            </tr>
+            <tr>
+              <td><a href="https://gtarafdar.github.io/slack-teammate-local-time/" target="_blank" rel="noopener">Slack Teammate Time</a></td>
+              <td>Teammate local times inline in Slack</td>
+            </tr>
+            <tr>
+              <td><a href="https://gtarafdar.github.io/FinderFlow/" target="_blank" rel="noopener">FinderFlow</a></td>
+              <td>Mac file manager with built-in editor</td>
+            </tr>
+            <tr>
+              <td><a href="https://gtarafdar.github.io/slack-agent-bridge/" target="_blank" rel="noopener">Slack Agent Bridge</a></td>
+              <td>MCP bridge for Cursor/Claude, local archive, automations</td>
+            </tr>
+            <tr>
+              <td><a href="https://gtarafdar.github.io/broken-link-checker/" target="_blank" rel="noopener">Broken Link Checker</a></td>
+              <td>Find broken links without leaving the page — local Chrome toolbox</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section wrap" id="support">
+        <div class="support">
+          <h2>If it saves you a trip to DevTools, give it a star</h2>
+          <p>
+            Aligner is MIT-licensed and ships without ads or tracking. A GitHub star
+            helps others find it. A small donation keeps the workshop lit.
+          </p>
+          <div class="cta-row">
+            <a class="btn star" href="https://github.com/Gtarafdar/aligner" target="_blank" rel="noopener"
+              >★ Star on GitHub</a
+            >
+            <a class="btn solid" href="https://gtarafdar.com/donate" target="_blank" rel="noopener">Donate</a>
+            <a class="btn ghost" href="https://x.com/Gtarafdarr" target="_blank" rel="noopener">Follow on X</a>
+            <a
+              class="btn ghost"
+              href="https://www.linkedin.com/in/gobinda-tarafdar/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Aligner · MIT © 2026 Gobinda Tarafdar · Chrome is a trademark of Google LLC</p>
+        <div class="footer-links">
+          <a href="#install">Install</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/Gtarafdar/aligner/blob/main/PRIVACY.md">Privacy</a>
+          <a href="https://github.com/Gtarafdar/aligner/blob/main/LICENSE">License</a>
+          <a href="llms.txt">llms.txt</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="site.js" defer></script>
+  </body>
+</html>

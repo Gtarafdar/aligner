@@ -1,241 +1,120 @@
-# Aligner - Chrome Extension
-
-A Chrome extension that provides non-intrusive visual design and measurement tools for web layouts.
-
-## Features
-
-### Phase 1 (MVP) - [Implemented]
-
-- **Rulers**: Horizontal and vertical rulers with tick marks and measurements
-- **Guides**: Draggable alignment guides with snap-to-pixel support
-- **Measurement Tools**: Point-to-point distance measurement
-- **Toolbar**: Floating, minimal toolbar with quick feature toggles
-- **Keyboard Shortcuts**: Quick access to all features
-- **Options Page**: Comprehensive settings for all features
-
-### Phase 2 (Coming Soon)
-
-- **Grids**: Baseline, column, and modular grids
-- **Drawing Tools**: Lines, rectangles, and circles for annotations
-- **Presets**: Save and load guide/grid configurations per domain
-
-### Phase 3 (Completed)
-
-- **Responsive Overlay**: Device viewport emulation with Chrome DevTools-style controls
-- **Inspect-Lite**: Comprehensive element inspection with live editing and CSS extraction
-- **Media Manager**: All-in-one media asset downloader for images, SVG, video, fonts, icons, and Lottie
-
-### Phase 4 (Future)
-
-- **Advanced Grid Systems**: Baseline, column, and modular grids with responsive breakpoints
-- **Enhanced Drawing Tools**: More shapes, text annotations, and export options
-- **Accessibility Helpers**: Contrast checker, focus order visualization, ARIA helpers
-
-## Installation
-
-### From Source
-
-1. Clone or download this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right
-4. Click "Load unpacked"
-5. Select the extension directory
-
-## Usage
-
-### Quick Start
-
-1. Click the Aligner icon in your browser toolbar
-2. Toggle the extension on using the master switch
-3. Enable individual features (rulers, guides, measurement, etc.)
-4. Use keyboard shortcuts for quick access:
-   - `Ctrl+Shift+L` (Mac: `Cmd+Shift+L`) - Toggle extension
-   - `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`) - Toggle rulers
-   - `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`) - Toggle grids
-   - `Ctrl+Shift+M` (Mac: `Cmd+Shift+M`) - Toggle measurement
-
-### Features
-
-#### Rulers
-
-- Shows pixel measurements along top and left edges
-- Configurable color, opacity, thickness, and tick density
-- Drag from rulers to create guides (coming soon)
-
-#### Guides
-
-- Create horizontal and vertical alignment guides
-- Snap to pixel for precision
-- Lock/unlock to prevent accidental movement
-- Clear all or delete individually
-
-#### Measurement Tools
-
-- Click and drag to measure distances between points
-- Shows width, height, and total distance
-- Snap to elements for accuracy
-- Configurable units (px, rem, em)
-
-#### Toolbar
-
-- Floating toolbar with quick feature toggles
-- Draggable to any position
-- Minimal design that doesn't interfere with page
-
-#### Media Manager
-
-A comprehensive media asset extractor and downloader that finds and extracts all media from any website:
-
-**Supported Media Types:**
-
-- **Images**: `<img>` tags, background images, srcset, `<picture>` elements
-- **SVG**: Inline SVG, external SVG files, SVG backgrounds
-- **Videos**: `<video>` tags, source elements, embedded videos (YouTube, Vimeo, Dailymotion)
-- **Fonts**: @font-face declarations (WOFF, WOFF2, TTF, OTF, EOT)
-- **Icons**: Favicons, apple-touch-icon, manifest icons, og:image
-- **Lottie**: JSON animation files, Lottie player elements
-
-**Features:**
-
-- One-click page scanning to detect all media assets
-- Organized tabs for each media type with item counts
-- Thumbnail previews for images, videos, and icons
-- Individual download or bulk download by type
-- Copy URLs to clipboard
-- Copy inline content (SVG code, Lottie JSON)
-- Auto-scan option to detect media on feature activation
-- Draggable and minimizable panel interface
-- No external dependencies - works offline
-
-**Usage:**
-
-1. Enable Media Manager from the popup or extension menu
-2. Click "Scan Page" to detect all media (or enable auto-scan in settings)
-3. Browse tabs to see different media types
-4. Click preview icon to view media in new tab
-5. Click download icon to save individual items
-6. Click "Download All" to batch download all items of a type
-7. Drag panel to reposition or minimize to floating button
-
-### Settings
-
-Access comprehensive settings via:
-
-1. Click the Aligner icon
-2. Click "Settings" at the bottom
-3. Configure each feature individually
-
-## Architecture
-
-### Core Principles
-
-- **Non-intrusive**: Overlay system with `pointer-events: none` by default
-- **Isolated**: Uses Shadow DOM to avoid CSS conflicts with page
-- **Performant**: Throttled events and `requestAnimationFrame` for drawing
-- **Safe**: Minimal permissions, no DOM mutation by default
-
-### Technical Stack
-
-- **Manifest V3**: Modern Chrome extension architecture
-- **Service Worker**: Background state management and messaging
-- **Content Script**: Overlay injection and feature rendering
-- **Shadow DOM**: Style isolation and conflict prevention
-
-### File Structure
-
-```
-.
-├── manifest.json           # Extension configuration
-├── service-worker.js       # Background logic and state
-├── content/
-│   ├── content.js         # Main overlay and feature system
-│   └── content.css        # Minimal base styles
-├── popup/
-│   ├── popup.html         # Extension popup UI
-│   ├── popup.js           # Popup logic
-│   └── popup.css          # Popup styles
-├── options/
-│   ├── options.html       # Settings page UI
-│   ├── options.js         # Settings logic
-│   └── options.css        # Settings styles
-└── assets/
-    └── icons/             # Extension icons
-```
-
-## Development
-
-### Prerequisites
-
-- Chrome browser (version 88+)
-- Text editor
-
-### Setup
-
-1. Clone the repository
-2. Load unpacked extension in Chrome
-3. Make changes to files
-4. Click the reload icon on `chrome://extensions/` to test changes
-
-### Code Quality
-
-- Follows Chrome extension best practices
-- All async operations have error handlers
-- No placeholder/fake code
-- Comprehensive error checking via `chrome.runtime.lastError`
-
-### Style Guide
-
-- Modern, clean design with defined color palette
-- Blue primary (`#2563eb`), green secondary (`#10b981`), amber accent (`#f59e0b`)
-- System fonts for consistency
-- 2-space indentation for JavaScript
-- Semantic class names
-
-## Troubleshooting
-
-### Extension Not Working
-
-1. Check if extension is enabled on `chrome://extensions/`
-2. Make sure the master toggle is ON in the popup
-3. Reload the page you're trying to use it on
-4. Check browser console for errors (F12)
-
-### Features Not Appearing
-
-1. Ensure individual features are enabled in settings
-2. Check if extension master toggle is ON
-3. Try disabling and re-enabling the feature
-4. Check the service worker console for errors
-
-### Content Script Not Injecting
-
-1. Verify manifest.json has correct matches pattern
-2. Check if page has Content Security Policy restrictions
-3. Reload the extension
-4. Reload the page
-
-## Contributing
-
-This is an active development project. Contributions welcome!
-
-### Areas for Contribution
-
-- Grid system implementation (Phase 2)
-- Drawing tools (Phase 2)
-- Preset system (Phase 2)
-- Performance optimizations
-- Bug fixes and testing
-
-## License
-
-MIT License - See LICENSE file for details
-
-## Credits
-
-Developed following Chrome Extension Manifest V3 best practices.
-Inspired by design tools like Figma and browser DevTools.
+# Aligner
+
+> Free Chrome extension for visual design, measurement, quality checks, and WordPress builder tools.
+
+**Landing page:** https://gtarafdar.github.io/aligner/  
+**License:** MIT · **Author:** [Gobinda Tarafdar](https://gtarafdar.com/bio/)
+
+<p align="center">
+  <img src="assets/icons/icon128.png" width="96" height="96" alt="Aligner icon" />
+</p>
+
+<p align="center">
+  <a href="https://gtarafdar.github.io/aligner/"><img src="https://img.shields.io/badge/GitHub%20Pages-live-0f6b5c?style=for-the-badge" alt="GitHub Pages" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="MIT License" /></a>
+  <a href="https://github.com/Gtarafdar/aligner/releases/latest"><img src="https://img.shields.io/github/v/release/Gtarafdar/aligner?style=for-the-badge" alt="Latest release" /></a>
+  <a href="https://github.com/Gtarafdar/aligner/stargazers"><img src="https://img.shields.io/github/stars/Gtarafdar/aligner?style=for-the-badge" alt="GitHub stars" /></a>
+  <img src="https://img.shields.io/badge/Manifest-V3-blue?style=for-the-badge" alt="Manifest V3" />
+  <img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip"><strong>Download ZIP</strong></a>
+  ·
+  <a href="https://gtarafdar.github.io/aligner/"><strong>Website</strong></a>
+  ·
+  <a href="https://github.com/Gtarafdar/aligner"><strong>★ Star</strong></a>
+  ·
+  <a href="https://gtarafdar.com/donate"><strong>Donate</strong></a>
+</p>
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: December 2025
+## About the maker
+
+<p align="center">
+  <img src="assets/brand/gobinda-tarafdar.png" width="160" height="160" alt="Gobinda Tarafdar" />
+</p>
+
+**Gobinda Tarafdar** — WordPress product marketer by trade, stubborn problem-solver by habit, lifelong Harry Potter devotee by heart.
+
+By day I am the Product Marketing Specialist at [WPBakery](https://wpbakery.com/), the page builder that quietly powers a sizeable corner of the WordPress universe. Before that, I helped a single plugin cross **400,000+ active users**. When the day-job owl flies home, I tinker on my own workshop of spells. **Aligner** is one of them.
+
+- [X / Twitter](https://x.com/Gtarafdarr)
+- [LinkedIn](https://www.linkedin.com/in/gobinda-tarafdar/)
+- [Donate](https://gtarafdar.com/donate)
+- [GitHub](https://github.com/Gtarafdar)
+
+---
+
+## What Aligner does
+
+| Group | Tools |
+| --- | --- |
+| **Layout** | Rulers, Guides, Grids, Measure, Drawing |
+| **Inspect** | Inspect, Responsive, Wireframe |
+| **Color & media** | Color Picker, Palette, Media |
+| **Quality** | Accessibility, Design Check, Page Speed, Design System |
+| **Utilities** | Cache Cleaner, Page Load Timer, Page Controls |
+| **WordPress** | WP Tools panel — admin bar, smart editor, detector, backlog, Role switcher, Theme switcher, ACF Tools, and more |
+
+Optional **Aligner WP Tools Helper** (bundled ZIP) unlocks Role switcher and private Theme preview. Most WP features work without it.
+
+---
+
+## Install (Load unpacked)
+
+1. Download [`aligner.zip`](https://github.com/Gtarafdar/aligner/releases/latest/download/aligner.zip) from [Releases](https://github.com/Gtarafdar/aligner/releases).
+2. Unzip to a permanent folder.
+3. Open `chrome://extensions` → enable **Developer mode** → **Load unpacked** → select the folder with `manifest.json`.
+4. Open **Aligner Home** from the popup footer or Settings → Workspace.
+
+### Updates
+
+Chrome auto-updates only apply to Chrome Web Store listings. For the GitHub ZIP:
+
+1. Watch this repo / Releases.
+2. Download the latest ZIP, replace your unpacked files, click **Reload** on `chrome://extensions`.
+
+Tagged releases (`v*`) build the ZIP via GitHub Actions (see `.github/workflows/release.yml`).
+
+---
+
+## Also from the workshop
+
+| Project | Description |
+| --- | --- |
+| [WPBakery](https://wpbakery.com/) | Page builder I do product marketing for |
+| [Docscriber](https://thedocscriber.com/) | Documentation, conjured |
+| [TheRecaller](https://therecaller.com/) | A memory charm for what you forget online |
+| [TheEditra](https://theeditra.com/) | AI video editor |
+| [The Quill Press](https://thequillpress.com/) | Tech news, Daily Prophet style |
+| [Costlas](https://costlas.com/) | Cost of living for 140+ countries |
+| [Auto AFK Slack](https://gtarafdar.github.io/auto-afk-slack/) | Lock your Mac, Slack goes AFK |
+| [Slack Teammate Time](https://gtarafdar.github.io/slack-teammate-local-time/) | Teammate local times inline in Slack |
+| [FinderFlow](https://gtarafdar.github.io/FinderFlow/) | Mac file manager with built-in editor |
+| [Slack Agent Bridge](https://gtarafdar.github.io/slack-agent-bridge/) | MCP bridge for Cursor/Claude, local archive, automations |
+| [Broken Link Checker](https://gtarafdar.github.io/broken-link-checker/) | Find broken links without leaving the page |
+
+---
+
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md). No account. No analytics endpoint in this repo.
+
+## AI / agents
+
+Machine-readable summary: [docs/llms.txt](docs/llms.txt) · https://gtarafdar.github.io/aligner/llms.txt
+
+## Development
+
+```bash
+# Package a Chrome-ready ZIP locally
+./scripts/package-extension.sh
+```
+
+Extension source lives at the repo root (`manifest.json`, `popup/`, `content/`, `welcome/`, …). Marketing site is in `docs/` (GitHub Pages).
+
+## License
+
+[MIT](LICENSE) © 2026 Gobinda Tarafdar

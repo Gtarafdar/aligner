@@ -96,6 +96,13 @@ function setupWorkspaceControls() {
         url: chrome.runtime.getURL("welcome/welcome.html"),
       });
     });
+  document
+    .getElementById("open-aligner-home-footer")
+    ?.addEventListener("click", () => {
+      chrome.tabs.create({
+        url: chrome.runtime.getURL("welcome/welcome.html"),
+      });
+    });
 }
 
 function updateWorkspaceUI() {

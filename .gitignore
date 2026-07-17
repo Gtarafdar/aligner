@@ -22,3 +22,4 @@ afk_agent.py.save
 node_modules/
 .cache/
 .hallmark/
+dist/
