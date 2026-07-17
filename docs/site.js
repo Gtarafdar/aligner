@@ -302,6 +302,102 @@
     });
   }
 
+  function setupStickyQuest() {
+    const header = document.querySelector(".site-header");
+    const sticky = document.getElementById("quest-sticky");
+    const panel = document.getElementById("quest-panel");
+    if (!header || !sticky || !panel) return;
+
+    const syncHeaderOffset = () => {
+      const h = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--header-offset", `${h}px`);
+    };
+
+    syncHeaderOffset();
+    window.addEventListener("resize", syncHeaderOffset);
+
+    const sentinel = document.createElement("div");
+    sentinel.className = "quest-sticky-sentinel";
+    sentinel.setAttribute("aria-hidden", "true");
+    sticky.parentElement?.insertBefore(sentinel, sticky);
+
+    const compactObserver = new IntersectionObserver(
+      ([entry]) => {
+        sticky.classList.toggle("is-compact", !entry.isIntersecting);
+      },
+      { rootMargin: `-${header.getBoundingClientRect().height + 8}px 0px 0px 0px`, threshold: 0 },
+    );
+    compactObserver.observe(sentinel);
+
+    const sectionIds = {
+      overview: "features",
+      layout: "layout",
+      inspect: "inspect",
+      color: "color",
+      quality: "quality",
+      utilities: "utilities",
+      wordpress: "wordpress",
+    };
+
+    const setActive = (key) => {
+      document.querySelectorAll("[data-badge]").forEach((el) => {
+        el.classList.toggle("is-active", el.getAttribute("data-badge") === key);
+      });
+    };
+
+    document.querySelectorAll("[data-badge]").forEach((badge) => {
+      const key = badge.getAttribute("data-badge");
+      const targetId = sectionIds[key];
+      if (!targetId) return;
+      badge.setAttribute("role", "link");
+      badge.tabIndex = 0;
+      badge.setAttribute("aria-label", `Jump to ${badge.textContent.trim()}`);
+
+      const jump = () => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const top =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          header.getBoundingClientRect().height -
+          sticky.getBoundingClientRect().height -
+          12;
+        window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? "auto" : "smooth" });
+        setActive(key);
+      };
+
+      badge.addEventListener("click", jump);
+      badge.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          jump();
+        }
+      });
+    });
+
+    const sections = QUEST_KEYS.map((key) => document.getElementById(sectionIds[key])).filter(Boolean);
+    if (!sections.length) return;
+
+    const activeObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (!visible.length) return;
+        const id = visible[0].target.id;
+        const key = Object.keys(sectionIds).find((k) => sectionIds[k] === id);
+        if (key) setActive(key);
+      },
+      {
+        rootMargin: `-${header.getBoundingClientRect().height + sticky.getBoundingClientRect().height + 24}px 0px -45% 0px`,
+        threshold: [0.15, 0.35, 0.55],
+      },
+    );
+
+    sections.forEach((section) => activeObserver.observe(section));
+    setActive("overview");
+  }
+
   if (starBtn) {
     starBtn.href = `https://github.com/${REPO}`;
   }
@@ -310,6 +406,7 @@
   wireScreenshotLightbox();
   animateCounters();
   setupRevealAndQuest();
+  setupStickyQuest();
   setupScrollChrome();
   setupPresetPlay();
 })();
