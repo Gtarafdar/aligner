@@ -13,6 +13,16 @@
 
 Aligner runs in Chrome (Manifest V3). Settings stay on the user’s device. No account. No analytics endpoint ships in the repository.
 
+## Who it’s for
+
+- UI & layout designers — rulers, guides, grids, measure for aligned layouts
+- Front-end polish — Inspect for box model, CSS, contrast without DevTools overload
+- Media / content — Media Manager to scan and download page images
+- Brand / visual QA — Color Picker and Palette from the live UI
+- QA & testers — Page Controls, Fake Filler, Cache Cleaner
+- WordPress developers — WP Tools suite (roles, ACF, notices, sidebar, menu search)
+- AI IDE workflows — Design System exports DESIGN.md / SKILL.md
+
 ## Standout capabilities
 
 - One-click extension on/off and This tab / All tabs scoping

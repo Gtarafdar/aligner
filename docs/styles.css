@@ -621,6 +621,104 @@ h1 {
   line-height: 1.55;
 }
 
+.audience-list {
+  display: grid;
+  gap: 28px;
+}
+
+.audience-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--color-line);
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    linear-gradient(135deg, rgba(15, 107, 92, 0.06), transparent 42%),
+    var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.audience-row.reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+
+.audience-row.reverse .audience-copy {
+  order: 2;
+}
+
+.audience-row.reverse .audience-shot {
+  order: 1;
+}
+
+.audience-who {
+  margin: 0 0 6px;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.audience-copy h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  line-height: 1.2;
+}
+
+.audience-problem,
+.audience-solve {
+  margin: 0 0 10px;
+  color: var(--color-ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.audience-solve {
+  margin-bottom: 0;
+}
+
+.audience-problem strong,
+.audience-solve strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.audience-shot {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-line);
+  background: #ece7dc;
+  cursor: zoom-in;
+}
+
+.audience-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 280ms ease;
+}
+
+.audience-shot:hover img,
+.audience-shot:focus-visible img {
+  transform: scale(1.02);
+}
+
+.audience-shot figcaption {
+  margin: 0;
+  padding: 10px 12px;
+  border-top: 1px solid var(--color-line);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .maker {
   display: grid;
   grid-template-columns: 140px minmax(0, 1fr);
@@ -751,6 +849,16 @@ h1 {
   .hero {
     grid-template-columns: 1fr;
     padding-top: 28px;
+  }
+
+  .audience-row,
+  .audience-row.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .audience-row.reverse .audience-copy,
+  .audience-row.reverse .audience-shot {
+    order: initial;
   }
 
   .maker {
@@ -979,6 +1087,10 @@ h1 {
   opacity: 1;
   transform: none;
 }
+
+.audience-list .reveal:nth-child(2) { transition-delay: 50ms; }
+.audience-list .reveal:nth-child(3) { transition-delay: 100ms; }
+.audience-list .reveal:nth-child(4) { transition-delay: 150ms; }
 
 .detail-grid .reveal:nth-child(2) { transition-delay: 60ms; }
 .detail-grid .reveal:nth-child(3) { transition-delay: 120ms; }
