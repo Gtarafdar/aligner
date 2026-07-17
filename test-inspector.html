@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Inspector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 40px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+      .test-card {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-bold mb-8 text-blue-600">Inspector Test Page</h1>
+
+      <div class="alert alert-info mb-6">
+        <span>✨ <strong>How to use the inspector:</strong></span>
+        <ul class="ml-6 mt-2">
+          <li>1. Look for the 🔍 button in the bottom-right corner</li>
+          <li>2. OR press Ctrl+Click on any element</li>
+          <li>3. The inspector panel will open on the right side</li>
+          <li>
+            4. Try clicking the tabs at the top (📝 Text, 🌈 Colors, etc.)
+          </li>
+        </ul>
+      </div>
+
+      <div class="test-card">
+        <h2 class="text-2xl font-semibold mb-4">Test Element 1</h2>
+        <p class="text-gray-700 mb-4">
+          This is a test paragraph. Try inspecting it with Ctrl+Click!
+        </p>
+        <button class="btn btn-primary">Click Me</button>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl mb-6">
+        <div class="card-body">
+          <h2 class="card-title">DaisyUI Card</h2>
+          <p>Try inspecting this card to see DaisyUI components!</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-secondary">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 mb-6">
+        <div class="badge badge-primary">Primary Badge</div>
+        <div class="badge badge-secondary">Secondary Badge</div>
+        <div class="badge badge-accent">Accent Badge</div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4">
+        <div class="p-4 bg-blue-500 text-white rounded-lg">Box 1</div>
+        <div class="p-4 bg-green-500 text-white rounded-lg">Box 2</div>
+        <div class="p-4 bg-purple-500 text-white rounded-lg">Box 3</div>
+      </div>
+    </div>
+
+    <div
+      class="fixed bottom-4 left-4 p-4 bg-yellow-100 border-2 border-yellow-400 rounded-lg max-w-md"
+    >
+      <p class="font-bold text-yellow-800">💡 Troubleshooting:</p>
+      <ul class="text-sm text-yellow-900 mt-2">
+        <li>
+          • If no 🔍 button appears, check if the extension is loaded in Chrome
+        </li>
+        <li>
+          • Go to chrome://extensions and ensure "Web design toolbox" is enabled
+        </li>
+        <li>• Refresh this page after enabling the extension</li>
+        <li>• Check the browser console (F12) for any errors</li>
+      </ul>
+    </div>
+  </body>
+</html>

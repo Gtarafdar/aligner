@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker - Image Test</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        padding: 40px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2563eb;
+        margin-bottom: 10px;
+      }
+      .info {
+        background: #fef3c7;
+        border: 2px solid #fbbf24;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      .info strong {
+        color: #92400e;
+      }
+      .test-section {
+        margin: 30px 0;
+        padding: 20px;
+        border: 2px dashed #e5e7eb;
+        border-radius: 8px;
+      }
+      .test-section h2 {
+        color: #1f2937;
+        margin-top: 0;
+      }
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .image-card {
+        text-align: center;
+      }
+      .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: crosshair;
+        transition: transform 0.2s;
+      }
+      .image-card img:hover {
+        transform: scale(1.05);
+      }
+      .image-card p {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: #6b7280;
+      }
+      canvas {
+        border-radius: 8px;
+        cursor: crosshair;
+      }
+      .success {
+        color: #10b981;
+        font-weight: 600;
+      }
+      .warning {
+        color: #f59e0b;
+        font-weight: 600;
+      }
+      .error {
+        color: #ef4444;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Color Picker - Image Testing</h1>
+      <p>
+        Test the Color Picker extension's ability to pick colors from different
+        types of images.
+      </p>
+
+      <div class="info">
+        <strong>⚠️ Important:</strong> Due to browser CORS (Cross-Origin
+        Resource Sharing) security policies, the extension can only pick colors
+        from:
+        <ul>
+          <li><span class="success">✓ Images from the same domain</span></li>
+          <li>
+            <span class="success">✓ Images with proper CORS headers</span>
+          </li>
+          <li><span class="success">✓ Canvas elements</span></li>
+          <li>
+            <span class="error"
+              >✗ External images without CORS (like most CDN images)</span
+            >
+          </li>
+        </ul>
+        This is a browser security feature that cannot be bypassed by
+        extensions.
+      </div>
+
+      <!-- Test 1: Data URL Images (Always Works) -->
+      <div class="test-section">
+        <h2>
+          <span class="success">✓ Test 1:</span> Data URL Images (Always Works)
+        </h2>
+        <p>These images are embedded as data URLs - they work perfectly!</p>
+        <div class="image-grid">
+          <div class="image-card">
+            <img
+              src="data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='200' height='200' fill='%23ff6b6b'/%3E%3C/svg%3E"
+              alt="Red square"
+            />
+            <p>Red (#ff6b6b)</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='200' height='200' fill='%234ecdc4'/%3E%3C/svg%3E"
+              alt="Cyan square"
+            />
+            <p>Cyan (#4ecdc4)</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='200' height='200' fill='%23ffd93d'/%3E%3C/svg%3E"
+              alt="Yellow square"
+            />
+            <p>Yellow (#ffd93d)</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='50' r='40' fill='%23e056fd'/%3E%3Ccircle cx='60' cy='120' r='40' fill='%2395e1d3'/%3E%3Ccircle cx='140' cy='120' r='40' fill='%23f38181'/%3E%3C/svg%3E"
+              alt="Three circles"
+            />
+            <p>Multi-color</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test 2: Canvas Element (Always Works) -->
+      <div class="test-section">
+        <h2>
+          <span class="success">✓ Test 2:</span> Canvas Element (Always Works)
+        </h2>
+        <p>
+          Canvas elements can always be read - draw a gradient and pick colors
+          from it!
+        </p>
+        <canvas id="gradientCanvas" width="600" height="200"></canvas>
+      </div>
+
+      <!-- Test 3: External Images -->
+      <div class="test-section">
+        <h2><span class="error">✗ Test 3:</span> External Images (May Fail)</h2>
+        <p>These external images will likely show CORS errors:</p>
+        <div class="image-grid">
+          <div class="image-card">
+            <img
+              src="https://via.placeholder.com/200/ff6b6b/ffffff?text=Red"
+              alt="External red"
+            />
+            <p class="warning">External (may fail)</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="https://via.placeholder.com/200/4ecdc4/ffffff?text=Cyan"
+              alt="External cyan"
+            />
+            <p class="warning">External (may fail)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="test-section">
+        <h2>📝 How to Test</h2>
+        <ol>
+          <li>
+            Click the <strong>Color Picker</strong> button in the extension
+            popup
+          </li>
+          <li>Click <strong>"Pick Color"</strong> in the panel</li>
+          <li>
+            Hover over the images above - you'll see a color preview tooltip
+          </li>
+          <li>Click on any part of an image to pick that specific color</li>
+          <li>
+            For the canvas gradient, try picking different positions to get
+            different colors!
+          </li>
+        </ol>
+        <p><strong>Expected Results:</strong></p>
+        <ul>
+          <li class="success">
+            ✓ Data URL images: Color picking works perfectly
+          </li>
+          <li class="success">
+            ✓ Canvas gradient: Color picking works perfectly
+          </li>
+          <li class="warning">
+            ⚠ External images: May show "Cannot pick from external images
+            (CORS)" toast
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Draw a colorful gradient on the canvas
+      const canvas = document.getElementById("gradientCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Create rainbow gradient
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+      gradient.addColorStop(0, "#ff0000"); // Red
+      gradient.addColorStop(0.17, "#ff7f00"); // Orange
+      gradient.addColorStop(0.33, "#ffff00"); // Yellow
+      gradient.addColorStop(0.5, "#00ff00"); // Green
+      gradient.addColorStop(0.67, "#0000ff"); // Blue
+      gradient.addColorStop(0.83, "#4b0082"); // Indigo
+      gradient.addColorStop(1, "#9400d3"); // Violet
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add some text
+      ctx.fillStyle = "white";
+      ctx.font = "bold 24px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(
+        "Click anywhere on this gradient!",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    </script>
+  </body>
+</html>

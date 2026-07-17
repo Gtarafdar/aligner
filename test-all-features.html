@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner - All Features Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 60px;
+      }
+
+      h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #6b7280;
+        margin-bottom: 40px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .feature-card {
+        background: #f9fafb;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 24px;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        border-color: #667eea;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+      }
+
+      .feature-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: #667eea;
+        color: white;
+        border-radius: 8px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .feature-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 8px;
+      }
+
+      .feature-description {
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.6;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #10b981;
+        color: white;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+
+      .instructions {
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 40px;
+      }
+
+      .instructions h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 12px;
+      }
+
+      .instructions ol {
+        margin-left: 20px;
+        color: #1e40af;
+      }
+
+      .instructions li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 30px;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        .subtitle {
+          font-size: 16px;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Aligner - All Features Test Page</h1>
+      <p class="subtitle">
+        Test all 9 newly implemented features on this page!
+      </p>
+
+      <div class="instructions">
+        <h2>📋 Testing Instructions</h2>
+        <ol>
+          <li>
+            <strong>Enable the Aligner extension</strong> by clicking the icon
+            in your toolbar
+          </li>
+          <li>
+            <strong>Test Measurement Features:</strong> Enable measurement, try
+            angle display, device pixels, and rectangle mode
+          </li>
+          <li>
+            <strong>Test Rulers:</strong> Enable rulers, try rem/em units, set
+            custom origin
+          </li>
+          <li>
+            <strong>Test Guides:</strong> Enable guides, try angled guides and
+            free-draw mode
+          </li>
+          <li>
+            <strong>Test Grid:</strong> Enable grid, toggle responsive mode,
+            resize window to see breakpoint changes
+          </li>
+        </ol>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-number">1</div>
+          <div class="feature-title">Angle Measurement</div>
+          <div class="feature-description">
+            Measure angles between two points. Shows degrees (0-360°) in the
+            label.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">2</div>
+          <div class="feature-title">Device Pixels</div>
+          <div class="feature-description">
+            Toggle to show both CSS pixels and device pixels. Useful for
+            high-DPI screens.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">3</div>
+          <div class="feature-title">Rectangle Measurement</div>
+          <div class="feature-description">
+            Drag to create a rectangle. Shows width, height, area, and diagonal
+            length.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">4</div>
+          <div class="feature-title">Rem/Em Units</div>
+          <div class="feature-description">
+            Switch ruler units between pixels, rem, and em. Auto-converts based
+            on font size.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">5</div>
+          <div class="feature-title">Custom Origin</div>
+          <div class="feature-description">
+            Set a custom zero point for rulers. Click to place, reset to return
+            to default.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">6</div>
+          <div class="feature-title">Angled Guides</div>
+          <div class="feature-description">
+            Create guides at any angle (0-359°). Set default angle in controls.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">7</div>
+          <div class="feature-title">Free-Draw Guides</div>
+          <div class="feature-description">
+            Click two points to create a custom angled guide line. Preview shown
+            while drawing.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">8</div>
+          <div class="feature-title">Grid Breakpoints</div>
+          <div class="feature-description">
+            Define different grid settings for mobile, tablet, and desktop. Edit
+            each independently.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">9</div>
+          <div class="feature-title">Responsive Grid</div>
+          <div class="feature-description">
+            Grid auto-adjusts when window resizes. Breakpoint indicator shows
+            current size.
+          </div>
+          <span class="status-badge">✅ COMPLETE</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

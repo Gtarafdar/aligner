@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Viewport - Complete Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+      }
+
+      header {
+        background: white;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 3em;
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+        color: #666;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .test-section h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 2em;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .feature-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-card h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .wide-content {
+        background: #fef3c7;
+        padding: 30px;
+        border-radius: 10px;
+        width: 2500px;
+        margin: 20px 0;
+        border: 3px dashed #f59e0b;
+      }
+
+      .wide-content h3 {
+        color: #92400e;
+        font-size: 1.8em;
+        margin-bottom: 15px;
+      }
+
+      .breakpoint-indicator {
+        background: #10b981;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5em;
+        margin: 20px 0;
+      }
+
+      .device-sizes {
+        background: #f3f4f6;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+
+      .device-sizes h3 {
+        color: #1f2937;
+        margin-bottom: 15px;
+      }
+
+      .size-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background: white;
+        margin: 5px 0;
+        border-radius: 6px;
+      }
+
+      .instructions {
+        background: #dbeafe;
+        border-left: 4px solid #2563eb;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .instructions h3 {
+        color: #1e40af;
+        margin-bottom: 10px;
+      }
+
+      .instructions ol {
+        margin-left: 20px;
+      }
+
+      .instructions li {
+        margin: 8px 0;
+        color: #1e3a8a;
+      }
+
+      footer {
+        background: white;
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .scroll-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ef4444;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .breakpoint-indicator {
+          background: #ef4444;
+        }
+        .breakpoint-indicator::before {
+          content: "📱 MOBILE: ";
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .breakpoint-indicator {
+          background: #f59e0b;
+        }
+        .breakpoint-indicator::before {
+          content: "📱 TABLET: ";
+        }
+      }
+
+      @media (min-width: 1025px) {
+        .breakpoint-indicator {
+          background: #10b981;
+        }
+        .breakpoint-indicator::before {
+          content: "💻 DESKTOP: ";
+        }
+      }
+
+      .tall-content {
+        min-height: 1500px;
+        background: linear-gradient(180deg, #fef3c7 0%, #fca5a5 100%);
+        padding: 40px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+
+      .tall-content h3 {
+        position: sticky;
+        top: 80px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .content-markers {
+        display: flex;
+        flex-direction: column;
+        gap: 200px;
+        margin-top: 40px;
+      }
+
+      .marker {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>🔍 Responsive Viewport Test</h1>
+      <p class="subtitle">Complete Testing Suite for All Issues</p>
+    </header>
+
+    <div class="scroll-indicator">⬇️ Scroll Down</div>
+
+    <div class="container">
+      <!-- Instructions -->
+      <div class="test-section">
+        <h2>📋 Testing Instructions</h2>
+        <div class="instructions">
+          <h3>How to Test:</h3>
+          <ol>
+            <li>
+              <strong>Enable Aligner Extension</strong> - Click the extension
+              icon
+            </li>
+            <li>
+              <strong>Activate Responsive Feature</strong> - Click "Responsive"
+              button in toolbar
+            </li>
+            <li>
+              <strong>Test Different Devices:</strong>
+              <ul style="margin: 10px 0 10px 20px">
+                <li>
+                  Select "iPhone SE (375×667)" - Should see centered device
+                  frame
+                </li>
+                <li>
+                  Select "iPad Air (820×1180)" - Should see tablet view centered
+                </li>
+                <li>
+                  Select "Desktop (1920×1080)" - Should see desktop view
+                  centered
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Verify Scrolling:</strong>
+              <ul style="margin: 10px 0 10px 20px">
+                <li>✅ Page should scroll vertically</li>
+                <li>✅ You should be able to see all content below</li>
+                <li>
+                  ✅ Wide content (2500px) should be visible with horizontal
+                  scroll within device
+                </li>
+                <li>✅ Scroll indicator should move as you scroll</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Check Centering:</strong>
+              <ul style="margin: 10px 0 10px 20px">
+                <li>✅ Device frame should be centered horizontally</li>
+                <li>✅ Gray background should be visible on both sides</li>
+                <li>✅ Controls should stay at top center</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Test Grid Integration:</strong>
+              <ul style="margin: 10px 0 10px 20px">
+                <li>Enable "Grid" feature</li>
+                <li>Enable "Responsive Grid" in Grid settings</li>
+                <li>
+                  Breakpoint indicator should change with device selection
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Breakpoint Test -->
+      <div class="test-section">
+        <h2>📏 Breakpoint Detection Test</h2>
+        <div class="breakpoint-indicator">
+          Current breakpoint will show here
+        </div>
+        <p style="text-align: center; color: #666; margin-top: 10px">
+          This indicator changes color and text based on viewport width
+        </p>
+      </div>
+
+      <!-- Device Sizes Reference -->
+      <div class="test-section">
+        <h2>📱 Device Sizes Reference</h2>
+        <div class="device-sizes">
+          <h3>Mobile Devices:</h3>
+          <div class="size-row">
+            <span>iPhone SE</span>
+            <strong>375 × 667</strong>
+          </div>
+          <div class="size-row">
+            <span>iPhone XR</span>
+            <strong>414 × 896</strong>
+          </div>
+          <div class="size-row">
+            <span>iPhone 12 Pro</span>
+            <strong>390 × 844</strong>
+          </div>
+          <div class="size-row">
+            <span>iPhone 14 Pro Max</span>
+            <strong>430 × 932</strong>
+          </div>
+
+          <h3 style="margin-top: 20px">Tablet Devices:</h3>
+          <div class="size-row">
+            <span>iPad Mini</span>
+            <strong>768 × 1024</strong>
+          </div>
+          <div class="size-row">
+            <span>iPad Air</span>
+            <strong>820 × 1180</strong>
+          </div>
+          <div class="size-row">
+            <span>iPad Pro 11"</span>
+            <strong>834 × 1194</strong>
+          </div>
+
+          <h3 style="margin-top: 20px">Desktop Sizes:</h3>
+          <div class="size-row">
+            <span>Laptop</span>
+            <strong>1366 × 768</strong>
+          </div>
+          <div class="size-row">
+            <span>Desktop</span>
+            <strong>1920 × 1080</strong>
+          </div>
+          <div class="size-row">
+            <span>4K</span>
+            <strong>3840 × 2160</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wide Content Test -->
+      <div class="test-section">
+        <h2>↔️ Wide Content Test (2500px)</h2>
+        <div class="wide-content">
+          <h3>🎯 This content is 2500px wide!</h3>
+          <p style="color: #92400e; font-size: 1.1em">
+            If you're in responsive mode with a mobile device (375px), this
+            content should:
+          </p>
+          <ul style="margin: 15px 0 15px 25px; color: #92400e">
+            <li>
+              ✅ Be visible with horizontal scroll within the device frame
+            </li>
+            <li>✅ NOT be cut off or hidden</li>
+            <li>✅ Scroll horizontally to reveal all content</li>
+            <li>❌ NOT overflow outside the device frame</li>
+          </ul>
+          <p style="color: #92400e; font-size: 1.1em; margin-top: 15px">
+            <strong>→ Scroll right to see more content →</strong>
+          </p>
+          <div style="display: flex; gap: 20px; margin-top: 20px">
+            <div
+              style="
+                min-width: 300px;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <h4>Section 1</h4>
+              <p>Extra wide content section</p>
+            </div>
+            <div
+              style="
+                min-width: 300px;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <h4>Section 2</h4>
+              <p>Keep scrolling right...</p>
+            </div>
+            <div
+              style="
+                min-width: 300px;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <h4>Section 3</h4>
+              <p>Almost there...</p>
+            </div>
+            <div
+              style="
+                min-width: 300px;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <h4>Section 4</h4>
+              <p>Getting closer...</p>
+            </div>
+            <div
+              style="
+                min-width: 300px;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <h4>Section 5</h4>
+              <p>You made it! 🎉</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="test-section">
+        <h2>✨ Features Test</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>📜 Scrolling</h3>
+            <p>Page should scroll vertically</p>
+          </div>
+          <div class="feature-card">
+            <h3>🎯 Centering</h3>
+            <p>Device frame stays centered</p>
+          </div>
+          <div class="feature-card">
+            <h3>📱 Devices</h3>
+            <p>Actual screen sizes match Chrome</p>
+          </div>
+          <div class="feature-card">
+            <h3>🎨 Background</h3>
+            <p>Gray background visible</p>
+          </div>
+          <div class="feature-card">
+            <h3>🔲 Grid</h3>
+            <p>Breakpoints work correctly</p>
+          </div>
+          <div class="feature-card">
+            <h3>🔄 Rotate</h3>
+            <p>Portrait/landscape switch</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tall Content Test -->
+      <div class="test-section">
+        <h2>⬇️ Vertical Scroll Test</h2>
+        <div class="tall-content">
+          <h3>📍 Scroll Down Test (1500px height)</h3>
+          <div class="content-markers">
+            <div class="marker">📍 Marker 1 - Top</div>
+            <div class="marker">📍 Marker 2</div>
+            <div class="marker">📍 Marker 3</div>
+            <div class="marker">📍 Marker 4</div>
+            <div class="marker">📍 Marker 5</div>
+            <div class="marker">📍 Marker 6 - Bottom</div>
+          </div>
+          <p
+            style="
+              margin-top: 40px;
+              text-align: center;
+              font-weight: bold;
+              color: #92400e;
+            "
+          >
+            ✅ If you can see all markers by scrolling, vertical scroll is
+            working!
+          </p>
+        </div>
+      </div>
+
+      <!-- Expected Results -->
+      <div class="test-section">
+        <h2>✅ Expected Results</h2>
+        <div
+          style="
+            background: #dcfce7;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #10b981;
+          "
+        >
+          <h3 style="color: #166534; margin-bottom: 15px">
+            All Tests Should Pass:
+          </h3>
+          <ul style="margin-left: 20px; color: #166534">
+            <li>
+              ✅ <strong>Page scrolls vertically</strong> - You can scroll up
+              and down
+            </li>
+            <li>
+              ✅ <strong>Full page visible</strong> - All content accessible via
+              scrolling
+            </li>
+            <li>
+              ✅ <strong>Device centered</strong> - Gray background on both
+              sides
+            </li>
+            <li>
+              ✅ <strong>Correct dimensions</strong> - Device sizes match Chrome
+              DevTools exactly
+            </li>
+            <li>
+              ✅ <strong>Wide content visible</strong> - 2500px section scrolls
+              horizontally
+            </li>
+            <li>
+              ✅ <strong>Controls stay fixed</strong> - Controls at top center
+              while scrolling
+            </li>
+            <li>
+              ✅ <strong>Breakpoints work</strong> - Indicator changes with
+              device selection
+            </li>
+            <li>
+              ✅ <strong>Grid integration</strong> - Grid columns match
+              breakpoint
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <h2>🎉 Test Complete!</h2>
+      <p style="margin-top: 10px; color: #666">
+        If you can see this footer and scrolled here smoothly, all tests passed!
+        ✨
+      </p>
+    </footer>
+
+    <script>
+      // Update scroll indicator position
+      let ticking = false;
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollIndicator = document.querySelector(".scroll-indicator");
+            const scrollPercentage =
+              (window.scrollY /
+                (document.documentElement.scrollHeight - window.innerHeight)) *
+              100;
+
+            if (scrollPercentage > 90) {
+              scrollIndicator.textContent = "⬆️ Scroll Up";
+              scrollIndicator.style.background = "#10b981";
+            } else {
+              scrollIndicator.textContent = "⬇️ Scroll Down";
+              scrollIndicator.style.background = "#ef4444";
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Log viewport dimensions
+      console.log("[Test Page] Initial viewport:", {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        scrollHeight: document.documentElement.scrollHeight,
+      });
+
+      // Listen for Aligner viewport changes
+      window.addEventListener("alignerViewportChange", (e) => {
+        console.log("[Test Page] Aligner viewport changed:", e.detail);
+      });
+    </script>
+  </body>
+</html>

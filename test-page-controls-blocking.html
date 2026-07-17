@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Page Controls Blocking</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f9fafb;
+      }
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .test-section h2 {
+        margin-top: 0;
+        color: #1f2937;
+        font-size: 20px;
+      }
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      button.danger {
+        background: #ef4444;
+      }
+      button.danger:hover {
+        background: #dc2626;
+      }
+      .status {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 6px;
+        background: #f3f4f6;
+        color: #374151;
+        font-size: 14px;
+      }
+      #timer {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2563eb;
+        margin: 20px 0;
+        font-family: "Courier New", monospace;
+      }
+      .instructions {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 16px;
+        margin-bottom: 24px;
+        border-radius: 4px;
+      }
+      .instructions h3 {
+        margin-top: 0;
+        color: #92400e;
+      }
+      .instructions ol {
+        margin: 8px 0;
+        padding-left: 24px;
+      }
+      .instructions li {
+        margin: 6px 0;
+        color: #78350f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">
+      <h3>🧪 Testing Instructions</h3>
+      <ol>
+        <li>
+          <strong>Enable Page Controls</strong> - Open the extension and enable
+          Page Controls feature
+        </li>
+        <li>
+          <strong>JavaScript Blocking</strong> - Enable JS blocking, reload
+          page. Timer should NOT run.
+        </li>
+        <li>
+          <strong>Popup Blocking</strong> - Enable popup blocking. Click "Open
+          Popup" - nothing should open. Check console for "Popup blocked"
+          message.
+        </li>
+        <li>
+          <strong>Notification Blocking</strong> - Enable notification blocking.
+          Click "Request Notification" - should be blocked. Check console.
+        </li>
+        <li>
+          <strong>Cookie Blocking</strong> - Enable cookie blocking. Click "Set
+          Cookie" - should show "blocked" in console.
+        </li>
+        <li>
+          <strong>Trackpad Navigation</strong> - Enable trackpad navigation
+          blocking. Try two-finger swipe left/right - should NOT navigate
+          back/forward.
+        </li>
+      </ol>
+    </div>
+
+    <div class="test-section">
+      <h2>⚡ JavaScript Execution Test</h2>
+      <p>This timer will update every second if JavaScript is running:</p>
+      <div id="timer">00:00:00</div>
+      <div class="status" id="js-status">✅ JavaScript is running</div>
+    </div>
+
+    <div class="test-section">
+      <h2>📱 Popup Test</h2>
+      <button onclick="testPopup()">Open Popup</button>
+      <button onclick="testPopupBlank()">Open Blank Popup</button>
+      <div class="status" id="popup-status">
+        Click buttons above to test popup blocking
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>🔔 Notification Test</h2>
+      <button onclick="testNotification()">Request Notification</button>
+      <button onclick="testNotificationPermission()">Check Permission</button>
+      <div class="status" id="notification-status">
+        Click buttons above to test notification blocking
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>🍪 Cookie Test</h2>
+      <button onclick="setCookie()">Set Cookie</button>
+      <button onclick="getCookie()">Read Cookie</button>
+      <button onclick="clearCookie()">Clear Cookie</button>
+      <div class="status" id="cookie-status">
+        Click buttons above to test cookie blocking
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>👆 Trackpad Navigation Test</h2>
+      <p>
+        Try using two-finger swipe gestures (left/right) to navigate
+        back/forward.
+      </p>
+      <button onclick="addHistoryEntry()">Add History Entry</button>
+      <button onclick="window.history.back()">Go Back</button>
+      <button onclick="window.history.forward()">Go Forward</button>
+      <div class="status" id="trackpad-status">
+        History length: <span id="history-length">1</span> <br />Current page:
+        <span id="current-page">1</span>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>📊 Console Output</h2>
+      <p>Open DevTools Console (F12) to see blocking messages from Aligner</p>
+      <button onclick="console.clear()">Clear Console</button>
+    </div>
+
+    <script>
+      // Timer to test JavaScript execution
+      let seconds = 0;
+      let timerInterval = setInterval(() => {
+        seconds++;
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        document.getElementById("timer").textContent = `${String(
+          hours
+        ).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(
+          secs
+        ).padStart(2, "0")}`;
+        document.getElementById(
+          "js-status"
+        ).textContent = `✅ JavaScript is running (${seconds}s elapsed)`;
+      }, 1000);
+
+      // Popup tests
+      function testPopup() {
+        const popup = window.open(
+          "https://example.com",
+          "testPopup",
+          "width=600,height=400"
+        );
+        const status = document.getElementById("popup-status");
+        if (popup) {
+          status.textContent = "❌ FAILED - Popup opened (should be blocked)";
+          status.style.background = "#fee2e2";
+          status.style.color = "#991b1b";
+          setTimeout(() => popup.close(), 2000);
+        } else {
+          status.textContent = "✅ PASSED - Popup blocked successfully";
+          status.style.background = "#d1fae5";
+          status.style.color = "#065f46";
+        }
+      }
+
+      function testPopupBlank() {
+        const popup = window.open("", "_blank");
+        const status = document.getElementById("popup-status");
+        if (popup) {
+          status.textContent =
+            "❌ FAILED - Blank popup opened (should be blocked)";
+          status.style.background = "#fee2e2";
+          status.style.color = "#991b1b";
+          setTimeout(() => popup.close(), 2000);
+        } else {
+          status.textContent = "✅ PASSED - Blank popup blocked successfully";
+          status.style.background = "#d1fae5";
+          status.style.color = "#065f46";
+        }
+      }
+
+      // Notification tests
+      async function testNotification() {
+        const status = document.getElementById("notification-status");
+        try {
+          if ("Notification" in window) {
+            const permission = await Notification.requestPermission();
+            if (permission === "denied") {
+              status.textContent =
+                "✅ PASSED - Notification permission denied (blocked)";
+              status.style.background = "#d1fae5";
+              status.style.color = "#065f46";
+            } else if (permission === "granted") {
+              new Notification("Test Notification", {
+                body: "If you see this, blocking failed",
+                icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect width="32" height="32" fill="%23ef4444"/></svg>',
+              });
+              status.textContent =
+                "❌ FAILED - Notification shown (should be blocked)";
+              status.style.background = "#fee2e2";
+              status.style.color = "#991b1b";
+            }
+          } else {
+            status.textContent = "⚠️ Notifications not supported";
+          }
+        } catch (error) {
+          status.textContent = `✅ PASSED - Notification blocked with error: ${error.message}`;
+          status.style.background = "#d1fae5";
+          status.style.color = "#065f46";
+        }
+      }
+
+      function testNotificationPermission() {
+        const status = document.getElementById("notification-status");
+        if ("Notification" in window) {
+          status.textContent = `📋 Current permission: ${Notification.permission}`;
+          status.style.background = "#f3f4f6";
+          status.style.color = "#374151";
+        } else {
+          status.textContent = "⚠️ Notifications not supported";
+        }
+      }
+
+      // Cookie tests
+      function setCookie() {
+        const status = document.getElementById("cookie-status");
+        try {
+          document.cookie = "testCookie=blocked; path=/";
+          const cookies = document.cookie;
+          if (cookies.includes("testCookie")) {
+            status.textContent =
+              "❌ FAILED - Cookie was set (should be blocked)";
+            status.style.background = "#fee2e2";
+            status.style.color = "#991b1b";
+          } else {
+            status.textContent = "✅ PASSED - Cookie write blocked";
+            status.style.background = "#d1fae5";
+            status.style.color = "#065f46";
+          }
+        } catch (error) {
+          status.textContent = `✅ PASSED - Cookie blocked with error: ${error.message}`;
+          status.style.background = "#d1fae5";
+          status.style.color = "#065f46";
+        }
+      }
+
+      function getCookie() {
+        const status = document.getElementById("cookie-status");
+        try {
+          const cookies = document.cookie;
+          if (cookies === "") {
+            status.textContent =
+              "✅ PASSED - Cookie read blocked (empty string returned)";
+            status.style.background = "#d1fae5";
+            status.style.color = "#065f46";
+          } else {
+            status.textContent = `❌ FAILED - Cookies readable: ${cookies}`;
+            status.style.background = "#fee2e2";
+            status.style.color = "#991b1b";
+          }
+        } catch (error) {
+          status.textContent = `✅ PASSED - Cookie read blocked with error: ${error.message}`;
+          status.style.background = "#d1fae5";
+          status.style.color = "#065f46";
+        }
+      }
+
+      function clearCookie() {
+        document.cookie =
+          "testCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        const status = document.getElementById("cookie-status");
+        status.textContent = "🗑️ Cookie cleared";
+        status.style.background = "#f3f4f6";
+        status.style.color = "#374151";
+      }
+
+      // Trackpad navigation tests
+      let historyCount = 1;
+      function addHistoryEntry() {
+        historyCount++;
+        window.history.pushState(
+          { page: historyCount },
+          `Page ${historyCount}`,
+          `?page=${historyCount}`
+        );
+        updateHistoryStatus();
+      }
+
+      function updateHistoryStatus() {
+        document.getElementById("history-length").textContent =
+          window.history.length;
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get("page") || "1";
+        document.getElementById("current-page").textContent = currentPage;
+      }
+
+      // Listen for popstate events (back/forward navigation)
+      window.addEventListener("popstate", (event) => {
+        updateHistoryStatus();
+        console.log("[Test Page] Navigation occurred:", event.state);
+      });
+
+      // Initial update
+      updateHistoryStatus();
+
+      // Log when page loads
+      console.log("[Test Page] Page loaded and JavaScript is running");
+      console.log(
+        "[Test Page] Timer started - if you enable JS blocking and reload, this should NOT appear"
+      );
+    </script>
+  </body>
+</html>

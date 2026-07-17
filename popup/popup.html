@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <header class="popup-header">
+        <h1 class="popup-title">Aligner</h1>
+        <div class="popup-version">v1.0.0</div>
+      </header>
+
+      <div class="master-toggle">
+        <label class="toggle-label">
+          <span class="toggle-text">Extension</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="master-toggle" />
+            <span class="slider"></span>
+          </div>
+        </label>
+        <div class="apply-scope" id="apply-scope">
+          <span class="apply-scope-label">Apply to</span>
+          <div class="apply-scope-buttons">
+            <button
+              type="button"
+              class="scope-button active"
+              id="scope-current-tab"
+              data-scope="currentTab"
+            >
+              This tab
+            </button>
+            <button
+              type="button"
+              class="scope-button"
+              id="scope-all-tabs"
+              data-scope="allTabs"
+            >
+              All tabs
+            </button>
+          </div>
+          <p class="apply-scope-hint" id="apply-scope-hint">
+            Tools only run on the tab where you turn them on.
+          </p>
+        </div>
+      </div>
+
+      <div class="features-section" id="features-section">
+        <h2 class="section-title">Quick Toggles</h2>
+
+        <div class="feature-grid">
+          <button
+            class="feature-button"
+            id="toggle-rulers"
+            data-feature="rulers"
+            data-popup-group="layout"
+          >
+            <div class="feature-icon">⊟</div>
+            <div class="feature-name">Rulers</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-guides"
+            data-feature="guides"
+            data-popup-group="layout"
+          >
+            <div class="feature-icon">⊥</div>
+            <div class="feature-name">Guides</div>
+          </button>
+
+          <button class="feature-button" id="toggle-grids" data-feature="grids"
+            data-popup-group="layout">
+            <div class="feature-icon">⊞</div>
+            <div class="feature-name">Grids</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-measurement"
+            data-feature="measurement"
+            data-popup-group="layout"
+          >
+            <div class="feature-icon">⟷</div>
+            <div class="feature-name">Measure</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-drawing"
+            data-feature="drawing"
+            data-popup-group="layout"
+          >
+            <div class="feature-icon">⊡</div>
+            <div class="feature-name">Drawing</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-responsive"
+            data-feature="responsive"
+            data-popup-group="inspect"
+          >
+            <div class="feature-icon">⊡</div>
+            <div class="feature-name">Responsive</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-inspect"
+            data-feature="inspect"
+            data-popup-group="inspect"
+          >
+            <div class="feature-icon">⊙</div>
+            <div class="feature-name">Inspect</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-media-manager"
+            data-feature="mediaManager"
+            data-popup-group="colorMedia"
+          >
+            <div class="feature-icon">
+              <span
+                style="
+                  font-size: 32px;
+                  width: 32px;
+                  height: 32px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                >⧉</span
+              >
+            </div>
+            <div class="feature-name">Media</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-color-picker"
+            data-feature="colorPicker"
+            data-popup-group="colorMedia"
+          >
+            <div class="feature-icon">✎</div>
+            <div class="feature-name">Color Picker</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-palette-generator"
+            data-feature="paletteGenerator"
+            data-popup-group="colorMedia"
+          >
+            <div class="feature-icon">◨</div>
+            <div class="feature-name">Palette</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-accessibility"
+            data-feature="accessibility"
+            data-popup-group="quality"
+          >
+            <div class="feature-icon">≛</div>
+            <div class="feature-name">Accessibility</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-design-consistency"
+            data-feature="designConsistency"
+            data-popup-group="quality"
+          >
+            <div class="feature-icon">Ӫ</div>
+            <div class="feature-name">Design Check</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-page-speed"
+            data-feature="pageSpeed"
+            data-popup-group="quality"
+          >
+            <div class="feature-icon">≉</div>
+            <div class="feature-name">Page Speed</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-design-system"
+            data-feature="designSystem"
+            data-popup-group="quality"
+          >
+            <div class="feature-icon">ↁ</div>
+            <div class="feature-name">Design System</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-wireframe-generator"
+            data-feature="wireframeGenerator"
+            data-popup-group="inspect"
+          >
+            <div class="feature-icon">☶</div>
+            <div class="feature-name">Wireframe</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-cache-cleaner"
+            data-feature="cacheCleaner"
+            data-popup-group="utilities"
+          >
+            <div class="feature-icon">⨶</div>
+            <div class="feature-name">Cache Cleaner</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-page-load-timer"
+            data-feature="pageLoadTimer"
+            data-popup-group="utilities"
+          >
+            <div class="feature-icon">⏱</div>
+            <div class="feature-name">Page Load Timer</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-page-controls"
+            data-feature="pageControls"
+            data-popup-group="utilities"
+          >
+            <div class="feature-icon">⊘</div>
+            <div class="feature-name">Page Controls</div>
+          </button>
+
+          <button
+            class="feature-button"
+            id="toggle-wordpress-tools"
+            data-feature="wordpressTools"
+            data-popup-group="wordpress"
+          >
+            <div class="feature-icon wp-feature-icon">
+              <span class="wp-mark" aria-hidden="true">W</span>
+            </div>
+            <div class="feature-name">WP Tools</div>
+          </button>
+        </div>
+        <p class="workspace-hint" id="workspace-hint" style="display: none">
+          Some tools are hidden. Customize what appears in
+          <button type="button" id="open-workspace-settings" class="link-button">
+            Settings → Workspace
+          </button>
+          or
+          <button type="button" id="open-aligner-home" class="link-button">
+            Aligner Home
+          </button>
+          .
+        </p>
+        <p class="workspace-hint" id="workspace-empty-hint" style="display: none">
+          No tools are visible in your workspace.
+          <button type="button" id="open-workspace-settings-empty" class="link-button">
+            Choose tools
+          </button>
+        </p>
+
+      </div>
+
+      <!-- WordPress section -->
+      <div class="wordpress-section" id="wordpress-section" data-popup-group="wordpress">
+        <h2 class="section-title">
+          <span class="wp-section-icon" aria-hidden="true">
+            <span class="wp-mark wp-mark-sm" aria-hidden="true">W</span>
+          </span>
+          WordPress
+        </h2>
+        <p class="wp-section-hint">
+          Only runs on WordPress sites. Opens a draggable panel with tools,
+          detector, and toggles.
+        </p>
+      </div>
+
+      <!-- WordPress Controls Section -->
+      <div
+        class="wordpress-controls-section"
+        id="wordpress-controls-section"
+        data-popup-group="wordpress"
+        style="display: none"
+      >
+        <h2 class="section-title">WordPress Controls</h2>
+
+        <div class="control-group">
+          <label class="control-label checkbox-label">
+            <input
+              type="checkbox"
+              id="wp-remember-admin-bar"
+              class="control-checkbox"
+            />
+            <span>Remember admin bar hidden per site</span>
+          </label>
+        </div>
+
+        <div class="wp-tool-toggles">
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Admin bar toggle</strong>
+              <small>Hide/show WP toolbar</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-adminBarToggle"
+              data-wp-tool="adminBarToggle"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Admin / front switcher</strong>
+              <small>Jump between site and wp-admin</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-adminSwitcher"
+              data-wp-tool="adminSwitcher"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Smart page editor</strong>
+              <small>Open the right editor or page builder</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-pageEditor"
+              data-wp-tool="pageEditor"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Role switcher</strong>
+              <small>Preview the site as one user per role</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-roleSwitcher"
+              data-wp-tool="roleSwitcher"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Theme switcher</strong>
+              <small>Privately preview installed themes</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-themeSwitcher"
+              data-wp-tool="themeSwitcher"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>ACF Tools</strong>
+              <small>Copy field names and PHP</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-acfTools"
+              data-wp-tool="acfTools"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Theme &amp; plugin detector</strong>
+              <small>Scan assets on the current page</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-themePluginDetector"
+              data-wp-tool="themePluginDetector"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Update backlog</strong>
+              <small>Copy updates from Dashboard → Updates</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-updateBacklog"
+              data-wp-tool="updateBacklog"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Admin menu search</strong>
+              <small>Filter the left admin menu</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-adminMenuSearch"
+              data-wp-tool="adminMenuSearch"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Hide admin notices</strong>
+              <small>Clean wp-admin and restore notices when needed</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-hideAdminNotices"
+              data-wp-tool="hideAdminNotices"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Classic Customizer</strong>
+              <small>Open Additional CSS even with a block theme</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-classicCustomizer"
+              data-wp-tool="classicCustomizer"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+          <label class="wp-popup-toggle">
+            <span class="wp-popup-toggle-text">
+              <strong>Sidebar shrink</strong>
+              <small>Collapse the admin sidebar</small>
+            </span>
+            <input
+              type="checkbox"
+              id="wp-tool-sidebarShrink"
+              data-wp-tool="sidebarShrink"
+            />
+            <span class="wp-popup-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Measurement Controls Section -->
+      <div
+        class="measurement-controls-section"
+        id="measurement-controls-section"
+        style="display: none"
+      >
+        <h2 class="section-title">Measurement Controls</h2>
+
+        <div class="control-group">
+          <label class="control-label">Measurement Mode</label>
+          <div class="button-group">
+            <button
+              id="measurement-mode-point"
+              class="mode-button active"
+              data-mode="point"
+            >
+              Point
+            </button>
+            <button
+              id="measurement-mode-rectangle"
+              class="mode-button"
+              data-mode="rectangle"
+            >
+              Rectangle
+            </button>
+          </div>
+          <div class="control-description">
+            Point: measure distance between two points. Rectangle: measure
+            width, height, and area
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label checkbox-label">
+            <input
+              type="checkbox"
+              id="measurement-device-pixels"
+              class="control-checkbox"
+            />
+            <span>Show Device Pixels</span>
+          </label>
+          <div class="control-description">
+            Display CSS pixels and device pixels (useful for high-DPI screens)
+          </div>
+        </div>
+      </div>
+
+      <!-- Rulers Controls Section -->
+      <div
+        class="rulers-controls-section"
+        id="rulers-controls-section"
+        style="display: none"
+      >
+        <h2 class="section-title">Ruler Controls</h2>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Units</span>
+            <select id="ruler-units" class="control-select">
+              <option value="px">Pixels (px)</option>
+              <option value="rem">Root em (rem)</option>
+              <option value="em">Em (em)</option>
+            </select>
+          </label>
+          <div class="control-description">
+            Choose the unit for ruler tick marks. Rem/em based on root font-size
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label checkbox-label">
+            <input
+              type="checkbox"
+              id="ruler-show-origin"
+              class="control-checkbox"
+            />
+            <span>Custom Origin (0,0)</span>
+          </label>
+          <div class="control-description">
+            Click on the page to set a custom origin point for rulers
+          </div>
+        </div>
+
+        <div
+          class="control-group"
+          id="ruler-origin-display"
+          style="display: none"
+        >
+          <label class="control-label">
+            <span>Origin Point</span>
+            <button id="ruler-reset-origin" class="reset-button">Reset</button>
+          </label>
+          <div class="control-description" id="ruler-origin-coords">
+            X: 0px, Y: 0px
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Controls Section -->
+      <div
+        class="grid-controls-section"
+        id="grid-controls-section"
+        style="display: none"
+      >
+        <h2 class="section-title">Grid Controls</h2>
+
+        <div class="control-group">
+          <label class="control-label checkbox-label">
+            <input
+              type="checkbox"
+              id="grid-responsive"
+              class="control-checkbox"
+            />
+            <span>Responsive Grid</span>
+          </label>
+          <div class="control-description">
+            Auto-adjust columns, gutter, and margins based on viewport width
+          </div>
+        </div>
+
+        <div class="control-group" id="breakpoint-config" style="display: none">
+          <label class="control-label">
+            <span>Edit Breakpoint</span>
+            <select id="grid-breakpoint-select" class="control-select">
+              <option value="mobile">Mobile (≤768px)</option>
+              <option value="tablet">Tablet (≤1024px)</option>
+              <option value="desktop">Desktop (>1024px)</option>
+            </select>
+          </label>
+          <div class="control-description">
+            Configure grid settings for each breakpoint independently
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Type</span>
+            <select id="grid-type" class="control-select">
+              <option value="column">Column</option>
+              <option value="baseline">Baseline</option>
+              <option value="modular">Modular</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Columns</span>
+            <input
+              type="range"
+              id="grid-columns"
+              class="control-range"
+              min="1"
+              max="24"
+              value="12"
+            />
+            <span class="control-value" id="grid-columns-value">12</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Gutter (px)</span>
+            <input
+              type="range"
+              id="grid-gutter"
+              class="control-range"
+              min="0"
+              max="100"
+              value="16"
+            />
+            <span class="control-value" id="grid-gutter-value">16</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Margins (px)</span>
+            <input
+              type="range"
+              id="grid-margins"
+              class="control-range"
+              min="0"
+              max="400"
+              value="24"
+            />
+            <span class="control-value" id="grid-margins-value">24</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Baseline Spacing (px)</span>
+            <input
+              type="range"
+              id="grid-spacing"
+              class="control-range"
+              min="1"
+              max="100"
+              value="8"
+            />
+            <span class="control-value" id="grid-spacing-value">8</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Baseline Offset (px)</span>
+            <input
+              type="range"
+              id="grid-baseline-offset"
+              class="control-range"
+              min="0"
+              max="100"
+              value="0"
+            />
+            <span class="control-value" id="grid-baseline-offset-value">0</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Baseline Thickness (px)</span>
+            <input
+              type="range"
+              id="grid-baseline-thickness"
+              class="control-range"
+              min="1"
+              max="5"
+              value="1"
+            />
+            <span class="control-value" id="grid-baseline-thickness-value"
+              >1</span
+            >
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Color</span>
+            <input
+              type="color"
+              id="grid-color"
+              class="control-color"
+              value="#f59e0b"
+            />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Opacity</span>
+            <input
+              type="range"
+              id="grid-opacity"
+              class="control-range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.3"
+            />
+            <span class="control-value" id="grid-opacity-value">0.3</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Guide Controls Section -->
+      <div
+        class="guide-controls-section"
+        id="guide-controls-section"
+        style="display: none"
+      >
+        <h2 class="section-title">Guide Controls</h2>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Mode</span>
+          </label>
+          <div class="mode-buttons">
+            <button
+              id="guide-mode-straight"
+              class="mode-button active"
+              data-mode="straight"
+            >
+              Straight
+            </button>
+            <button
+              id="guide-mode-free-draw"
+              class="mode-button"
+              data-mode="free-draw"
+            >
+              Free Draw
+            </button>
+          </div>
+          <div class="control-description">
+            Straight: double-click near edges for H/V guides. Free Draw: Enable
+            Rulers Feature,click rulers area and drag the line it will
+            automatically position as angle you have set.
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Default Angle (°)</span>
+            <input
+              type="number"
+              id="guide-default-angle"
+              class="control-input"
+              min="0"
+              max="359"
+              value="0"
+              style="width: 80px"
+            />
+          </label>
+          <div class="control-description">
+            Default rotation angle for new guides (0-359 degrees)
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Color</span>
+            <input
+              type="color"
+              id="guide-color"
+              class="control-color"
+              value="#10b981"
+            />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Opacity</span>
+            <input
+              type="range"
+              id="guide-opacity"
+              class="control-range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.7"
+            />
+            <span class="control-value" id="guide-opacity-value">0.70</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Thickness (px)</span>
+            <input
+              type="range"
+              id="guide-thickness"
+              class="control-range"
+              min="1"
+              max="5"
+              value="1"
+            />
+            <span class="control-value" id="guide-thickness-value">1</span>
+          </label>
+        </div>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button
+            class="action-button"
+            id="clear-guides"
+            title="Clear all guides"
+          >
+            <svg
+              class="button-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2m3 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6h14zM10 11v6M14 11v6"
+              />
+            </svg>
+            Clear Guides
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawing Controls Section -->
+      <div
+        class="drawing-controls-section"
+        id="drawing-controls-section"
+        style="display: none"
+      >
+        <h2 class="section-title">Drawing Controls</h2>
+
+        <div class="help-text">
+          <svg
+            class="help-icon"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <circle cx="12" cy="17" r="0.5" fill="currentColor" />
+          </svg>
+          <strong>Tip:</strong> Click & drag to draw. Click to select, drag to
+          move, resize with corners. Delete/Backspace to remove.
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Tool</span>
+            <select id="drawing-tool" class="control-select">
+              <option value="line">Line</option>
+              <option value="rectangle">Rectangle</option>
+              <option value="circle">Circle</option>
+              <option value="arrow">Arrow</option>
+              <option value="text">Text</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="control-group" id="arrow-style-group" style="display: none">
+          <label class="control-label">
+            <span>Arrow Style</span>
+            <select id="arrow-style" class="control-select">
+              <option value="simple">Simple</option>
+              <option value="double">Double-ended</option>
+              <option value="block">Block</option>
+              <option value="curved">Curved</option>
+              <option value="triangle">Triangle</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="text-typography-controls" style="display: none">
+          <div class="control-group">
+            <label class="control-label">
+              <span>Font Size (px)</span>
+              <input
+                type="range"
+                id="text-font-size"
+                class="control-range"
+                min="10"
+                max="72"
+                value="16"
+              />
+              <span class="control-value" id="text-font-size-value">16</span>
+            </label>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">
+              <span>Font Weight</span>
+              <select id="text-font-weight" class="control-select">
+                <option value="300">Light</option>
+                <option value="400">Normal</option>
+                <option value="500">Medium</option>
+                <option value="600" selected>Semibold</option>
+                <option value="700">Bold</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">
+              <span>Text Style</span>
+              <div style="display: flex; gap: 8px">
+                <button
+                  class="text-style-btn"
+                  id="text-style-italic"
+                  title="Italic"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <line x1="19" y1="4" x2="10" y2="4"></line>
+                    <line x1="14" y1="20" x2="5" y2="20"></line>
+                    <line x1="15" y1="4" x2="9" y2="20"></line>
+                  </svg>
+                </button>
+                <button
+                  class="text-style-btn"
+                  id="text-style-underline"
+                  title="Underline"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3"></path>
+                    <line x1="4" y1="21" x2="20" y2="21"></line>
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Color</span>
+            <input type="color" id="drawing-color" value="#ef4444" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Stroke Width (px)</span>
+            <input
+              type="range"
+              id="drawing-stroke"
+              class="control-range"
+              min="1"
+              max="10"
+              value="2"
+            />
+            <span class="control-value" id="drawing-stroke-value">2</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">
+            <span>Opacity</span>
+            <input
+              type="range"
+              id="drawing-opacity"
+              class="control-range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.6"
+            />
+            <span class="control-value" id="drawing-opacity-value">0.6</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <button
+            class="action-button"
+            id="clear-drawings"
+            style="
+              width: 100%;
+              background: #ef4444;
+              color: white;
+              border: none;
+              padding: 10px;
+              border-radius: 8px;
+              cursor: pointer;
+              font-weight: 500;
+              transition: background 0.2s;
+            "
+          >
+            Clear All Drawings
+          </button>
+        </div>
+      </div>
+
+      <!-- Built-in Templates -->
+      <div
+        class="templates-section"
+        style="
+          margin-top: 20px;
+          padding: 16px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          border-radius: 12px;
+        "
+      >
+        <h3
+          style="
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+          "
+        >
+          ⚡ Built-in Templates
+        </h3>
+        <div
+          style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px"
+        >
+          <button
+            class="template-button"
+            data-template="designer"
+            style="
+              padding: 10px;
+              background: white;
+              border: none;
+              border-radius: 8px;
+              font-size: 12px;
+              font-weight: 500;
+              color: #667eea;
+              cursor: pointer;
+              transition: all 0.2s ease;
+            "
+          >
+            ⊞<br />Designer
+          </button>
+          <button
+            class="template-button"
+            data-template="developer"
+            style="
+              padding: 10px;
+              background: white;
+              border: none;
+              border-radius: 8px;
+              font-size: 12px;
+              font-weight: 500;
+              color: #667eea;
+              cursor: pointer;
+              transition: all 0.2s ease;
+            "
+          >
+            ⊟<br />Developer
+          </button>
+          <button
+            class="template-button"
+            data-template="review"
+            style="
+              padding: 10px;
+              background: white;
+              border: none;
+              border-radius: 8px;
+              font-size: 12px;
+              font-weight: 500;
+              color: #667eea;
+              cursor: pointer;
+              transition: all 0.2s ease;
+            "
+          >
+            ⊥<br />Review
+          </button>
+        </div>
+      </div>
+
+      <!-- Custom Presets -->
+      <div
+        class="presets-section"
+        style="
+          margin-top: 12px;
+          padding: 16px;
+          background: #f9fafb;
+          border-radius: 12px;
+        "
+      >
+        <h3
+          style="
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+          "
+        >
+          Custom Presets
+        </h3>
+        <div style="display: flex; gap: 8px; margin-bottom: 8px">
+          <button
+            class="footer-button"
+            id="save-preset"
+            style="flex: 1; background: #10b981; color: white"
+          >
+            💾 Save
+          </button>
+          <select id="load-preset" class="control-select" style="flex: 2">
+            <option value="">Load Preset...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="shortcuts-hint">
+        <div class="hint-text">
+          <strong>Tip:</strong> Use Ctrl+Shift+L (Cmd+Shift+L on Mac) to toggle
+          quickly
+        </div>
+      </div>
+
+      <footer class="popup-footer">
+        <button class="footer-button" id="open-options">⚙ Settings</button>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

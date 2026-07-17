@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
+  <body>
+    <!--
+      Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4
+      theme: instrument-desk · genre: modern-minimal
+      macrostructure: catalogue-with-sticky-rail
+    -->
+    <div class="page">
+      <aside class="rail" aria-label="Aligner navigation">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <div>
+            <strong>Aligner</strong>
+            <span>Home</span>
+          </div>
+        </div>
+        <nav class="rail-nav">
+          <a href="#start" class="is-active">Start</a>
+          <a href="#layout">Layout</a>
+          <a href="#inspect">Inspect</a>
+          <a href="#color">Color &amp; media</a>
+          <a href="#quality">Quality</a>
+          <a href="#utilities">Utilities</a>
+          <a href="#wordpress">WordPress</a>
+          <a href="#workspace">Workspace</a>
+        </nav>
+        <div class="rail-actions">
+          <button type="button" class="btn solid" id="open-workspace">
+            Choose your tools
+          </button>
+          <button type="button" class="btn ghost" id="open-options">
+            Open settings
+          </button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="hero" id="start">
+          <div class="hero-copy">
+            <p class="eyebrow">Welcome dashboard</p>
+            <h1>Your visual toolkit, sized to the work you do today.</h1>
+            <p class="lede">
+              Aligner packs layout, inspect, color, quality, utility, and
+              WordPress tools into one extension. Most people do not need every
+              toggle every day — so start by choosing a workspace, then learn
+              what each group is for.
+            </p>
+            <div class="hero-cta">
+              <button type="button" class="btn solid" id="hero-workspace">
+                Set up Workspace
+              </button>
+              <button type="button" class="btn ghost" id="hero-popup-hint">
+                How the popup works
+              </button>
+            </div>
+          </div>
+          <figure class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 480 360" role="img">
+              <defs>
+                <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="var(--color-paper-2)" />
+                  <stop offset="100%" stop-color="var(--color-paper-3)" />
+                </linearGradient>
+              </defs>
+              <rect width="480" height="360" rx="28" fill="url(#desk)" />
+              <rect x="36" y="40" width="280" height="18" rx="4" fill="var(--color-ink)" opacity=".12" />
+              <rect x="36" y="72" width="180" height="12" rx="3" fill="var(--color-accent)" opacity=".55" />
+              <rect x="36" y="110" width="408" height="190" rx="16" fill="var(--color-surface)" />
+              <g stroke="var(--color-accent)" stroke-width="2" fill="none" opacity=".9">
+                <path d="M70 150 H390" />
+                <path d="M70 190 H330" />
+                <path d="M70 230 H360" />
+                <path d="M110 130 V280" />
+                <path d="M210 130 V280" />
+                <circle cx="150" cy="210" r="28" />
+              </g>
+              <rect x="320" y="250" width="96" height="28" rx="8" fill="var(--color-accent)" />
+            </svg>
+            <figcaption class="sr-only">
+              Illustration of rulers, guides, and a focused work surface
+            </figcaption>
+          </figure>
+        </header>
+
+        <section class="note" id="popup-note" hidden>
+          <h2>Popup, settings, and this home page</h2>
+          <p>
+            The browser popup is for daily toggles. Settings hold detailed
+            controls. This Home page explains the feature groups and links into
+            Workspace so you can hide what you do not need without deleting
+            saved preferences.
+          </p>
+        </section>
+
+        <section class="catalog" id="layout">
+          <div class="section-head">
+            <h2>Layout</h2>
+            <p>Align, measure, and mark the page while you design.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊟</div>
+              <h3>Rulers</h3>
+              <p><strong>What:</strong> Pixel rulers along the viewport edges.</p>
+              <p><strong>Why:</strong> Quick distance checks without leaving the page.</p>
+              <p><strong>How:</strong> Toggle from the popup, then drag origin if needed.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊥</div>
+              <h3>Guides</h3>
+              <p><strong>What:</strong> Straight or free-draw alignment lines.</p>
+              <p><strong>Why:</strong> Keep columns, baselines, and edges consistent.</p>
+              <p><strong>How:</strong> Enable Guides, place lines, lock when settled.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊞</div>
+              <h3>Grids</h3>
+              <p><strong>What:</strong> Column and baseline overlays.</p>
+              <p><strong>Why:</strong> Validate rhythm against a layout system.</p>
+              <p><strong>How:</strong> Choose columns/gutters in popup controls.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⟷</div>
+              <h3>Measure</h3>
+              <p><strong>What:</strong> Point or rectangle measurements.</p>
+              <p><strong>Why:</strong> Capture exact sizes between elements.</p>
+              <p><strong>How:</strong> Turn on Measure and click the page surface.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊡</div>
+              <h3>Drawing</h3>
+              <p><strong>What:</strong> Temporary annotation marks on the page.</p>
+              <p><strong>Why:</strong> Leave visual notes during review passes.</p>
+              <p><strong>How:</strong> Pick a drawing tool and sketch overlays.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="catalog" id="inspect">
+          <div class="section-head">
+            <h2>Inspect</h2>
+            <p>Understand structure, breakpoints, and wireframe intent.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊙</div>
+              <h3>Inspect</h3>
+              <p><strong>What:</strong> Hover inspection for box model and type.</p>
+              <p><strong>Why:</strong> See spacing and typography without DevTools noise.</p>
+              <p><strong>How:</strong> Enable Inspect and move across elements.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊡</div>
+              <h3>Responsive</h3>
+              <p><strong>What:</strong> Device-width preview helpers.</p>
+              <p><strong>Why:</strong> Check layouts at common breakpoints quickly.</p>
+              <p><strong>How:</strong> Toggle Responsive and pick a device width.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">☶</div>
+              <h3>Wireframe</h3>
+              <p><strong>What:</strong> Structural wireframe rendering of the page.</p>
+              <p><strong>Why:</strong> Review hierarchy without visual decoration.</p>
+              <p><strong>How:</strong> Enable Wireframe for a stripped composition view.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="catalog" id="color">
+          <div class="section-head">
+            <h2>Color &amp; media</h2>
+            <p>Sample colors, build palettes, and pull page assets.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">✎</div>
+              <h3>Color Picker</h3>
+              <p><strong>What:</strong> Eyedropper and color history for the page.</p>
+              <p><strong>Why:</strong> Match brand colors from live UI.</p>
+              <p><strong>How:</strong> Enable Color Picker and sample the screen.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">◨</div>
+              <h3>Palette</h3>
+              <p><strong>What:</strong> Generated palette from page colors.</p>
+              <p><strong>Why:</strong> Turn a live site into a reusable swatch set.</p>
+              <p><strong>How:</strong> Run Palette and copy the groups you need.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⧉</div>
+              <h3>Media</h3>
+              <p><strong>What:</strong> Inventory of images, video, SVG, and more.</p>
+              <p><strong>Why:</strong> Audit and download assets from the current page.</p>
+              <p><strong>How:</strong> Open Media Manager and scan the tab.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="catalog" id="quality">
+          <div class="section-head">
+            <h2>Quality</h2>
+            <p>Catch accessibility, consistency, and performance issues early.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">≛</div>
+              <h3>Accessibility</h3>
+              <p><strong>What:</strong> Issue scan with severity filters.</p>
+              <p><strong>Why:</strong> Surface barriers before shipping.</p>
+              <p><strong>How:</strong> Enable Accessibility and review highlighted findings.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">Ӫ</div>
+              <h3>Design Check</h3>
+              <p><strong>What:</strong> Consistency checks for type, color, spacing.</p>
+              <p><strong>Why:</strong> Spot drift across a page system.</p>
+              <p><strong>How:</strong> Run Design Check and triage highlighted mismatches.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">≉</div>
+              <h3>Page Speed</h3>
+              <p><strong>What:</strong> Local performance diagnostics for the tab.</p>
+              <p><strong>Why:</strong> Find heavy assets and slow paths while designing.</p>
+              <p><strong>How:</strong> Open Page Speed and run against the current page.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">ↁ</div>
+              <h3>Design System</h3>
+              <p><strong>What:</strong> Extracted tokens and UI patterns from the page.</p>
+              <p><strong>Why:</strong> Document what the live UI is actually using.</p>
+              <p><strong>How:</strong> Scan with Design System and export what you need.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="catalog" id="utilities">
+          <div class="section-head">
+            <h2>Utilities</h2>
+            <p>Everyday helpers for cache, timing, and page behavior.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⦻</div>
+              <h3>Cache Cleaner</h3>
+              <p><strong>What:</strong> Selective browsing-data cleanup.</p>
+              <p><strong>Why:</strong> Clear stale state while testing changes.</p>
+              <p><strong>How:</strong> Choose data types and run a clean pass.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⏱</div>
+              <h3>Page Load Timer</h3>
+              <p><strong>What:</strong> Visible load timing for the current navigation.</p>
+              <p><strong>Why:</strong> Compare perceived speed after edits.</p>
+              <p><strong>How:</strong> Enable the timer and reload the page.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⊘</div>
+              <h3>Page Controls</h3>
+              <p><strong>What:</strong> Temporary page behavior controls while testing.</p>
+              <p><strong>Why:</strong> Isolate issues without changing source code.</p>
+              <p><strong>How:</strong> Toggle the controls you need for the session.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="catalog" id="wordpress">
+          <div class="section-head">
+            <h2>WordPress</h2>
+            <p>Admin-aware tools for builders working on WordPress sites.</p>
+          </div>
+          <div class="cards">
+            <article class="card wide">
+              <div class="card-icon" aria-hidden="true">W</div>
+              <h3>WP Tools</h3>
+              <p>
+                <strong>What:</strong> A floating panel for admin bar control, smart
+                edit, role switcher, private theme preview, detector, backlog,
+                notices, and more.
+              </p>
+              <p>
+                <strong>Why:</strong> Keep WordPress builder chores in one place
+                instead of hunting admin screens.
+              </p>
+              <p>
+                <strong>How:</strong> Enable WP Tools on a WordPress tab. Theme
+                switcher and role switcher use the bundled Aligner WP Tools Helper
+                when needed — install requires plugin upload permission.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace" id="workspace">
+          <div class="workspace-panel">
+            <div>
+              <p class="eyebrow">Daily control</p>
+              <h2>Hide what you do not need. Keep what you use.</h2>
+              <p>
+                Workspace visibility only changes what appears in the popup. Your
+                saved feature settings stay intact, so turning a group back on
+                restores the previous controls immediately.
+              </p>
+            </div>
+            <div class="preset-grid" id="preset-grid">
+              <button type="button" class="preset" data-preset="all">
+                <strong>All tools</strong>
+                <span>Everything visible</span>
+              </button>
+              <button type="button" class="preset" data-preset="designer">
+                <strong>Designer</strong>
+                <span>Layout, inspect, color</span>
+              </button>
+              <button type="button" class="preset" data-preset="wordpress">
+                <strong>WordPress</strong>
+                <span>WP Tools + utilities</span>
+              </button>
+              <button type="button" class="preset" data-preset="qa">
+                <strong>QA</strong>
+                <span>Inspect, quality, utilities</span>
+              </button>
+              <button type="button" class="preset" data-preset="minimal">
+                <strong>Minimal</strong>
+                <span>Layout + inspect only</span>
+              </button>
+            </div>
+            <p class="status" id="preset-status" aria-live="polite"></p>
+            <button type="button" class="btn solid" id="open-workspace-footer">
+              Fine-tune in Settings → Workspace
+            </button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>Aligner Home · feature guide for daily use</p>
+          <button type="button" class="btn ghost" id="footer-options">Settings</button>
+        </footer>
+      </main>
+    </div>
+    <script src="welcome.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+**/.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local scratch / secrets
+.env
+.env.*
+*.pem
+*.key
+afk_agent.py.save
+
+# Accidental root helper zip (real package lives in wordpress/)
+/aligner-wp-tools-helper.zip
+
+# Logs and caches
+*.log
+node_modules/
+.cache/
+.hallmark/

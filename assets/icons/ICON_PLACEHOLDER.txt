@@ -1,0 +1,12 @@
+<!-- Placeholder icon file -->
+<!-- To create actual icons: -->
+<!-- 1. Design a simple ruler/alignment icon in your graphics editor -->
+<!-- 2. Export as PNG at 16x16, 48x48, and 128x128 pixels -->
+<!-- 3. Save as icon16.png, icon48.png, and icon128.png in this directory -->
+<!-- 4. Delete this placeholder file -->
+
+<!-- Recommended icon design: -->
+<!-- - Simple ruler or grid symbol -->
+<!-- - Blue (#2563eb) primary color -->
+<!-- - Clean, minimal style -->
+<!-- - Clear at small sizes -->

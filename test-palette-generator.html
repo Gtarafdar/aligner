@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Generator Test Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        line-height: 1.6;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #2563eb;
+        font-size: 36px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .subtitle {
+        color: #6b7280;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+        border-left: 4px solid #10b981;
+      }
+
+      .card h3 {
+        color: #10b981;
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .card p {
+        color: #4b5563;
+        font-size: 14px;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin: 40px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary {
+        background: #2563eb;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-secondary {
+        background: #10b981;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-accent {
+        background: #f59e0b;
+        color: white;
+      }
+
+      .btn-accent:hover {
+        background: #d97706;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      }
+
+      .color-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 16px;
+        margin: 40px 0;
+      }
+
+      .color-box {
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .alert {
+        background: #fee2e2;
+        border-left: 4px solid #ef4444;
+        color: #991b1b;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 24px 0;
+      }
+
+      .success {
+        background: #d1fae5;
+        border-left: 4px solid #10b981;
+        color: #065f46;
+      }
+
+      .info {
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
+        color: #1e40af;
+      }
+
+      svg {
+        margin: 20px 0;
+      }
+
+      .svg-container {
+        text-align: center;
+      }
+
+      footer {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 2px solid #e5e7eb;
+        text-align: center;
+        color: #6b7280;
+      }
+
+      footer a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Palette Generator Test Page</h1>
+      <p class="subtitle">
+        This page contains various colors for testing the Palette Generator
+        feature
+      </p>
+
+      <div class="alert info">
+        <strong>How to test:</strong> Enable Aligner extension, click the
+        Palette button in the popup, then click "Scan Page Colors" to extract
+        this page's color palette.
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Feature 1</h3>
+          <p>
+            This card uses green accent color (#10b981) with a gray background
+            (#f9fafb).
+          </p>
+        </div>
+
+        <div class="card" style="border-left-color: #ef4444">
+          <h3 style="color: #ef4444">Feature 2</h3>
+          <p>This card uses red accent color (#ef4444) for emphasis.</p>
+        </div>
+
+        <div class="card" style="border-left-color: #f59e0b">
+          <h3 style="color: #f59e0b">Feature 3</h3>
+          <p>This card uses amber accent color (#f59e0b) for warmth.</p>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn btn-accent">Accent Button</button>
+      </div>
+
+      <h2 style="color: #4b5563; margin: 40px 0 20px">Color Showcase</h2>
+      <div class="color-showcase">
+        <div class="color-box" style="background: #ef4444">#ef4444</div>
+        <div class="color-box" style="background: #f59e0b">#f59e0b</div>
+        <div class="color-box" style="background: #10b981">#10b981</div>
+        <div class="color-box" style="background: #3b82f6">#3b82f6</div>
+        <div class="color-box" style="background: #8b5cf6">#8b5cf6</div>
+        <div class="color-box" style="background: #ec4899">#ec4899</div>
+        <div class="color-box" style="background: #6366f1">#6366f1</div>
+        <div class="color-box" style="background: #14b8a6">#14b8a6</div>
+      </div>
+
+      <div class="svg-container">
+        <h2 style="color: #4b5563; margin: 40px 0 20px">SVG Colors</h2>
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="80" fill="#667eea" />
+          <circle cx="100" cy="100" r="60" fill="#764ba2" />
+          <circle cx="100" cy="100" r="40" fill="#f59e0b" />
+          <circle cx="100" cy="100" r="20" fill="#ef4444" />
+        </svg>
+      </div>
+
+      <div class="alert success">
+        <strong>Success!</strong> If you can see this page properly, the Palette
+        Generator should be able to extract approximately 30-40 unique colors.
+      </div>
+
+      <footer>
+        <p>
+          Test page for
+          <a href="#">Aligner Extension</a>
+        </p>
+        <p style="margin-top: 8px">
+          Expected colors: Blues, Purples, Greens, Reds, Ambers, Grays
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Viewport & Grid Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .header p {
+        font-size: 20px;
+        opacity: 0.9;
+      }
+
+      .instructions {
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        padding: 30px;
+        margin: 40px;
+        border-radius: 8px;
+      }
+
+      .instructions h2 {
+        font-size: 24px;
+        color: #1e40af;
+        margin-bottom: 15px;
+      }
+
+      .instructions ol {
+        margin-left: 20px;
+        color: #1e3a8a;
+        line-height: 1.8;
+      }
+
+      .instructions li {
+        margin-bottom: 12px;
+      }
+
+      .test-sections {
+        padding: 40px;
+        display: grid;
+        gap: 40px;
+      }
+
+      .test-card {
+        background: #f9fafb;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .test-card:hover {
+        border-color: #667eea;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+      }
+
+      .test-card h3 {
+        font-size: 22px;
+        color: #111827;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .test-card .icon {
+        font-size: 32px;
+      }
+
+      .test-card p {
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .test-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .test-item {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+      }
+
+      .test-item strong {
+        display: block;
+        color: #667eea;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .test-item span {
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      /* Wide content to test viewport capture */
+      .wide-content {
+        background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+        height: 200px;
+        margin: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        width: 2000px; /* Intentionally wide! */
+        max-width: none;
+        overflow: hidden;
+      }
+
+      .grid-demo {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+        padding: 40px;
+        background: #f3f4f6;
+      }
+
+      .grid-demo .col {
+        background: #667eea;
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .grid-demo {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .header h1 {
+          font-size: 32px;
+        }
+        .test-items {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .grid-demo {
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
+
+      .footer {
+        background: #1f2937;
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: #10b981;
+        color: white;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎨 Responsive Viewport & Grid Test</h1>
+        <p>Test the fixed responsive viewport and grid breakpoints feature</p>
+        <span class="status-badge">✅ FIXED</span>
+      </div>
+
+      <div class="instructions">
+        <h2>📋 How to Test</h2>
+        <ol>
+          <li>
+            <strong>Enable Responsive Viewport:</strong> Click Aligner icon →
+            Enable "Responsive" feature
+          </li>
+          <li>
+            <strong>Select Device:</strong> Choose "iPhone SE (375x667)" from
+            dropdown
+          </li>
+          <li>
+            <strong>Check Full Capture:</strong> Scroll within viewport to see
+            ALL content (including wide gradient below)
+          </li>
+          <li>
+            <strong>Enable Grid + Breakpoints:</strong> Enable "Grid" → Check
+            "Responsive Grid"
+          </li>
+          <li>
+            <strong>Switch Devices:</strong> Try "iPad Air (820x1180)" → Should
+            show "TABLET" indicator
+          </li>
+          <li>
+            <strong>Check Grid Updates:</strong> Try "Desktop (1920x1080)" →
+            Should show "DESKTOP" with more columns
+          </li>
+          <li>
+            <strong>Verify Sync:</strong> Grid columns should change
+            automatically with each device
+          </li>
+        </ol>
+      </div>
+
+      <div class="test-sections">
+        <div class="test-card">
+          <h3><span class="icon">📱</span> Test 1: Mobile Viewport (≤768px)</h3>
+          <p>Select any mobile device (iPhone SE, Pixel 5, etc.)</p>
+          <div class="test-items">
+            <div class="test-item">
+              <strong>Expected</strong>
+              <span>4 columns, 12px gutter</span>
+            </div>
+            <div class="test-item">
+              <strong>Breakpoint</strong>
+              <span>MOBILE indicator</span>
+            </div>
+            <div class="test-item">
+              <strong>Scroll</strong>
+              <span>Full page visible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <h3>
+            <span class="icon">💻</span> Test 2: Tablet Viewport (≤1024px)
+          </h3>
+          <p>Select any tablet device (iPad Air, iPad Pro, Surface)</p>
+          <div class="test-items">
+            <div class="test-item">
+              <strong>Expected</strong>
+              <span>8 columns, 16px gutter</span>
+            </div>
+            <div class="test-item">
+              <strong>Breakpoint</strong>
+              <span>TABLET indicator</span>
+            </div>
+            <div class="test-item">
+              <strong>Content</strong>
+              <span>No clipping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <h3>
+            <span class="icon">🖥️</span> Test 3: Desktop Viewport (>1024px)
+          </h3>
+          <p>Select desktop/laptop sizes</p>
+          <div class="test-items">
+            <div class="test-item">
+              <strong>Expected</strong>
+              <span>12 columns, 20px gutter</span>
+            </div>
+            <div class="test-item">
+              <strong>Breakpoint</strong>
+              <span>DESKTOP indicator</span>
+            </div>
+            <div class="test-item">
+              <strong>Layout</strong>
+              <span>Full width grid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wide-content">
+        ⬅️ This content is 2000px wide - Scroll horizontally within viewport! ➡️
+      </div>
+
+      <div class="grid-demo">
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+        <div class="col">5</div>
+        <div class="col">6</div>
+        <div class="col">7</div>
+        <div class="col">8</div>
+        <div class="col">9</div>
+        <div class="col">10</div>
+        <div class="col">11</div>
+        <div class="col">12</div>
+      </div>
+
+      <div class="footer">
+        <p>✅ All tests should pass with the fixed responsive viewport!</p>
+        <p style="margin-top: 10px; opacity: 0.7">
+          The viewport now correctly captures the full page and triggers grid
+          breakpoints.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

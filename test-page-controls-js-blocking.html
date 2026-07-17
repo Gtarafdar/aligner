@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Blocking Test - Page Controls</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #1f2937;
+        margin: 0 0 10px 0;
+        font-size: 32px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        color: #6b7280;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .test-section {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        border: 2px solid #e5e7eb;
+      }
+
+      .test-section h2 {
+        color: #1f2937;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+
+      .status.working {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .status.blocked {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .status.pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .indicator.green {
+        background: #22c55e;
+      }
+      .indicator.red {
+        background: #ef4444;
+      }
+      .indicator.yellow {
+        background: #f59e0b;
+      }
+
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .test-output {
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 16px;
+        font-family: "Monaco", "Courier New", monospace;
+        font-size: 13px;
+        color: #1f2937;
+        margin-top: 12px;
+        min-height: 60px;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .instructions {
+        background: #dbeafe;
+        border-left: 4px solid #2563eb;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+      }
+
+      .instructions h3 {
+        margin: 0 0 8px 0;
+        color: #1e40af;
+        font-size: 16px;
+      }
+
+      .instructions ol {
+        margin: 0;
+        padding-left: 20px;
+        color: #1e40af;
+      }
+
+      .instructions li {
+        margin: 4px 0;
+      }
+
+      code {
+        background: #1f2937;
+        color: #10b981;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .alert {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+
+      .alert.info {
+        background: #dbeafe;
+        color: #1e40af;
+        border: 1px solid #3b82f6;
+      }
+
+      .alert.success {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #22c55e;
+      }
+
+      .alert.warning {
+        background: #fef3c7;
+        color: #92400e;
+        border: 1px solid #f59e0b;
+      }
+
+      #timer {
+        font-weight: 600;
+        color: #2563eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🛡️ JavaScript Blocking Test</h1>
+      <p class="subtitle">
+        Test Page Controls - JavaScript Enable/Disable & Reset Functionality
+      </p>
+
+      <div class="instructions">
+        <h3>🔍 Testing Instructions:</h3>
+        <ol>
+          <li>
+            Open <strong>Page Controls</strong> feature from Aligner popup
+          </li>
+          <li>Enable <strong>"Disable JavaScript"</strong> checkbox</li>
+          <li>Click <strong>"Apply Changes"</strong> button</li>
+          <li>
+            Click <strong>"Reload Now"</strong> from the toast notification (or
+            manually reload)
+          </li>
+          <li>
+            Verify all test scripts show
+            <span style="color: #991b1b">🔴 BLOCKED</span> status
+          </li>
+          <li>Uncheck <strong>"Disable JavaScript"</strong> checkbox</li>
+          <li>
+            Click <strong>"Apply Changes"</strong> →
+            <strong>"Reload Now"</strong>
+          </li>
+          <li>
+            Verify all test scripts show
+            <span style="color: #166534">🟢 WORKING</span> status
+          </li>
+          <li>
+            Re-enable JavaScript blocking, then click
+            <strong>"Reset All"</strong> button
+          </li>
+          <li>Reload page - verify JavaScript is restored</li>
+        </ol>
+      </div>
+
+      <!-- Test 1: Inline Script -->
+      <div class="test-section">
+        <h2>Test 1: Inline Script Execution</h2>
+        <div id="inline-status" class="status pending">
+          <span class="indicator yellow"></span>
+          <span>⏳ Checking...</span>
+        </div>
+        <div class="test-output" id="inline-output">
+          Waiting for script execution...
+        </div>
+      </div>
+
+      <!-- Test 2: External Script -->
+      <div class="test-section">
+        <h2>Test 2: External Script Loading</h2>
+        <div id="external-status" class="status pending">
+          <span class="indicator yellow"></span>
+          <span>⏳ Checking...</span>
+        </div>
+        <div class="test-output" id="external-output">
+          Waiting for external script...
+        </div>
+        <div class="alert info">
+          <strong>Note:</strong> This test uses a CDN script. If blocked, the
+          network request will be blocked by declarativeNetRequest rules.
+        </div>
+      </div>
+
+      <!-- Test 3: Dynamic Script Injection -->
+      <div class="test-section">
+        <h2>Test 3: Dynamically Injected Script</h2>
+        <button onclick="injectDynamicScript()">Inject Script</button>
+        <div id="dynamic-status" class="status pending">
+          <span class="indicator yellow"></span>
+          <span>⏳ Not tested yet</span>
+        </div>
+        <div class="test-output" id="dynamic-output">
+          Click button to test dynamic script injection...
+        </div>
+      </div>
+
+      <!-- Test 4: Event Handlers -->
+      <div class="test-section">
+        <h2>Test 4: Inline Event Handlers</h2>
+        <button onclick="testEventHandler()">Test Click Handler</button>
+        <div id="event-status" class="status pending">
+          <span class="indicator yellow"></span>
+          <span>⏳ Not tested yet</span>
+        </div>
+        <div class="test-output" id="event-output">
+          Click button to test inline event handler...
+        </div>
+      </div>
+
+      <!-- Test 5: setTimeout/setInterval -->
+      <div class="test-section">
+        <h2>Test 5: Timer Functions (setTimeout)</h2>
+        <div id="timer-status" class="status pending">
+          <span class="indicator yellow"></span>
+          <span>⏳ Checking...</span>
+        </div>
+        <div class="test-output" id="timer-output">
+          Timer started: <span id="timer">0</span>s
+          <div class="alert info" style="margin-top: 8px">
+            <strong>Note:</strong> Timers continue to work because
+            declarativeNetRequest only blocks <em>network requests</em> for
+            .js/.mjs/.jsx files. It doesn't block inline scripts or
+            already-loaded JavaScript execution.
+          </div>
+        </div>
+      </div>
+
+      <!-- Test 6: Toast Notification Check -->
+      <div class="test-section">
+        <h2>Test 6: Toast Notifications (Duplicate Check)</h2>
+        <div class="alert warning">
+          <strong>⚠️ Important Test:</strong> When enabling/disabling JavaScript
+          blocking:
+          <ul style="margin: 8px 0 0 0; padding-left: 20px">
+            <li>
+              You should see <strong>only ONE</strong> toast notification
+              (either "JavaScript blocking enabled" or "JavaScript unblocked")
+            </li>
+            <li>
+              If you see <strong>TWO identical toasts</strong>, the silent
+              parameter is not working correctly
+            </li>
+            <li>
+              The grouped toast should
+              <strong>NOT include "JavaScript"</strong> as a separate item
+            </li>
+          </ul>
+        </div>
+        <div class="test-output">
+          Expected behavior:<br />
+          ✅ Single toast: "⚡ JavaScript blocking enabled - reload required"<br />
+          ✅ Single toast on disable: "⚡ JavaScript unblocked - reload to
+          restore"<br />
+          ❌ NO duplicate toasts<br />
+          ❌ NO "JavaScript" in grouped toast
+        </div>
+      </div>
+
+      <!-- Test 7: Reset All Check -->
+      <div class="test-section">
+        <h2>Test 7: Reset All Functionality</h2>
+        <div class="alert info">
+          <strong>🔄 Reset Test Steps:</strong>
+          <ol style="margin: 8px 0 0 0; padding-left: 20px">
+            <li>
+              Enable JavaScript blocking → Apply → Reload (should block scripts)
+            </li>
+            <li>Click "Reset All" button in Page Controls</li>
+            <li>Reload this page</li>
+            <li>
+              All tests should show
+              <span style="color: #166534">🟢 WORKING</span> status
+            </li>
+          </ol>
+        </div>
+        <div class="test-output">
+          If JavaScript remains blocked after Reset All + reload, the
+          resetAllControls() method is not properly calling
+          chrome.runtime.sendMessage({ type: "unblockJavaScript" })
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="test-section">
+        <h2>📊 Expected Behavior Summary</h2>
+        <div class="test-output">
+          <strong>When JavaScript Blocking is ENABLED:</strong>
+          • External .js/.mjs/.jsx files are blocked (network level) • Inline
+          scripts continue to work (already parsed in HTML) • Toast shows
+          "JavaScript blocking enabled" ONCE only
+
+          <strong>When JavaScript Blocking is DISABLED:</strong>
+          • Blocking rules are removed from declarativeNetRequest • Toast shows
+          "JavaScript unblocked" ONCE only • After reload, external scripts load
+          normally
+
+          <strong>When Reset All is clicked:</strong>
+          • All blocking rules are removed (including JavaScript) •
+          originalState.javascriptBlocked set to false • After reload, page
+          behaves normally with no restrictions
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Script Test -->
+    <script>
+      // Test 1: Inline script
+      (function () {
+        const timestamp = new Date().toLocaleTimeString();
+        document.getElementById("inline-output").textContent =
+          `✅ Inline script executed at ${timestamp}\n` +
+          `This script is embedded directly in HTML, so it runs even when external scripts are blocked.`;
+        document.getElementById("inline-status").className = "status working";
+        document.getElementById("inline-status").innerHTML =
+          '<span class="indicator green"></span><span>🟢 WORKING</span>';
+      })();
+
+      // Test 4: Event handler function
+      function testEventHandler() {
+        const timestamp = new Date().toLocaleTimeString();
+        document.getElementById("event-output").textContent =
+          `✅ Event handler executed at ${timestamp}\n` +
+          `Inline onclick attributes work because they're part of the DOM, not external scripts.`;
+        document.getElementById("event-status").className = "status working";
+        document.getElementById("event-status").innerHTML =
+          '<span class="indicator green"></span><span>🟢 WORKING</span>';
+      }
+
+      // Test 3: Dynamic script injection
+      function injectDynamicScript() {
+        const script = document.createElement("script");
+        script.textContent = `
+        (function() {
+          const timestamp = new Date().toLocaleTimeString();
+          document.getElementById('dynamic-output').textContent = 
+            '✅ Dynamic inline script executed at ' + timestamp + '\\n' +
+            'Dynamically created inline scripts work (textContent), but external src would be blocked.';
+          document.getElementById('dynamic-status').className = 'status working';
+          document.getElementById('dynamic-status').innerHTML = 
+            '<span class="indicator green"></span><span>🟢 WORKING</span>';
+        })();
+      `;
+        document.body.appendChild(script);
+      }
+
+      // Test 5: Timer test
+      let timerSeconds = 0;
+      setInterval(() => {
+        timerSeconds++;
+        document.getElementById("timer").textContent = timerSeconds;
+
+        if (timerSeconds === 1) {
+          document.getElementById("timer-status").className = "status working";
+          document.getElementById("timer-status").innerHTML =
+            '<span class="indicator green"></span><span>🟢 WORKING</span>';
+        }
+      }, 1000);
+    </script>
+
+    <!-- External Script Test (will be blocked when JS blocking is enabled) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      onload="handleExternalScriptLoad()"
+      onerror="handleExternalScriptError()"
+    ></script>
+
+    <script>
+      function handleExternalScriptLoad() {
+        const timestamp = new Date().toLocaleTimeString();
+        document.getElementById("external-output").textContent =
+          `✅ External script loaded successfully at ${timestamp}\n` +
+          `Lodash version: ${typeof _ !== "undefined" ? _.VERSION : "N/A"}\n` +
+          `This confirms external .js files are NOT blocked.`;
+        document.getElementById("external-status").className = "status working";
+        document.getElementById("external-status").innerHTML =
+          '<span class="indicator green"></span><span>🟢 WORKING</span>';
+      }
+
+      function handleExternalScriptError() {
+        const timestamp = new Date().toLocaleTimeString();
+        document.getElementById("external-output").textContent =
+          `🔴 External script BLOCKED at ${timestamp}\n` +
+          `Network request for lodash.min.js was blocked by declarativeNetRequest rules.\n` +
+          `This is the expected behavior when JavaScript blocking is enabled.`;
+        document.getElementById("external-status").className = "status blocked";
+        document.getElementById("external-status").innerHTML =
+          '<span class="indicator red"></span><span>🔴 BLOCKED</span>';
+      }
+
+      // Fallback check for external script
+      setTimeout(() => {
+        if (
+          typeof _ === "undefined" &&
+          document
+            .getElementById("external-status")
+            .classList.contains("pending")
+        ) {
+          handleExternalScriptError();
+        }
+      }, 2000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wireframe Generator - Complete Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: #1f2937;
+        font-size: 32px;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      h2 {
+        color: #374151;
+        font-size: 24px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      h3 {
+        color: #4b5563;
+        font-size: 18px;
+        margin: 20px 0 10px;
+        font-weight: 600;
+      }
+
+      p {
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        font-size: 15px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f9fafb;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: #667eea;
+      }
+
+      .card h4 {
+        color: #1f2937;
+        font-size: 16px;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .card p {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+      }
+
+      button.secondary {
+        background: #10b981;
+      }
+
+      button.secondary:hover {
+        background: #059669;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        font-family: inherit;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      label {
+        display: block;
+        color: #374151;
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .alert {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px 0;
+        color: #92400e;
+        font-size: 14px;
+      }
+
+      .success {
+        background: #d1fae5;
+        border-color: #10b981;
+        color: #065f46;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .image-placeholder {
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .video-container {
+        aspect-ratio: 16/9;
+        background: #1f2937;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .play-button {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .play-button:hover {
+        transform: scale(1.1);
+        background: white;
+      }
+
+      .play-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 20px solid #1f2937;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 4px;
+      }
+
+      nav {
+        background: #1f2937;
+        padding: 15px 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: #667eea;
+      }
+
+      footer {
+        background: #1f2937;
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      th {
+        background: #f9fafb;
+        font-weight: 600;
+        color: #374151;
+        font-size: 14px;
+      }
+
+      td {
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .stat-card {
+        flex: 1;
+        background: #f0f9ff;
+        border: 2px solid #3b82f6;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: #6b7280;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav>
+        <div style="color: white; font-weight: 700; font-size: 18px">
+          Aligner Test Page
+        </div>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="test-section">
+        <h1>🎯 Wireframe Generator Test Page</h1>
+        <p>
+          This page tests all aspects of the Wireframe Generator feature. Use
+          the Aligner extension to generate wireframes with different settings
+          and verify all text modes work correctly.
+        </p>
+
+        <div class="alert success">
+          <strong>✓ Test Instructions:</strong><br />
+          1. Open the Aligner extension (Ctrl+Shift+A or click the toolbar
+          icon)<br />
+          2. Click the "Wireframe" button (☶ icon)<br />
+          3. Try different settings:<br />
+          &nbsp;&nbsp;&nbsp;• Text Mode: Bars → Lines → Keep Real Text<br />
+          &nbsp;&nbsp;&nbsp;• Density: Low → Medium → High<br />
+          &nbsp;&nbsp;&nbsp;• Border Style: Thin → Medium → Thick<br />
+          4. Generate wireframe and verify text is preserved with "Keep Real
+          Text" mode<br />
+          5. Export to HTML and verify the exported file works correctly
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-value">500+</div>
+            <div class="stat-label">Elements</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Text Modes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Coverage</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content Section -->
+      <div class="test-section">
+        <h2>
+          📝 Text Content Test<span class="badge">Keep Real Text Mode</span>
+        </h2>
+
+        <h3>Various Heading Levels</h3>
+        <h1 style="font-size: 28px; margin: 10px 0">
+          Heading Level 1 - Large Title Text
+        </h1>
+        <h2 style="font-size: 22px; margin: 10px 0">
+          Heading Level 2 - Section Title Text
+        </h2>
+        <h3 style="margin: 10px 0">Heading Level 3 - Subsection Title Text</h3>
+
+        <h3>Paragraph Content</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. This text
+          should be preserved when using "Keep Real Text" mode.
+        </p>
+
+        <p>
+          <strong>Bold text example:</strong> This paragraph contains bold text
+          that should maintain its weight in the wireframe. The wireframe
+          generator should capture and preserve this formatting.
+        </p>
+
+        <p>
+          <em>Italic text example:</em> This paragraph contains italic text.
+          When "Keep Real Text" mode is enabled, this text should appear in the
+          wireframe output with grayscale styling.
+        </p>
+
+        <h3>Lists</h3>
+        <ul style="margin-left: 20px; color: #6b7280">
+          <li>First list item with text content</li>
+          <li>Second list item with more details</li>
+          <li>Third list item with additional information</li>
+          <li>Fourth list item demonstrating list rendering</li>
+        </ul>
+
+        <ol style="margin-left: 20px; color: #6b7280; margin-top: 15px">
+          <li>Numbered list item one</li>
+          <li>Numbered list item two</li>
+          <li>Numbered list item three</li>
+        </ol>
+      </div>
+
+      <!-- Button Tests -->
+      <div class="test-section">
+        <h2>
+          🔘 Button & Input Test<span class="badge">Interactive Elements</span>
+        </h2>
+
+        <h3>Button Variations</h3>
+        <div style="margin: 20px 0">
+          <button>Primary Button</button>
+          <button class="secondary">Secondary Button</button>
+          <button style="background: #ef4444">Delete Button</button>
+          <button style="background: #f59e0b">Warning Button</button>
+        </div>
+
+        <h3>Form Elements</h3>
+        <div class="form-group">
+          <label>Text Input Field</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+
+        <div class="form-group">
+          <label>Email Input Field</label>
+          <input type="email" placeholder="your.email@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Select Dropdown</label>
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Textarea Field</label>
+          <textarea
+            rows="4"
+            placeholder="Enter your message here..."
+          ></textarea>
+        </div>
+
+        <button>Submit Form</button>
+        <button class="secondary">Cancel</button>
+      </div>
+
+      <!-- Cards & Grid -->
+      <div class="test-section">
+        <h2>
+          📦 Cards & Grid Layout<span class="badge">Container Elements</span>
+        </h2>
+
+        <div class="feature-grid">
+          <div class="card">
+            <h4>Feature Card 1</h4>
+            <p>
+              This card contains title and description text that should be
+              captured in the wireframe.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Feature Card 2</h4>
+            <p>
+              Test the wireframe generator with different text content lengths
+              and styles.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Feature Card 3</h4>
+            <p>
+              The "Keep Real Text" mode should preserve all this card content
+              exactly as written.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Feature Card 4</h4>
+            <p>
+              Grid layouts and card containers should maintain proper
+              positioning in wireframes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Images & Media -->
+      <div class="test-section">
+        <h2>🖼️ Images & Media Test<span class="badge">Media Elements</span></h2>
+
+        <h3>Image Grid</h3>
+        <div class="image-grid">
+          <div class="image-placeholder">Image 1</div>
+          <div class="image-placeholder">Image 2</div>
+          <div class="image-placeholder">Image 3</div>
+          <div class="image-placeholder">Image 4</div>
+          <div class="image-placeholder">Image 5</div>
+          <div class="image-placeholder">Image 6</div>
+        </div>
+
+        <h3>Video Container</h3>
+        <div class="video-container">
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="test-section">
+        <h2>📊 Table Data Test<span class="badge">Tabular Content</span></h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Text Mode: Bars</td>
+              <td>Displays horizontal bars representing text lines</td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Text Mode: Lines</td>
+              <td>Displays horizontal lines with varying widths</td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Text Mode: Keep Real Text</td>
+              <td>Preserves actual text content with grayscale styling</td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Density Levels</td>
+              <td>
+                Low, Medium, High - controls element detection granularity
+              </td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Export HTML</td>
+              <td>Export wireframe as standalone HTML file</td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Export PNG</td>
+              <td>Capture wireframe as PNG screenshot</td>
+              <td>
+                <span class="badge" style="background: #10b981">Active</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Complex Layout -->
+      <div class="test-section">
+        <h2>🏗️ Complex Layout Test<span class="badge">Mixed Content</span></h2>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+          "
+        >
+          <div>
+            <h3>Main Content Area</h3>
+            <p>
+              This section tests the wireframe generator's ability to handle
+              complex nested layouts with multiple content types including text,
+              buttons, and images.
+            </p>
+
+            <div class="alert">
+              <strong>Important Note:</strong> The wireframe should accurately
+              capture the hierarchy and positioning of all elements while
+              maintaining readability in "Keep Real Text" mode.
+            </div>
+
+            <p>
+              Additional paragraph text to test multi-paragraph content blocks.
+              The wireframe generator should handle consecutive text blocks
+              appropriately and maintain spacing.
+            </p>
+
+            <button>Action Button</button>
+            <button class="secondary">Secondary Action</button>
+          </div>
+
+          <div style="background: #f9fafb; padding: 20px; border-radius: 8px">
+            <h3 style="margin-top: 0">Sidebar Content</h3>
+            <p style="font-size: 14px">
+              Sidebar text content that should be captured distinctly from main
+              content area.
+            </p>
+
+            <div
+              style="
+                background: white;
+                padding: 15px;
+                border-radius: 8px;
+                margin: 15px 0;
+              "
+            >
+              <h4 style="margin: 0 0 10px; font-size: 14px">Widget Card</h4>
+              <p style="font-size: 13px; margin: 0">
+                Nested card within sidebar to test depth handling.
+              </p>
+            </div>
+
+            <button style="width: 100%">Full Width Button</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <h3 style="color: white; margin-bottom: 10px">Test Page Footer</h3>
+        <p style="color: #d1d5db; margin-bottom: 20px">
+          This footer contains additional text content to test wireframe
+          generation at page bottom. The "Keep Real Text" mode should preserve
+          this footer text.
+        </p>
+        <p style="color: #9ca3af; font-size: 13px; margin: 0">
+          © 2024 Aligner - Wireframe Generator Test | All text modes should work
+          correctly
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      console.log("Wireframe Generator Test Page Loaded");
+      console.log("Total elements:", document.querySelectorAll("*").length);
+      console.log(
+        "Text elements:",
+        document.querySelectorAll(
+          "h1, h2, h3, h4, p, li, td, th, button, label"
+        ).length
+      );
+      console.log(
+        "Interactive elements:",
+        document.querySelectorAll("button, input, select, textarea").length
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,330 @@
+# Page Speed Feature - Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        CHROME EXTENSION                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌─────────────────┐                                            │
+│  │  manifest.json  │                                            │
+│  ├─────────────────┤                                            │
+│  │ Permissions:    │                                            │
+│  │ - debugger ✓    │   (Added for Performance API)             │
+│  └─────────────────┘                                            │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                   service-worker.js                       │  │
+│  ├──────────────────────────────────────────────────────────┤  │
+│  │  DEFAULT_SETTINGS {                                      │  │
+│  │    pageSpeed: {                                          │  │
+│  │      enabled: false,                                     │  │
+│  │      autoRun: false,                                     │  │
+│  │      showMetrics: true,                                  │  │
+│  │      showOpportunities: true,                            │  │
+│  │      showDiagnostics: true                               │  │
+│  │    }                                                     │  │
+│  │  }                                                        │  │
+│  │                                                           │  │
+│  │  Templates: designer, developer, review ✓                │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│                              │ chrome.storage.sync              │
+│                              ↓                                   │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                    popup/popup.html                       │  │
+│  ├──────────────────────────────────────────────────────────┤  │
+│  │  <button id="toggle-page-speed"                          │  │
+│  │          data-feature="pageSpeed">                       │  │
+│  │    <div class="feature-icon">≉</div>                     │  │
+│  │    <div class="feature-name">Page Speed</div>            │  │
+│  │  </button>                                                │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│                              │ chrome.runtime.sendMessage       │
+│                              ↓                                   │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                   content/content.js                      │  │
+│  ├──────────────────────────────────────────────────────────┤  │
+│  │                                                           │  │
+│  │  1. AlignerOverlay.createFeatureContainers()             │  │
+│  │     ┌─────────────────────────────────────────┐          │  │
+│  │     │ page-speed-container (div)             │          │  │
+│  │     │ - id: "page-speed-container"            │          │  │
+│  │     │ - class: "feature-container"            │          │  │
+│  │     └─────────────────────────────────────────┘          │  │
+│  │                                                           │  │
+│  │  2. AlignerOverlay.initializeFeatures()                  │  │
+│  │     ┌─────────────────────────────────────────┐          │  │
+│  │     │ features.pageSpeed = new                │          │  │
+│  │     │   PageSpeedFeature(container, settings) │          │  │
+│  │     └─────────────────────────────────────────┘          │  │
+│  │                                                           │  │
+│  │  3. PageSpeedFeature Class (lines 16306-17360)           │  │
+│  │     ┌─────────────────────────────────────────────────┐  │  │
+│  │     │ extends Feature                                  │  │
+│  │     │                                                   │  │
+│  │     │ Key Methods:                                     │  │
+│  │     │ • constructor() - Initialize                     │  │
+│  │     │ • show() - Display panel                         │  │
+│  │     │ • hide() - Remove panel                          │  │
+│  │     │ • render() - Create UI                           │  │
+│  │     │ • runAudit() - Execute performance audit         │  │
+│  │     │ • collectMetrics() - Gather data                 │  │
+│  │     │ • generateOpportunities() - Create recommendations│  │
+│  │     │ • generateDiagnostics() - Analyze issues         │  │
+│  │     │ • switchTab() - Tab navigation                   │  │
+│  │     │ • makeDraggable() - Enable dragging              │  │
+│  │     │ • toggleMinimize() - Minimize/restore            │  │
+│  │     │ • cleanup() - Remove resources                   │  │
+│  │     └─────────────────────────────────────────────────┘  │  │
+│  │                                                           │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│                              │ Uses Performance API             │
+│                              ↓                                   │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │              Browser Performance APIs                     │  │
+│  ├──────────────────────────────────────────────────────────┤  │
+│  │  • performance.getEntriesByType("navigation")            │  │
+│  │  • performance.getEntriesByType("paint")                 │  │
+│  │  • performance.getEntriesByType("resource")              │  │
+│  │  • performance.getEntriesByType("layout-shift")          │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## UI Component Structure
+
+```
+┌────────────────────────────────────────────────┐
+│  Page Speed Score Panel (480px × ~600px)      │
+├────────────────────────────────────────────────┤
+│  ┌──────────────────────────────────────────┐ │
+│  │  Header (Draggable)                       │ │
+│  │  ≉ Page Speed Score            [−]  [×]   │ │
+│  │  (Linear gradient: #2563eb → #1d4ed8)    │ │
+│  └──────────────────────────────────────────┘ │
+│  ┌──────────────────────────────────────────┐ │
+│  │  Tabs (Sticky)                            │ │
+│  │  [Metrics] [Opportunities] [Diagnostics]  │ │
+│  └──────────────────────────────────────────┘ │
+│  ┌──────────────────────────────────────────┐ │
+│  │  Content Area (Scrollable)                │ │
+│  │  ┌────────────────────────────────────┐  │ │
+│  │  │  Metrics Tab:                       │  │ │
+│  │  │  • Performance Score (0-100)        │  │ │
+│  │  │  • Core Web Vitals (FCP, LCP, etc.) │  │ │
+│  │  │  • Additional Metrics               │  │ │
+│  │  └────────────────────────────────────┘  │ │
+│  │  ┌────────────────────────────────────┐  │ │
+│  │  │  Opportunities Tab:                 │  │ │
+│  │  │  • Recommendation cards             │  │ │
+│  │  │  • [Show Fix Plan] accordion        │  │ │
+│  │  │  • Potential savings                │  │ │
+│  │  └────────────────────────────────────┘  │ │
+│  │  ┌────────────────────────────────────┐  │ │
+│  │  │  Diagnostics Tab:                   │  │ │
+│  │  │  • Issue cards with severity        │  │ │
+│  │  │  • [Show Details] accordion         │  │ │
+│  │  │  • Fix recommendations              │  │ │
+│  │  └────────────────────────────────────┘  │ │
+│  └──────────────────────────────────────────┘ │
+└────────────────────────────────────────────────┘
+
+When Minimized:
+┌─────────┐
+│    ≉    │  ← Floating button at bottom-right
+└─────────┘   (bottom: 230px, right: 20px)
+```
+
+## Data Flow
+
+```
+User Click           Performance API         Scoring Engine        UI Rendering
+─────────────────────────────────────────────────────────────────────────────
+
+[Page Speed]
+    │
+    ├─→ Enable feature
+    │       │
+    │       ├─→ Show panel
+    │       │       │
+    │       │       └─→ Display "Run Audit" button
+    │       │
+    │       └─→ User clicks "Run Audit"
+    │               │
+    │               ├─→ collectMetrics()
+    │               │       │
+    │               │       ├─→ performance.getEntriesByType("navigation")
+    │               │       ├─→ performance.getEntriesByType("paint")
+    │               │       ├─→ performance.getEntriesByType("resource")
+    │               │       └─→ performance.getEntriesByType("layout-shift")
+    │               │                   │
+    │               │                   └─→ Raw metrics (FCP, LCP, etc.)
+    │               │
+    │               ├─→ Calculate scores
+    │               │       │
+    │               │       ├─→ calculateFCPScore(fcp)
+    │               │       ├─→ calculateLCPScore(lcp)
+    │               │       ├─→ calculateTBTScore(tbt)
+    │               │       ├─→ calculateCLSScore(cls)
+    │               │       ├─→ calculateSIScore(si)
+    │               │       │
+    │               │       └─→ Weighted performance score (0-100)
+    │               │
+    │               ├─→ generateOpportunities()
+    │               │       │
+    │               │       ├─→ Analyze page size, requests, images
+    │               │       ├─→ Detect render-blocking resources
+    │               │       │
+    │               │       └─→ Array of opportunities with fix plans
+    │               │
+    │               ├─→ generateDiagnostics()
+    │               │       │
+    │               │       ├─→ Analyze TTFB, DOM loading, CSS files
+    │               │       ├─→ Detect third-party scripts
+    │               │       │
+    │               │       └─→ Array of diagnostics with details
+    │               │
+    │               └─→ render()
+    │                       │
+    │                       ├─→ renderMetricsResults()
+    │                       │       │
+    │                       │       └─→ Display score, Core Web Vitals
+    │                       │
+    │                       ├─→ renderOpportunities()
+    │                       │       │
+    │                       │       └─→ Display cards with accordions
+    │                       │
+    │                       └─→ renderDiagnostics()
+    │                               │
+    │                               └─→ Display issues with accordions
+    │
+    └─→ User interacts
+            │
+            ├─→ Switch tabs
+            ├─→ Expand accordions
+            ├─→ Drag panel
+            ├─→ Minimize
+            └─→ Close
+```
+
+## Performance Scoring Formula
+
+```
+Core Web Vitals Thresholds:
+─────────────────────────────────────────────────
+
+FCP (First Contentful Paint):
+  ┌─────────┬─────────┬─────────┐
+  │  Good   │ Moderate│  Poor   │
+  ├─────────┼─────────┼─────────┤
+  │ < 1.8s  │ < 3.0s  │ > 3.0s  │
+  └─────────┴─────────┴─────────┘
+
+LCP (Largest Contentful Paint):
+  ┌─────────┬─────────┬─────────┐
+  │  Good   │ Moderate│  Poor   │
+  ├─────────┼─────────┼─────────┤
+  │ < 2.5s  │ < 4.0s  │ > 4.0s  │
+  └─────────┴─────────┴─────────┘
+
+TBT (Total Blocking Time):
+  ┌─────────┬─────────┬─────────┐
+  │  Good   │ Moderate│  Poor   │
+  ├─────────┼─────────┼─────────┤
+  │ < 200ms │ < 600ms │ > 600ms │
+  └─────────┴─────────┴─────────┘
+
+CLS (Cumulative Layout Shift):
+  ┌─────────┬─────────┬─────────┐
+  │  Good   │ Moderate│  Poor   │
+  ├─────────┼─────────┼─────────┤
+  │ < 0.1   │ < 0.25  │ > 0.25  │
+  └─────────┴─────────┴─────────┘
+
+SI (Speed Index):
+  ┌─────────┬─────────┬─────────┐
+  │  Good   │ Moderate│  Poor   │
+  ├─────────┼─────────┼─────────┤
+  │ < 3.4s  │ < 5.8s  │ > 5.8s  │
+  └─────────┴─────────┴─────────┘
+
+Weighted Performance Score:
+────────────────────────────
+Score = (FCP × 0.10) +
+        (LCP × 0.25) +
+        (TBT × 0.30) +
+        (CLS × 0.25) +
+        (SI  × 0.10)
+
+Result: 0-100 scale
+  90-100: Green  (Good)
+  50-89:  Orange (Needs Improvement)
+  0-49:   Red    (Poor)
+```
+
+## Feature Integration Map
+
+```
+Extension Components:
+─────────────────────────────────────────────────
+
+manifest.json
+  └─→ Declares permissions
+      └─→ debugger (for Performance API)
+
+service-worker.js
+  └─→ Manages settings
+      ├─→ DEFAULT_SETTINGS.pageSpeed
+      ├─→ designer template
+      ├─→ developer template
+      └─→ review template
+
+popup/popup.html
+  └─→ Feature toggle button
+      └─→ id="toggle-page-speed"
+          └─→ Triggers feature enable/disable
+
+content/content.js
+  ├─→ AlignerOverlay class
+  │   ├─→ createFeatureContainers()
+  │   │   └─→ Creates page-speed-container
+  │   │
+  │   └─→ initializeFeatures()
+  │       └─→ Initializes PageSpeedFeature
+  │
+  └─→ PageSpeedFeature class
+      └─→ Implements complete functionality
+          ├─→ UI rendering
+          ├─→ Performance auditing
+          ├─→ Metrics calculation
+          ├─→ Opportunity generation
+          └─→ Diagnostics generation
+```
+
+## File Structure
+
+```
+Web design toolbox/
+├── manifest.json                    [✓ Modified]
+├── service-worker.js                [✓ Modified]
+├── popup/
+│   └── popup.html                   [✓ Modified]
+├── content/
+│   └── content.js                   [✓ Modified]
+├── test-page-speed.html             [✓ Created]
+├── PAGE_SPEED_COMPLETE.md           [✓ Created]
+├── PAGE_SPEED_QUICK_REF.md          [✓ Created]
+└── PAGE_SPEED_SUMMARY.md            [✓ Created]
+
+Total Files Modified: 4
+Total Files Created: 4 (including this one)
+Total Lines Added: ~1,500+
+```
+
+---
+
+_Architecture diagram created: December 21, 2025_  
+_All components verified and integrated_

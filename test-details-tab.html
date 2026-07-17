@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner - Details Tab Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .instruction {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 24px;
+        border-radius: 16px;
+        margin-bottom: 32px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .instruction h2 {
+        color: #1f2937;
+        font-size: 24px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .instruction p {
+        color: #6b7280;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .instruction code {
+        background: #f3f4f6;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+        color: #2563eb;
+      }
+
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      /* Test Cards */
+      .test-card {
+        background: white;
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .test-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      .test-card h3 {
+        color: #1f2937;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .test-card p {
+        color: #6b7280;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      /* High Contrast Card (WCAG AAA) */
+      .high-contrast {
+        background: #ffffff;
+        color: #000000;
+        border: 3px solid #10b981;
+      }
+
+      .high-contrast h3 {
+        color: #000000;
+      }
+
+      /* Medium Contrast Card (WCAG AA) */
+      .medium-contrast {
+        background: #f3f4f6;
+        color: #374151;
+        border: 3px solid #f59e0b;
+      }
+
+      .medium-contrast h3 {
+        color: #1f2937;
+      }
+
+      /* Low Contrast Card (WCAG Fail) */
+      .low-contrast {
+        background: #e5e7eb;
+        color: #9ca3af;
+        border: 3px solid #ef4444;
+      }
+
+      .low-contrast h3 {
+        color: #6b7280;
+      }
+
+      /* Gradient Card */
+      .gradient-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+      }
+
+      .gradient-card h3 {
+        color: white;
+      }
+
+      .gradient-card p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Button Test */
+      .test-button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .test-button:hover {
+        background: #1d4ed8;
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+      }
+
+      /* Image Test */
+      .image-card {
+        text-align: center;
+      }
+
+      .test-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Video Test */
+      .video-card {
+        text-align: center;
+      }
+
+      .test-video {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Typography Test */
+      .typography-card {
+        font-family: "Georgia", serif;
+      }
+
+      .typography-card h3 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+
+      .typography-card p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.8;
+        letter-spacing: 0.5px;
+      }
+
+      /* Flexbox Test */
+      .flex-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        min-height: 300px;
+      }
+
+      /* Grid Test */
+      .grid-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 12px;
+        padding: 24px;
+      }
+
+      .grid-item {
+        background: #f3f4f6;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 14px;
+        color: #6b7280;
+      }
+
+      /* Border & Shadow Test */
+      .styled-card {
+        border: 4px solid #2563eb;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+        background: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .styled-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      }
+
+      /* Badge */
+      .badge {
+        display: inline-block;
+        background: #10b981;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 16px;
+      }
+
+      .feature-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #e5e7eb;
+        color: #4b5563;
+        font-size: 14px;
+      }
+
+      .feature-list li:last-child {
+        border-bottom: none;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        color: #10b981;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Aligner Inspector - Details Tab Test</h1>
+      <p class="subtitle">
+        Test all features: WCAG checker, colors, typography, layout, image/video
+        handling
+      </p>
+
+      <div class="instruction">
+        <h2>📖 How to Test</h2>
+        <p>
+          Press <code>Ctrl+Shift+I</code> (or <code>Cmd+Shift+I</code> on Mac)
+          to enable Inspector mode, then hover over any element below and click
+          to inspect it. Click the <code>📊 Details</code> tab to see the new
+          comprehensive element information.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <strong>Colors:</strong> Click on color swatches to copy hex codes
+          </li>
+          <li>
+            <strong>WCAG Checker:</strong> See contrast ratios and AA/AAA
+            compliance
+          </li>
+          <li><strong>Typography:</strong> View font details in px and rem</li>
+          <li>
+            <strong>Layout:</strong> See display type, flexbox/grid properties,
+            dimensions
+          </li>
+          <li>
+            <strong>Images:</strong> Preview, view dimensions, download button
+          </li>
+          <li>
+            <strong>Videos:</strong> Player with controls, download button
+          </li>
+        </ul>
+      </div>
+
+      <div class="test-grid">
+        <!-- High Contrast Test (WCAG AAA) -->
+        <div class="test-card high-contrast">
+          <h3>✓ High Contrast (WCAG AAA)</h3>
+          <p>
+            Black text on white background provides excellent contrast ratio
+            (21:1). Should pass all WCAG levels.
+          </p>
+          <span class="badge" style="background: #10b981">AAA Pass</span>
+        </div>
+
+        <!-- Medium Contrast Test (WCAG AA) -->
+        <div class="test-card medium-contrast">
+          <h3>~ Medium Contrast (WCAG AA)</h3>
+          <p>
+            Dark gray text on light gray background. Should pass AA but might
+            fail AAA for normal text.
+          </p>
+          <span class="badge" style="background: #f59e0b">AA Pass</span>
+        </div>
+
+        <!-- Low Contrast Test (WCAG Fail) -->
+        <div class="test-card low-contrast">
+          <h3>✗ Low Contrast (WCAG Fail)</h3>
+          <p>
+            Light gray text on lighter gray background. Poor contrast, should
+            fail WCAG checks.
+          </p>
+          <span class="badge" style="background: #ef4444">Fail</span>
+        </div>
+
+        <!-- Gradient Background Test -->
+        <div class="test-card gradient-card">
+          <h3>🌈 Gradient Background</h3>
+          <p>
+            Beautiful purple gradient background with white text. Check how
+            multiple colors are extracted!
+          </p>
+          <span
+            class="badge"
+            style="
+              background: rgba(255, 255, 255, 0.2);
+              border: 2px solid white;
+            "
+            >Gradient</span
+          >
+        </div>
+
+        <!-- Button Test -->
+        <div class="test-card" style="text-align: center">
+          <h3>🔘 Button Element</h3>
+          <p>Inspect this button to see button-specific styling details.</p>
+          <button class="test-button">Click to Inspect Me</button>
+        </div>
+
+        <!-- Image Test -->
+        <div class="test-card image-card">
+          <h3>🖼️ Image Element</h3>
+          <img
+            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop"
+            alt="Abstract colorful artwork"
+            class="test-image"
+          />
+          <p>
+            Inspect the image to see preview, dimensions, alt text, and download
+            button!
+          </p>
+        </div>
+
+        <!-- Video Test -->
+        <div class="test-card video-card">
+          <h3>🎬 Video Element</h3>
+          <video
+            class="test-video"
+            controls
+            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+          ></video>
+          <p>
+            Inspect the video to see player, dimensions, duration, and download
+            button!
+          </p>
+        </div>
+
+        <!-- Typography Test -->
+        <div class="test-card typography-card">
+          <h3>✍️ Typography Showcase</h3>
+          <p>
+            This card uses Georgia serif font with special letter spacing and
+            line height. Inspect to see detailed typography information
+            including font size in both px and rem!
+          </p>
+        </div>
+
+        <!-- Flexbox Test -->
+        <div class="test-card flex-card">
+          <h3>📦 Flexbox Layout</h3>
+          <div
+            style="
+              flex: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #f3f4f6;
+              border-radius: 8px;
+              padding: 20px;
+            "
+          >
+            <p style="text-align: center; margin: 0">
+              Inspect this card to see flexbox properties: direction,
+              justify-content, align-items, gap.
+            </p>
+          </div>
+          <span class="badge">Flex Container</span>
+        </div>
+
+        <!-- Grid Test -->
+        <div class="test-card">
+          <h3>📊 Grid Layout</h3>
+          <div class="grid-card">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item">Item 2</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+          </div>
+          <p style="margin-top: 16px">
+            Inspect the inner grid to see grid-template-columns,
+            grid-template-rows, and gap properties!
+          </p>
+        </div>
+
+        <!-- Border & Shadow Test -->
+        <div class="test-card styled-card" style="padding-top: 38px">
+          <h3>✨ Border & Effects</h3>
+          <p>
+            This card has custom border radius (20px), thick border (4px), and
+            prominent box shadow. Perfect for testing border and effects
+            display!
+          </p>
+          <span class="badge" style="background: #2563eb">Styled</span>
+        </div>
+
+        <!-- Multi-Color Card -->
+        <div
+          class="test-card"
+          style="
+            background: #fef3c7;
+            color: #92400e;
+            border: 3px solid #f59e0b;
+            border-radius: 16px;
+          "
+        >
+          <h3 style="color: #78350f">🎨 Multiple Colors</h3>
+          <p style="color: #b45309">
+            This card has text color, background color, and border color all
+            different. Inspect to see all three color swatches!
+          </p>
+          <span class="badge" style="background: #f59e0b; color: #78350f"
+            >Colorful</span
+          >
+        </div>
+      </div>
+
+      <div class="instruction" style="margin-top: 40px">
+        <h2>✅ Testing Checklist</h2>
+        <ul class="feature-list">
+          <li>
+            Click on color swatches to copy hex codes (should show toast
+            notification)
+          </li>
+          <li>
+            Verify WCAG contrast ratios match expectations (high=21:1,
+            medium=~4.5:1, low=~2:1)
+          </li>
+          <li>
+            Check compliance badges show correct pass/fail for AA and AAA levels
+          </li>
+          <li>View typography info shows font size in both px and rem</li>
+          <li>Layout section shows flexbox properties for flex containers</li>
+          <li>Layout section shows grid properties for grid containers</li>
+          <li>Image element shows preview and download button</li>
+          <li>Video element shows player controls and download button</li>
+          <li>Border & Effects section shows all styling details</li>
+          <li>Element type header shows correct icon and tag name</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      console.log("🎨 Aligner Details Tab Test Page Loaded");
+      console.log("Press Ctrl+Shift+I (or Cmd+Shift+I) to enable Inspector");
+      console.log("Then click any element and check the Details tab");
+    </script>
+  </body>
+</html>

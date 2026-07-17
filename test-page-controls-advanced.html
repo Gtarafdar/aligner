@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline'; img-src 'self' https:;"
+    />
+    <title>Page Controls - Complete Test Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Pacifico", cursive, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background-image: url("https://picsum.photos/1920/1080");
+        background-size: cover;
+        background-attachment: fixed;
+        padding: 40px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        color: #667eea;
+        margin-bottom: 10px;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .subtitle {
+        color: #6b7280;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .section-title {
+        font-size: 20px;
+        color: #1f2937;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-icon {
+        font-size: 24px;
+      }
+
+      /* Test Images */
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .image-grid img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .image-grid img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Test Videos */
+      video {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        margin-top: 15px;
+      }
+
+      /* Test Audio */
+      audio {
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      /* Test Iframe */
+      iframe {
+        width: 100%;
+        height: 400px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+      }
+
+      /* Test Links */
+      .link-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      a {
+        padding: 10px 20px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.2s;
+      }
+
+      a:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+      }
+
+      /* Test Forms */
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      button {
+        background: #667eea;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+      }
+
+      /* Test JavaScript */
+      .counter {
+        font-size: 48px;
+        font-weight: bold;
+        color: #667eea;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* Test Cookies */
+      .cookie-status {
+        padding: 15px;
+        background: #fef3c7;
+        border-radius: 6px;
+        margin-top: 15px;
+        font-family: monospace;
+      }
+
+      /* Animated box */
+      .animated-box {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 12px;
+        margin: 20px auto;
+        animation: rotate 3s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>⊘ Page Controls - Advanced Features Test Page</h1>
+      <p class="subtitle">
+        Use Aligner's Page Controls to disable various elements on this page
+      </p>
+
+      <!-- Images Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🖼️</span>
+          <span>Images Test</span>
+        </div>
+        <p>Enable "Images" control to hide all images below:</p>
+        <div class="image-grid">
+          <img
+            src="https://picsum.photos/200/150?random=1"
+            alt="Random Image 1"
+          />
+          <img
+            src="https://picsum.photos/200/150?random=2"
+            alt="Random Image 2"
+          />
+          <img
+            src="https://picsum.photos/200/150?random=3"
+            alt="Random Image 3"
+          />
+          <img
+            src="https://picsum.photos/200/150?random=4"
+            alt="Random Image 4"
+          />
+        </div>
+      </div>
+
+      <!-- Videos Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🎬</span>
+          <span>Videos Test</span>
+        </div>
+        <p>Enable "Videos" control to hide and pause videos:</p>
+        <video controls>
+          <source
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Audio Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🔊</span>
+          <span>Audio Test</span>
+        </div>
+        <p>Enable "Audio" control to mute and hide audio player:</p>
+        <audio controls>
+          <source
+            src="https://www.w3schools.com/html/horse.mp3"
+            type="audio/mpeg"
+          />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <!-- Iframe Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🪟</span>
+          <span>Iframe Test</span>
+        </div>
+        <p>Enable "Iframes" control to hide embedded content:</p>
+        <iframe src="https://www.example.com" title="Example Website"></iframe>
+      </div>
+
+      <!-- CSS & Animations Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🎨</span>
+          <span>CSS & Animations Test</span>
+        </div>
+        <p>
+          Enable "CSS Styles" to see raw HTML. Enable "Animations" to stop all
+          animations:
+        </p>
+        <div class="animated-box"></div>
+      </div>
+
+      <!-- Custom Fonts Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🔤</span>
+          <span>Custom Fonts Test</span>
+        </div>
+        <p style="font-family: 'Pacifico', cursive; font-size: 24px">
+          This text uses the Pacifico custom font. Enable "Custom Fonts" to use
+          system fonts only.
+        </p>
+      </div>
+
+      <!-- Background Images Test -->
+      <div
+        class="section"
+        style="
+          background-image: url('https://picsum.photos/800/200');
+          background-size: cover;
+          padding: 60px;
+          color: white;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        "
+      >
+        <div class="section-title" style="color: white">
+          <span class="section-icon">🌄</span>
+          <span>Background Images Test</span>
+        </div>
+        <p>
+          This section has a background image. Enable "Background Images" to
+          remove it.
+        </p>
+      </div>
+
+      <!-- Links Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🔗</span>
+          <span>Links Test</span>
+        </div>
+        <p>Enable "Links" control to disable all hyperlinks:</p>
+        <div class="link-grid">
+          <a href="https://google.com" target="_blank">Google</a>
+          <a href="https://github.com" target="_blank">GitHub</a>
+          <a href="https://stackoverflow.com" target="_blank">Stack Overflow</a>
+          <a href="https://developer.mozilla.org" target="_blank">MDN</a>
+        </div>
+      </div>
+
+      <!-- Forms Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">📝</span>
+          <span>Forms Test</span>
+        </div>
+        <p>Enable "Forms" control to disable all form inputs:</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea
+              id="message"
+              rows="4"
+              placeholder="Enter your message"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country">
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button type="submit">Submit Form</button>
+        </form>
+      </div>
+
+      <!-- JavaScript Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">⚡</span>
+          <span>JavaScript Test</span>
+        </div>
+        <p>Enable "JavaScript" control to block JavaScript execution:</p>
+        <div class="counter" id="counter">0</div>
+        <button onclick="incrementCounter()">Increment Counter</button>
+        <button onclick="alert('JavaScript is running!')">Test Alert</button>
+      </div>
+
+      <!-- Cookies Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🍪</span>
+          <span>Cookies Test</span>
+        </div>
+        <p>Enable "Cookies" control to block cookie access:</p>
+        <button onclick="setCookie()">Set Cookie</button>
+        <button onclick="getCookie()">Get Cookie</button>
+        <button onclick="deleteCookie()">Delete Cookie</button>
+        <div class="cookie-status" id="cookie-status">
+          Cookie status will appear here...
+        </div>
+      </div>
+
+      <!-- Notifications Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🔔</span>
+          <span>Notifications Test</span>
+        </div>
+        <p>Enable "Notifications" control to block browser notifications:</p>
+        <button onclick="requestNotification()">Request Notification</button>
+        <button onclick="showNotification()">Show Notification</button>
+      </div>
+
+      <!-- Popups Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">📱</span>
+          <span>Popups Test</span>
+        </div>
+        <p>Enable "Popups" control to block window.open() calls:</p>
+        <button onclick="openPopup()">Open Popup Window</button>
+        <button onclick="openTab()">Open New Tab</button>
+      </div>
+
+      <!-- Trackpad Navigation Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">👆</span>
+          <span>Trackpad Navigation Test</span>
+        </div>
+        <p>
+          Enable "Trackpad Navigation" control to prevent two-finger swipe
+          navigation:
+        </p>
+        <p style="color: #6b7280; font-size: 12px">
+          Try swiping left/right with two fingers on your trackpad. When
+          enabled, navigation gestures will be blocked.
+        </p>
+      </div>
+
+      <!-- CSP Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🛡️</span>
+          <span>CSP Test</span>
+        </div>
+        <p>
+          This page has a Content Security Policy meta tag. Enable "CSP" to
+          remove it.
+        </p>
+        <p style="color: #6b7280; font-size: 12px">
+          Check the page source to see the CSP meta tag in the head.
+        </p>
+      </div>
+
+      <!-- Extensions Test -->
+      <div class="section">
+        <div class="section-title">
+          <span class="section-icon">🧩</span>
+          <span>Other Extensions Test</span>
+        </div>
+        <p>
+          Enable "Other Extensions" control to temporarily disable all other
+          Chrome extensions:
+        </p>
+        <p style="color: #ef4444; font-weight: 600">
+          ⚠️ Important: Only previously enabled extensions will be restored when
+          disabled!
+        </p>
+        <button onclick="checkExtensions()">Check Extension Status</button>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript Test - Counter
+      let count = 0;
+      function incrementCounter() {
+        count++;
+        document.getElementById("counter").textContent = count;
+      }
+
+      // Auto-increment to show JavaScript is running
+      setInterval(() => {
+        if (count < 10) incrementCounter();
+      }, 2000);
+
+      // Forms Test
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert("Form submitted! (This won't work if Forms control is enabled)");
+      }
+
+      // Cookies Test
+      function setCookie() {
+        document.cookie = "testCookie=Hello from Aligner; path=/; max-age=3600";
+        getCookie();
+      }
+
+      function getCookie() {
+        const cookies = document.cookie;
+        const status = document.getElementById("cookie-status");
+        status.textContent =
+          cookies.length > 0
+            ? `Cookies: ${cookies}`
+            : "No cookies found (Cookies might be blocked!)";
+      }
+
+      function deleteCookie() {
+        document.cookie =
+          "testCookie=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        getCookie();
+      }
+
+      // Notifications Test
+      function requestNotification() {
+        if ("Notification" in window) {
+          Notification.requestPermission().then((permission) => {
+            alert(`Notification permission: ${permission}`);
+          });
+        } else {
+          alert("Notifications not supported");
+        }
+      }
+
+      function showNotification() {
+        if ("Notification" in window && Notification.permission === "granted") {
+          new Notification("Aligner Test", {
+            body: "This is a test notification!",
+            icon: "https://picsum.photos/128/128",
+          });
+        } else {
+          alert("Please enable notifications first");
+        }
+      }
+
+      // Popups Test
+      function openPopup() {
+        const popup = window.open(
+          "https://example.com",
+          "popup",
+          "width=600,height=400"
+        );
+        if (!popup) {
+          alert("Popup blocked! (Either by browser or Aligner Page Controls)");
+        }
+      }
+
+      function openTab() {
+        const tab = window.open("https://example.com", "_blank");
+        if (!tab) {
+          alert("Tab blocked! (Either by browser or Aligner Page Controls)");
+        }
+      }
+
+      // Extensions Test
+      function checkExtensions() {
+        alert(
+          'Use chrome://extensions/ to check extension status manually.\n\nWhen "Other Extensions" is enabled in Aligner Page Controls, all other extensions should be disabled.\n\nWhen disabled, only previously active extensions will be restored!'
+        );
+      }
+
+      // Page load message
+      console.log("✅ Page loaded successfully - JavaScript is running!");
+      console.log("📋 Test Page Controls features:");
+      console.log("  1. Images - Hide all images");
+      console.log("  2. Videos - Hide and pause videos");
+      console.log("  3. Audio - Mute and hide audio");
+      console.log("  4. Iframes - Hide embedded content");
+      console.log("  5. CSS - Remove all styling");
+      console.log("  6. Animations - Stop all animations");
+      console.log("  7. Custom Fonts - Use system fonts");
+      console.log("  8. Background Images - Remove backgrounds");
+      console.log("  9. Links - Disable all hyperlinks");
+      console.log(" 10. Forms - Disable form inputs");
+      console.log(" 11. JavaScript - Block JS execution");
+      console.log(" 12. Cookies - Block cookie access");
+      console.log(" 13. Notifications - Block notifications");
+      console.log(" 14. Popups - Block window.open()");
+      console.log(" 15. Trackpad Navigation - Block gestures");
+      console.log(" 16. CSP - Remove security policy");
+      console.log(" 17. Other Extensions - Disable temporarily");
+    </script>
+  </body>
+</html>

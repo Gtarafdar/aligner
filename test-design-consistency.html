@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Consistency Checker Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: #f5f5f5;
+      }
+
+      /* Typography Inconsistencies */
+      h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      h1.alternate {
+        font-size: 38px;
+        font-weight: 600;
+      } /* Similar but different */
+
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      h2.alternate {
+        font-size: 30px;
+        font-weight: 700;
+      } /* Different size */
+
+      h3 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      h3.alternate {
+        font-size: 24px;
+        font-weight: 600;
+      } /* Different */
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+      p.large {
+        font-size: 18px;
+        line-height: 1.6;
+      } /* Inconsistent */
+      p.small {
+        font-size: 14px;
+        line-height: 1.4;
+      } /* Inconsistent */
+
+      /* Color Inconsistencies */
+      .text-primary {
+        color: #2563eb;
+      }
+      .text-primary-alt {
+        color: #2564ec;
+      } /* Almost same, but different */
+      .text-secondary {
+        color: #10b981;
+      }
+      .text-secondary-alt {
+        color: #11ba82;
+      } /* Slightly different */
+      .text-dark {
+        color: #1f2937;
+      }
+      .text-dark-alt {
+        color: #212a38;
+      } /* Similar gray */
+      .text-danger {
+        color: #ef4444;
+      }
+      .text-warning {
+        color: #f59e0b;
+      }
+      .text-info {
+        color: #3b82f6;
+      }
+      .text-success {
+        color: #22c55e;
+      }
+      .text-muted {
+        color: #6b7280;
+      }
+      .text-muted-alt {
+        color: #6c7381;
+      } /* Very similar */
+
+      /* Background Color Inconsistencies */
+      .bg-primary {
+        background: #2563eb;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      .bg-primary-alt {
+        background: #2665ed;
+        padding: 12px;
+        margin-bottom: 10px;
+      } /* Close */
+      .bg-light {
+        background: #f9fafb;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      .bg-light-alt {
+        background: #fafbfc;
+        padding: 12px;
+        margin-bottom: 10px;
+      } /* Very close */
+      .bg-gray {
+        background: #e5e7eb;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      .bg-gray-alt {
+        background: #e6e8ec;
+        padding: 12px;
+        margin-bottom: 10px;
+      } /* Similar */
+
+      /* Spacing Inconsistencies */
+      .section {
+        padding: 20px;
+        margin-bottom: 16px;
+        background: white;
+        border-radius: 8px;
+      }
+      .section-alt {
+        padding: 22px;
+        margin-bottom: 18px;
+        background: white;
+        border-radius: 8px;
+      }
+      .section-large {
+        padding: 32px;
+        margin-bottom: 24px;
+        background: white;
+        border-radius: 8px;
+      }
+
+      .card {
+        padding: 16px;
+        margin: 8px;
+        background: white;
+        border: 1px solid #e5e7eb;
+      }
+      .card-alt {
+        padding: 18px;
+        margin: 10px;
+        background: white;
+        border: 1px solid #e5e7eb;
+      }
+      .card-compact {
+        padding: 12px;
+        margin: 6px;
+        background: white;
+        border: 1px solid #e5e7eb;
+      }
+
+      .button {
+        padding: 10px 20px;
+        margin-right: 8px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .button-alt {
+        padding: 12px 22px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .test-info {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        color: white;
+        padding: 24px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="test-info">
+        <h1>Ӫ Design Consistency Checker Test Page</h1>
+        <p style="margin: 0; font-size: 14px; opacity: 0.9">
+          This page contains intentional design inconsistencies to test the
+          Design Consistency Checker. Click the extension icon → Design Check to
+          scan for issues.
+        </p>
+      </div>
+
+      <div class="section">
+        <h1>Typography Inconsistencies</h1>
+        <p>This is a regular paragraph with 16px font size.</p>
+        <p class="large">This is a larger paragraph with 18px font size.</p>
+        <p class="small">This is a smaller paragraph with 14px font size.</p>
+
+        <h2>Heading 2 Regular (28px)</h2>
+        <h2 class="alternate">Heading 2 Alternate (30px)</h2>
+
+        <h3>Heading 3 Regular (22px)</h3>
+        <h3 class="alternate">Heading 3 Alternate (24px)</h3>
+      </div>
+
+      <div class="section-alt">
+        <h1 class="alternate">Another H1 with Different Size (38px)</h1>
+        <p>Notice the inconsistent spacing and padding on this section.</p>
+      </div>
+
+      <div class="section-large">
+        <h2>Color Inconsistencies</h2>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          "
+        >
+          <div class="card">
+            <p class="text-primary">Primary Blue (#2563eb)</p>
+            <p class="text-primary-alt">Almost Primary Blue (#2564ec)</p>
+          </div>
+
+          <div class="card-alt">
+            <p class="text-secondary">Secondary Green (#10b981)</p>
+            <p class="text-secondary-alt">Almost Secondary Green (#11ba82)</p>
+          </div>
+
+          <div class="card-compact">
+            <p class="text-dark">Dark Gray (#1f2937)</p>
+            <p class="text-dark-alt">Almost Dark Gray (#212a38)</p>
+          </div>
+
+          <div class="card">
+            <p class="text-muted">Muted Gray (#6b7280)</p>
+            <p class="text-muted-alt">Almost Muted Gray (#6c7381)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Background Color Inconsistencies</h2>
+        <div class="bg-primary">
+          <span style="color: white">Primary Background</span>
+        </div>
+        <div class="bg-primary-alt">
+          <span style="color: white">Almost Primary Background</span>
+        </div>
+
+        <div class="bg-light">Light Background</div>
+        <div class="bg-light-alt">Almost Light Background</div>
+
+        <div class="bg-gray">Gray Background</div>
+        <div class="bg-gray-alt">Almost Gray Background</div>
+      </div>
+
+      <div class="section-alt">
+        <h2>Spacing Inconsistencies</h2>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <button class="button bg-primary" style="color: white">
+            Button 1 (10px 20px)
+          </button>
+          <button class="button-alt bg-primary-alt" style="color: white">
+            Button 2 (12px 22px)
+          </button>
+          <button class="button bg-secondary" style="color: white">
+            Button 3 (10px 20px)
+          </button>
+        </div>
+
+        <p style="margin-top: 20px">Notice different padding values:</p>
+        <ul>
+          <li>Sections use 20px, 22px, and 32px padding</li>
+          <li>Cards use 16px, 18px, and 12px padding</li>
+          <li>Buttons use 10px and 12px vertical padding</li>
+          <li>Various margin values: 8px, 10px, 16px, 18px, 24px</li>
+        </ul>
+      </div>
+
+      <div class="section-large">
+        <h2>Multiple Color Usage</h2>
+        <p class="text-danger">Danger text</p>
+        <p class="text-warning">Warning text</p>
+        <p class="text-info">Info text</p>
+        <p class="text-success">Success text</p>
+        <p class="text-primary">Primary text</p>
+        <p class="text-secondary">Secondary text</p>
+        <p class="text-dark">Dark text</p>
+        <p class="text-muted">Muted text</p>
+        <p>Regular black text</p>
+      </div>
+
+      <div class="section">
+        <h2>Testing Instructions</h2>
+        <ol style="line-height: 1.8">
+          <li>
+            <strong>Load Extension:</strong> Ensure Aligner extension is
+            installed and active
+          </li>
+          <li>
+            <strong>Open Panel:</strong> Click extension icon → "Design Check"
+            button (Ӫ icon)
+          </li>
+          <li>
+            <strong>Configure Settings:</strong>
+            <ul>
+              <li>Go to Settings tab</li>
+              <li>Adjust tolerance levels (try strict vs. lenient)</li>
+              <li>Return to Controls tab</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Run Scan:</strong> Check all three boxes (Typography,
+            Colors, Spacing) and click "Scan for Inconsistencies"
+          </li>
+          <li>
+            <strong>Review Results:</strong> Check the Results tab for detected
+            issues
+          </li>
+          <li>
+            <strong>Test UI:</strong>
+            <ul>
+              <li>Drag panel around the screen</li>
+              <li>Minimize and restore using the "−" button</li>
+              <li>Close panel using the "×" button</li>
+              <li>Re-open from extension popup</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Test Tab Switching:</strong> Click between Controls,
+            Results, and Settings tabs
+          </li>
+          <li>
+            <strong>Adjust Tolerance:</strong> Change tolerance values and
+            re-scan to see different results
+          </li>
+        </ol>
+      </div>
+
+      <div
+        class="section-alt"
+        style="
+          background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+          border: 2px solid #8b5cf6;
+        "
+      >
+        <h2 style="color: #7c3aed">Expected Results</h2>
+        <div
+          style="
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+          "
+        >
+          <h3>Typography Issues:</h3>
+          <ul>
+            <li>H1 elements use 2-3 different font sizes (36px, 38px)</li>
+            <li>H2 elements use 2 different sizes (28px, 30px)</li>
+            <li>H3 elements use 2 different sizes (22px, 24px)</li>
+            <li>P elements use 3 different sizes (14px, 16px, 18px)</li>
+            <li>Multiple font weights for same elements</li>
+          </ul>
+
+          <h3>Color Issues:</h3>
+          <ul>
+            <li>Similar blues: #2563eb vs #2564ec vs #2665ed</li>
+            <li>Similar greens: #10b981 vs #11ba82</li>
+            <li>Similar grays: #1f2937 vs #212a38, #6b7280 vs #6c7381</li>
+            <li>Similar light backgrounds: #f9fafb vs #fafbfc</li>
+            <li>Using 9+ different text colors (high count warning)</li>
+          </ul>
+
+          <h3>Spacing Issues:</h3>
+          <ul>
+            <li>Padding: 10px, 12px, 16px, 18px, 20px, 22px, 24px, 32px</li>
+            <li>Margins: 6px, 8px, 10px, 12px, 16px, 18px, 24px</li>
+            <li>
+              Too many unique spacing values (should be using spacing scale)
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <footer
+        class="section"
+        style="margin-top: 40px; text-align: center; color: #6b7280"
+      >
+        <p style="margin: 0">Aligner - Design Consistency Checker Test Page</p>
+        <p style="margin: 8px 0 0 0; font-size: 12px">
+          Version 1.0 - All inconsistencies are intentional for testing
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      console.log("Design Consistency Test Page Loaded");
+      console.log("Expected Issues:");
+      console.log(
+        "- Typography: Multiple H1/H2/H3/P sizes with slight variations"
+      );
+      console.log(
+        "- Colors: 9+ text colors, similar shades that differ slightly"
+      );
+      console.log("- Spacing: 8+ different padding values, 7+ margin values");
+    </script>
+  </body>
+</html>

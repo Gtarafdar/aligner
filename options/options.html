@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="options-container">
+      <header class="options-header">
+        <h1>Aligner Settings</h1>
+        <p class="subtitle">Configure visual design tools for your workflow</p>
+      </header>
+
+      <div class="options-content">
+        <nav class="options-nav">
+          <button class="nav-item active" data-section="general">
+            General
+          </button>
+          <button class="nav-item" data-section="workspace">Workspace</button>
+          <button class="nav-item" data-section="rulers">Rulers</button>
+          <button class="nav-item" data-section="guides">Guides</button>
+          <button class="nav-item" data-section="grids">Grids</button>
+          <button class="nav-item" data-section="measurement">
+            Measurement
+          </button>
+          <button class="nav-item" data-section="drawing">Drawing</button>
+          <button class="nav-item" data-section="media">Media Manager</button>
+          <button class="nav-item" data-section="colorPicker">
+            Color Picker
+          </button>
+          <button class="nav-item" data-section="paletteGenerator">
+            Palette Generator
+          </button>
+          <button class="nav-item" data-section="cacheCleaner">
+            Cache Cleaner
+          </button>
+          <button class="nav-item" data-section="pageLoadTimer">
+            Page Load Timer
+          </button>
+          <button class="nav-item" data-section="shortcuts">Shortcuts</button>
+        </nav>
+
+        <main class="options-main">
+          <!-- General Section -->
+          <section class="section active" id="general-section">
+            <h2>General Settings</h2>
+            <p class="section-description">
+              Control global extension behavior and appearance
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Show Tooltips</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="tooltips-enabled" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Display helpful tooltips when hovering over tools
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Show Onboarding Tips</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="onboarding-enabled" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Show first-time tips for new features
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Workspace Section -->
+          <section class="section" id="workspace-section">
+            <h2>Workspace</h2>
+            <p class="section-description">
+              Choose which tool groups appear in the popup. Hiding a group does
+              not delete settings or turn engines off permanently — it only
+              declutter the daily popup.
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Quick presets</label>
+                </div>
+                <p class="setting-help">
+                  One-click workspace layouts for common workflows.
+                </p>
+                <div class="workspace-presets" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+                  <button type="button" class="button secondary" data-workspace-preset="all">All tools</button>
+                  <button type="button" class="button secondary" data-workspace-preset="designer">Designer</button>
+                  <button type="button" class="button secondary" data-workspace-preset="wordpress">WordPress</button>
+                  <button type="button" class="button secondary" data-workspace-preset="qa">QA</button>
+                  <button type="button" class="button secondary" data-workspace-preset="minimal">Minimal</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Layout tools</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-layout" data-popup-group="layout" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Rulers, Guides, Grids, Measure, Drawing</p>
+              </div>
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Inspect tools</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-inspect" data-popup-group="inspect" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Inspect, Responsive, Wireframe</p>
+              </div>
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Color &amp; media</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-colorMedia" data-popup-group="colorMedia" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Color Picker, Palette, Media Manager</p>
+              </div>
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Quality tools</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-quality" data-popup-group="quality" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Accessibility, Design Check, Page Speed, Design System</p>
+              </div>
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Utilities</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-utilities" data-popup-group="utilities" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Cache Cleaner, Page Load Timer, Page Controls</p>
+              </div>
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">WordPress tools</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="ui-group-wordpress" data-popup-group="wordpress" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">WP Tools panel and WordPress control toggles</p>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Aligner Home</label>
+                </div>
+                <p class="setting-help">
+                  Open the welcome dashboard for feature guides and onboarding.
+                </p>
+                <button type="button" class="button" id="open-aligner-home-options" style="margin-top:10px;">
+                  Open Aligner Home
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Rulers Section -->
+          <section class="section" id="rulers-section">
+            <h2>Rulers</h2>
+            <p class="section-description">
+              Configure horizontal and vertical rulers
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Rulers</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="rulers-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Show pixel rulers at the top and left edges
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Color</label>
+                <div class="color-input-group">
+                  <input type="color" id="rulers-color" value="#2563eb" />
+                  <input
+                    type="text"
+                    class="color-text"
+                    value="#2563eb"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Opacity</label>
+                <div class="slider-input-group">
+                  <input
+                    type="range"
+                    id="rulers-opacity"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value="0.8"
+                  />
+                  <span class="slider-value">80%</span>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Thickness (px)</label>
+                <input
+                  type="number"
+                  id="rulers-thickness"
+                  min="10"
+                  max="50"
+                  value="20"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Tick Density</label>
+                <input
+                  type="number"
+                  id="rulers-tick-density"
+                  min="5"
+                  max="50"
+                  value="10"
+                  class="number-input"
+                />
+                <p class="setting-help">Space between tick marks in pixels</p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Units</label>
+                <select id="rulers-units" class="select-input">
+                  <option value="px">Pixels (px)</option>
+                  <option value="rem">Root em (rem)</option>
+                  <option value="em">Em (em)</option>
+                </select>
+                <p class="setting-help">
+                  Choose the unit for ruler tick marks. Rem/em based on root
+                  font-size
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Custom Origin (0,0)</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="rulers-show-origin" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  When enabled, click on the page to set a custom origin point
+                  for rulers. This allows you to measure distances relative to
+                  any point on the page.
+                </p>
+              </div>
+
+              <div
+                class="setting-item"
+                id="rulers-origin-display"
+                style="display: none"
+              >
+                <label class="setting-label">Origin Point</label>
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <span
+                    id="rulers-origin-coords"
+                    style="color: #6b7280; font-size: 13px"
+                    >X: 0px, Y: 0px</span
+                  >
+                  <button id="rulers-reset-origin" class="btn-secondary">
+                    Reset Origin
+                  </button>
+                </div>
+                <p class="setting-help">
+                  Click on the page while rulers are active to set a new origin
+                  point
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Guides Section -->
+          <section class="section" id="guides-section">
+            <h2>Guides</h2>
+            <p class="section-description">Configure alignment guides</p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Guides</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="guides-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Show draggable alignment guides</p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Color</label>
+                <div class="color-input-group">
+                  <input type="color" id="guides-color" value="#10b981" />
+                  <input
+                    type="text"
+                    class="color-text"
+                    value="#10b981"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Opacity</label>
+                <div class="slider-input-group">
+                  <input
+                    type="range"
+                    id="guides-opacity"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value="0.7"
+                  />
+                  <span class="slider-value">70%</span>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Line Thickness (px)</label>
+                <input
+                  type="number"
+                  id="guides-thickness"
+                  min="1"
+                  max="10"
+                  value="1"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Snap to Pixel</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="guides-snap" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Automatically snap guides to whole pixels
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Lock Guides</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="guides-locked" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Prevent guides from being moved or deleted
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Grids Section -->
+          <section class="section" id="grids-section">
+            <h2>Grids</h2>
+            <p class="section-description">Configure layout grids</p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Grids</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="grids-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Show layout grid overlays</p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Grid Type</label>
+                <select id="grids-type" class="select-input">
+                  <option value="column">Column Grid</option>
+                  <option value="baseline">Baseline Grid</option>
+                  <option value="modular">Modular Grid</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Columns</label>
+                <input
+                  type="number"
+                  id="grids-columns"
+                  min="1"
+                  max="24"
+                  value="12"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Spacing (px)</label>
+                <input
+                  type="number"
+                  id="grids-spacing"
+                  min="1"
+                  max="100"
+                  value="8"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Gutter (px)</label>
+                <input
+                  type="number"
+                  id="grids-gutter"
+                  min="0"
+                  max="100"
+                  value="16"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Margins (px)</label>
+                <input
+                  type="number"
+                  id="grids-margins"
+                  min="0"
+                  max="200"
+                  value="24"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Color</label>
+                <div class="color-input-group">
+                  <input type="color" id="grids-color" value="#f59e0b" />
+                  <input
+                    type="text"
+                    class="color-text"
+                    value="#f59e0b"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Opacity</label>
+                <div class="slider-input-group">
+                  <input
+                    type="range"
+                    id="grids-opacity"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value="0.3"
+                  />
+                  <span class="slider-value">30%</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Measurement Section -->
+          <section class="section" id="measurement-section">
+            <h2>Measurement Tools</h2>
+            <p class="section-description">
+              Configure distance measurement tools
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Measurement</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="measurement-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Measure distances between points</p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Units</label>
+                <select id="measurement-units" class="select-input">
+                  <option value="px">Pixels (px)</option>
+                  <option value="rem">REM</option>
+                  <option value="em">EM</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Snap to Elements</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="measurement-snap" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Snap measurement points to element edges
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Show Device Pixels</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="measurement-device-px" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Display device pixel ratio adjusted values
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Drawing Section -->
+          <section class="section" id="drawing-section">
+            <h2>Drawing Tools</h2>
+            <p class="section-description">
+              Configure annotation and drawing tools
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Drawing</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="drawing-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">Draw shapes and annotations</p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Color</label>
+                <div class="color-input-group">
+                  <input type="color" id="drawing-color" value="#ef4444" />
+                  <input
+                    type="text"
+                    class="color-text"
+                    value="#ef4444"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Opacity</label>
+                <div class="slider-input-group">
+                  <input
+                    type="range"
+                    id="drawing-opacity"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value="0.6"
+                  />
+                  <span class="slider-value">60%</span>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Stroke Width (px)</label>
+                <input
+                  type="number"
+                  id="drawing-stroke-width"
+                  min="1"
+                  max="20"
+                  value="2"
+                  class="number-input"
+                />
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Lock Drawings</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="drawing-locked" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Prevent drawings from being edited or deleted
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Media Manager Section -->
+          <section class="section" id="media-section">
+            <h2>Media Manager</h2>
+            <p class="section-description">
+              Extract and download media assets from websites
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Media Manager</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="media-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Show Media Manager panel to scan and download images, SVGs,
+                  videos, fonts, icons, and Lottie files
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Auto-scan on Activation</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="media-auto-scan" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Automatically scan the page for media assets when Media
+                  Manager is activated
+                </p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <h4>What Media Manager Can Find:</h4>
+              <ul style="margin: 12px 0 0 20px; line-height: 1.8">
+                <li>
+                  <strong>Images:</strong> &lt;img&gt; tags, background images,
+                  srcset, picture elements
+                </li>
+                <li>
+                  <strong>SVG:</strong> Inline SVG, external SVG files, SVG
+                  backgrounds
+                </li>
+                <li>
+                  <strong>Videos:</strong> &lt;video&gt; tags, source elements,
+                  embedded videos (YouTube, Vimeo)
+                </li>
+                <li>
+                  <strong>Fonts:</strong> @font-face declarations (WOFF, WOFF2,
+                  TTF, OTF)
+                </li>
+                <li>
+                  <strong>Icons:</strong> Favicons, apple-touch-icon, manifest
+                  icons, og:image
+                </li>
+                <li>
+                  <strong>Lottie:</strong> JSON animation files, Lottie player
+                  elements
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="info-box"
+              style="
+                margin-top: 20px;
+                background: #fef3c7;
+                border-color: #fbbf24;
+              "
+            >
+              <h4 style="color: #92400e">💡 Usage Tips:</h4>
+              <ul
+                style="margin: 12px 0 0 20px; line-height: 1.8; color: #78350f"
+              >
+                <li>
+                  Click "Scan Page" to detect all media on the current page
+                </li>
+                <li>Use tabs to filter by media type</li>
+                <li>Preview, copy URL, or download individual items</li>
+                <li>
+                  Use "Download All" to batch download all items of a type
+                </li>
+                <li>Drag the panel to reposition it on the page</li>
+                <li>Minimize the panel to a floating button when not in use</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Color Picker Section -->
+          <section class="section" id="colorPicker-section">
+            <h2>Color Picker</h2>
+            <p class="section-description">
+              Pick colors from any element on the page and manage color palettes
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Color Picker</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="colorPicker-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Show Color Picker panel to pick colors from any webpage
+                  element
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Default Color Format</label>
+                <select id="colorPicker-format" class="setting-select">
+                  <option value="hex">HEX (#RRGGBB)</option>
+                  <option value="rgb">RGB (r, g, b)</option>
+                  <option value="hsl">HSL (h, s%, l%)</option>
+                </select>
+                <p class="setting-help">
+                  Default format for copied color values
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <label class="setting-label">Max Color History</label>
+                <input
+                  type="number"
+                  id="colorPicker-maxHistory"
+                  class="setting-input"
+                  value="50"
+                  min="10"
+                  max="100"
+                  step="10"
+                />
+                <p class="setting-help">
+                  Maximum number of colors to keep in history (10-100)
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Auto-open Panel</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="colorPicker-autoOpen" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Automatically open Color Picker panel when feature is enabled
+                </p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <h4>How to Use Color Picker:</h4>
+              <ol style="margin: 12px 0 0 20px; line-height: 1.8">
+                <li>
+                  Click the "✎ Color Picker" button in the toolbar or popup
+                </li>
+                <li>Click "🎯 Pick Color from Page" in the panel</li>
+                <li>Hover over any element to preview its color</li>
+                <li>Click the element to pick and save the color</li>
+                <li>Click any format (HEX/RGB/HSL) to copy to clipboard</li>
+                <li>Save color collections as named palettes</li>
+              </ol>
+              <p style="margin-top: 12px; color: #6b7280">
+                <strong>What you can pick:</strong> Background colors, text
+                colors, border colors, gradient colors, and more!
+              </p>
+            </div>
+          </section>
+
+          <section class="section" id="paletteGenerator-section">
+              <h2>Palette Generator</h2>
+              <p class="section-description">
+                Extract and analyze colors used on any webpage to build color
+                palettes
+              </p>
+
+              <div class="setting-group">
+                <div class="setting-item">
+                  <div class="setting-header">
+                    <label class="setting-label"
+                      >Enable Palette Generator</label
+                    >
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="paletteGenerator-enabled" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <p class="setting-help">
+                    Show Palette Generator panel to extract colors from webpages
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <label class="setting-label">Scan Scope</label>
+                  <select
+                    id="paletteGenerator-scanScope"
+                    class="setting-select"
+                  >
+                    <option value="visible">Visible Area Only</option>
+                    <option value="all">Entire Page (All DOM)</option>
+                  </select>
+                  <p class="setting-help">
+                    Choose whether to scan only visible elements or the entire
+                    DOM
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <label class="setting-label">Include Color Types</label>
+                  <div
+                    style="
+                      margin-top: 8px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 8px;
+                    "
+                  >
+                    <label style="display: flex; align-items: center; gap: 8px">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-includeText"
+                        checked
+                      />
+                      <span>Text Colors</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-includeBackground"
+                        checked
+                      />
+                      <span>Background Colors</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-includeBorder"
+                        checked
+                      />
+                      <span>Border Colors</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-includeSvg"
+                        checked
+                      />
+                      <span>SVG Fill/Stroke Colors</span>
+                    </label>
+                  </div>
+                  <p class="setting-help">
+                    Select which types of colors to extract from elements
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <label class="setting-label"
+                    >Max Colors:
+                    <span id="paletteGenerator-maxColors-value">48</span></label
+                  >
+                  <input
+                    type="range"
+                    id="paletteGenerator-maxColors"
+                    class="setting-slider"
+                    value="48"
+                    min="12"
+                    max="96"
+                    step="6"
+                  />
+                  <p class="setting-help">
+                    Maximum number of unique colors to include in palette
+                    (12-96)
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <label class="setting-label"
+                    >Grouping Tolerance:
+                    <span id="paletteGenerator-groupingTolerance-value"
+                      >8</span
+                    ></label
+                  >
+                  <input
+                    type="range"
+                    id="paletteGenerator-groupingTolerance"
+                    class="setting-slider"
+                    value="8"
+                    min="1"
+                    max="20"
+                    step="1"
+                  />
+                  <p class="setting-help">
+                    How similar colors must be to group together (1=strict,
+                    20=loose)
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-header">
+                    <label class="setting-label"
+                      >Ignore Transparent Colors</label
+                    >
+                    <label class="toggle-switch">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-ignoreTransparent"
+                        checked
+                      />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <p class="setting-help">
+                    Skip fully transparent colors (alpha = 0)
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-header">
+                    <label class="setting-label">Ignore White & Black</label>
+                    <label class="toggle-switch">
+                      <input
+                        type="checkbox"
+                        id="paletteGenerator-ignoreWhiteBlack"
+                      />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <p class="setting-help">
+                    Skip pure white (#FFF) and pure black (#000) colors
+                  </p>
+                </div>
+
+                <div class="setting-item">
+                  <label class="setting-label">Max Elements to Scan</label>
+                  <input
+                    type="number"
+                    id="paletteGenerator-maxElementsScan"
+                    class="setting-input"
+                    value="10000"
+                    min="1000"
+                    max="50000"
+                    step="1000"
+                  />
+                  <p class="setting-help">
+                    Performance limit: stop scanning after this many elements
+                    (1000-50000)
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-box">
+                <h4>How to Use Palette Generator:</h4>
+                <ol style="margin: 12px 0 0 20px; line-height: 1.8">
+                  <li>
+                    Enable the feature and click the Palette button in the popup
+                  </li>
+                  <li>Click "Scan Page" in the panel to extract colors</li>
+                  <li>View the generated palette organized by similarity</li>
+                  <li>Copy individual colors by clicking on swatches</li>
+                  <li>
+                    Export entire palette as CSS variables, JSON, or plain text
+                  </li>
+                  <li>Save palettes for later reference with custom names</li>
+                </ol>
+              </div>
+            </section>
+          </section>
+
+          <!-- Cache Cleaner Section -->
+          <section class="section" id="cacheCleaner-section">
+            <h2>Cache Cleaner</h2>
+            <p class="section-description">
+              Clear browsing data for the current website
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Enable Cache Cleaner</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-enabled" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Show cache cleaner panel for clearing site-specific data
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Auto Reload Page</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-autoReload" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Automatically reload the page after clearing data
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Show Floating Button</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-showFloatingButton" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Display a quick-access floating button on all pages
+                </p>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <h3>Data Types to Clear</h3>
+              <p class="setting-help" style="margin-bottom: 16px;">
+                Select which types of data to clear when using the cache cleaner
+              </p>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Cache</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-cache" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Temporary storage for faster page loading
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Cache Storage</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-cacheStorage" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Advanced caching for offline access
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Cookies</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-cookies" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Session management and tracking data
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">File Systems</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-fileSystems" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Local file storage allocated by browser
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Indexed DB</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-indexedDB" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Structured data storage for offline access
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Local Storage</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-localStorage" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Persistent data across browser sessions
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Service Workers</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-serviceWorkers" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Background scripts for offline functionality
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">Plugin Data</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-pluginData" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Browser plugin data (may be restricted)
+                </p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label class="setting-label">WebSQL</label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cacheCleaner-dataTypes-webSQL" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <p class="setting-help">
+                  Deprecated web database technology
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Page Load Timer Section -->
+          <section class="section" id="pageLoadTimer-section">
+            <h2>Page Load Timer</h2>
+            <p class="section-description">
+              Measure and analyze page load performance using the Navigation Timing API. Track key metrics like DOM Content Loaded, First Paint, and more.
+            </p>
+
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label for="pageLoadTimer-enabled" class="setting-label">
+                    <span class="setting-icon">⏱</span>
+                    <div>
+                      <div class="setting-title">Enable Page Load Timer</div>
+                      <div class="setting-description">
+                        Activate page load performance measurement
+                      </div>
+                    </div>
+                  </label>
+                  <label class="toggle">
+                    <input type="checkbox" id="pageLoadTimer-enabled" />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label for="pageLoadTimer-autoShow" class="setting-label">
+                    <span class="setting-icon">🎯</span>
+                    <div>
+                      <div class="setting-title">Auto-Show Panel</div>
+                      <div class="setting-description">
+                        Automatically display metrics panel after page load
+                      </div>
+                    </div>
+                  </label>
+                  <label class="toggle">
+                    <input type="checkbox" id="pageLoadTimer-autoShow" />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label
+                    for="pageLoadTimer-showFloatingButton"
+                    class="setting-label"
+                  >
+                    <span class="setting-icon">📍</span>
+                    <div>
+                      <div class="setting-title">Show Floating Button</div>
+                      <div class="setting-description">
+                        Display a quick-access floating button on all pages
+                      </div>
+                    </div>
+                  </label>
+                  <label class="toggle">
+                    <input
+                      type="checkbox"
+                      id="pageLoadTimer-showFloatingButton"
+                    />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <label for="pageLoadTimer-historyLimit" class="setting-label">
+                    <span class="setting-icon">📊</span>
+                    <div>
+                      <div class="setting-title">History Limit</div>
+                      <div class="setting-description">
+                        Number of historical measurements to keep (1-50)
+                      </div>
+                    </div>
+                  </label>
+                  <input
+                    type="number"
+                    id="pageLoadTimer-historyLimit"
+                    min="1"
+                    max="50"
+                    value="10"
+                    class="number-input"
+                    style="
+                      width: 80px;
+                      padding: 8px 12px;
+                      border: 1px solid #d1d5db;
+                      border-radius: 6px;
+                      font-size: 13px;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Shortcuts Section -->
+          <section class="section" id="shortcuts-section">
+            <h2>Keyboard Shortcuts</h2>
+            <p class="section-description">
+              Customize keyboard shortcuts for quick access
+            </p>
+
+            <div class="setting-group">
+              <div class="shortcut-info">
+                <div class="shortcut-row">
+                  <span class="shortcut-label">Toggle Extension</span>
+                  <kbd class="shortcut-key">Ctrl+Shift+L</kbd>
+                  <kbd class="shortcut-key mac">⌘+Shift+L</kbd>
+                </div>
+                <div class="shortcut-row">
+                  <span class="shortcut-label">Toggle Rulers</span>
+                  <kbd class="shortcut-key">Ctrl+Shift+R</kbd>
+                  <kbd class="shortcut-key mac">⌘+Shift+R</kbd>
+                </div>
+                <div class="shortcut-row">
+                  <span class="shortcut-label">Toggle Grids</span>
+                  <kbd class="shortcut-key">Ctrl+Shift+G</kbd>
+                  <kbd class="shortcut-key mac">⌘+Shift+G</kbd>
+                </div>
+                <div class="shortcut-row">
+                  <span class="shortcut-label">Toggle Measurement</span>
+                  <kbd class="shortcut-key">Ctrl+Shift+M</kbd>
+                  <kbd class="shortcut-key mac">⌘+Shift+M</kbd>
+                </div>
+              </div>
+              <p class="setting-help">
+                To customize shortcuts, visit chrome://extensions/shortcuts
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <footer class="options-footer">
+        <button class="button secondary" id="reset-button">
+          Reset to Defaults
+        </button>
+        <button
+          class="button secondary"
+          id="export-button"
+          style="margin-left: 8px"
+        >
+          📤 Export Settings
+        </button>
+        <button
+          class="button secondary"
+          id="import-button"
+          style="margin-left: 8px"
+        >
+          📥 Import Settings
+        </button>
+        <input
+          type="file"
+          id="import-file"
+          accept=".json"
+          style="display: none"
+        />
+        <div class="footer-spacer"></div>
+        <span class="save-status" id="save-status">All changes saved</span>
+      </footer>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

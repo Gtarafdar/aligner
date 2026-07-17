@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lottie Test - Tucker Harris Style</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background: #f9fafb;
+      }
+      h1 {
+        color: #1f2937;
+        margin-bottom: 10px;
+      }
+      .instructions {
+        background: #dbeafe;
+        border-left: 4px solid #2563eb;
+        padding: 16px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        color: #1e40af;
+      }
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .lottie-container {
+        width: 300px;
+        height: 300px;
+        background: #f3f4f6;
+        border-radius: 8px;
+        margin: 16px 0;
+      }
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎨 Lottie Detection Test - Tucker Harris Style</h1>
+
+    <div class="instructions">
+      <strong>📋 Instructions:</strong><br />
+      1. Open Aligner extension (Ctrl+Shift+M)<br />
+      2. Click Media Manager<br />
+      3. Go to "Lottie" tab<br />
+      4. Click buttons to load animations<br />
+      5. Check console for hook messages
+    </div>
+
+    <!-- Test 1: Tucker Harris style container (like his portfolio) -->
+    <div class="test-section">
+      <h2>Test 1: Container-based Loading (Tucker Harris Style)</h2>
+      <p>This simulates how Tucker Harris's portfolio loads Lottie</p>
+
+      <div id="lottie_adam_container">
+        <div id="lottie_adam" class="lottie-container"></div>
+      </div>
+
+      <button onclick="loadLottieAdam()">Load Adam Animation</button>
+    </div>
+
+    <!-- Test 2: Another container -->
+    <div class="test-section">
+      <h2>Test 2: Thinking Animation</h2>
+
+      <div id="lottie_thinker" class="lottie-container"></div>
+
+      <button onclick="loadLottieThinker()">Load Thinker Animation</button>
+    </div>
+
+    <!-- Test 3: Direct path loading -->
+    <div class="test-section">
+      <h2>Test 3: Path-based Loading</h2>
+
+      <div id="lottie_path" class="lottie-container"></div>
+
+      <button onclick="loadLottiePath()">Load from Path</button>
+    </div>
+
+    <div
+      style="
+        margin-top: 40px;
+        padding: 20px;
+        background: #fef3c7;
+        border-radius: 8px;
+      "
+    >
+      <strong>⚠️ Debug Info:</strong>
+      <ul>
+        <li>Check browser console (F12) for hook messages</li>
+        <li>Look for "[Aligner Lottie]" logs</li>
+        <li>After loading, check Media Manager > Lottie tab</li>
+        <li>All animations should be detected</li>
+      </ul>
+    </div>
+
+    <script>
+      console.log(
+        "[Test Page] Loaded, lottie-web available:",
+        typeof lottie !== "undefined"
+      );
+
+      function loadLottieAdam() {
+        console.log("[Test Page] Loading Adam animation...");
+
+        // Simulate Tucker Harris's style
+        lottie.loadAnimation({
+          container: document.getElementById("lottie_adam"),
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "https://assets3.lottiefiles.com/packages/lf20_UJNc2t.json",
+        });
+
+        console.log("[Test Page] Adam animation loaded");
+      }
+
+      function loadLottieThinker() {
+        console.log("[Test Page] Loading Thinker animation...");
+
+        lottie.loadAnimation({
+          container: document.getElementById("lottie_thinker"),
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "https://assets9.lottiefiles.com/packages/lf20_9wpyhdzo.json",
+        });
+
+        console.log("[Test Page] Thinker animation loaded");
+      }
+
+      function loadLottiePath() {
+        console.log("[Test Page] Loading path animation...");
+
+        lottie.loadAnimation({
+          container: document.getElementById("lottie_path"),
+          renderer: "canvas",
+          loop: true,
+          autoplay: true,
+          path: "https://assets2.lottiefiles.com/packages/lf20_uu0x8lqv.json",
+        });
+
+        console.log("[Test Page] Path animation loaded");
+      }
+
+      // Auto-load first animation after 2 seconds (like Tucker Harris's site)
+      setTimeout(() => {
+        console.log("[Test Page] Auto-loading first animation...");
+        loadLottieAdam();
+      }, 2000);
+    </script>
+  </body>
+</html>

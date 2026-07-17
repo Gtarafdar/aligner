@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lottie Scraping Test - All Layers</title>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background: #f9fafb;
+      }
+      h1 {
+        color: #1f2937;
+        margin-bottom: 10px;
+      }
+      .instructions {
+        background: #dbeafe;
+        border-left: 4px solid #2563eb;
+        padding: 16px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        color: #1e40af;
+      }
+      .test-section {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .test-section h2 {
+        margin-top: 0;
+        color: #374151;
+        font-size: 18px;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 12px;
+        margin-bottom: 16px;
+      }
+      .test-section p {
+        color: #6b7280;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .animation-container {
+        width: 200px;
+        height: 200px;
+        background: #f3f4f6;
+        border-radius: 8px;
+        margin: 16px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .json-preview {
+        background: #1f2937;
+        color: #10b981;
+        padding: 12px;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        overflow: auto;
+        max-height: 200px;
+      }
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #2563eb;
+      }
+      .badge {
+        display: inline-block;
+        background: #f3e8ff;
+        color: #7c3aed;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      button {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+      button:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎨 Lottie Scraping Test - All Detection Layers</h1>
+
+    <div class="instructions">
+      <strong>📋 Testing Instructions:</strong><br />
+      1. Open Aligner extension (Ctrl+Shift+M)<br />
+      2. Navigate to Media Manager tab<br />
+      3. Select "Lottie" category<br />
+      4. Verify all 4 test animations are detected<br />
+      5. Check each layer type is captured correctly
+    </div>
+
+    <!-- LAYER 1: DOM Detection (lottie-player) -->
+    <div class="test-section">
+      <h2>
+        <span class="badge">Layer 1</span> DOM Detection - lottie-player Element
+      </h2>
+      <p>
+        This uses <code>&lt;lottie-player&gt;</code> custom element with
+        external URL
+      </p>
+
+      <lottie-player
+        id="layer1-player"
+        src="https://assets3.lottiefiles.com/packages/lf20_UJNc2t.json"
+        background="transparent"
+        speed="1"
+        style="width: 200px; height: 200px"
+        loop
+        autoplay
+      >
+      </lottie-player>
+
+      <p>
+        <strong>Expected:</strong> Detected as
+        <code>type: "lottie-player"</code> with URL
+      </p>
+    </div>
+
+    <!-- LAYER 2: Inline JSON in Script Tag -->
+    <div class="test-section">
+      <h2><span class="badge">Layer 2</span> Inline JSON in Script Tag</h2>
+      <p>
+        This embeds Lottie JSON directly in
+        <code>&lt;script type="application/json"&gt;</code>
+      </p>
+
+      <script type="application/json" id="inline-lottie-1">
+        {
+          "v": "5.7.4",
+          "fr": 30,
+          "ip": 0,
+          "op": 90,
+          "w": 500,
+          "h": 500,
+          "nm": "Inline Test Animation",
+          "ddd": 0,
+          "assets": [],
+          "layers": [
+            {
+              "ddd": 0,
+              "ind": 1,
+              "ty": 4,
+              "nm": "Shape Layer",
+              "sr": 1,
+              "ks": {
+                "o": { "a": 0, "k": 100 },
+                "r": {
+                  "a": 1,
+                  "k": [
+                    {
+                      "i": { "x": [0.833], "y": [0.833] },
+                      "o": { "x": [0.167], "y": [0.167] },
+                      "t": 0,
+                      "s": [0]
+                    },
+                    { "t": 90, "s": [360] }
+                  ]
+                },
+                "p": { "a": 0, "k": [250, 250, 0] },
+                "a": { "a": 0, "k": [0, 0, 0] },
+                "s": { "a": 0, "k": [100, 100, 100] }
+              },
+              "ao": 0,
+              "shapes": [
+                {
+                  "ty": "rc",
+                  "d": 1,
+                  "s": { "a": 0, "k": [100, 100] },
+                  "p": { "a": 0, "k": [0, 0] },
+                  "r": { "a": 0, "k": 20 },
+                  "nm": "Rectangle"
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [0.2, 0.4, 0.8, 1] },
+                  "o": { "a": 0, "k": 100 },
+                  "r": 1,
+                  "nm": "Fill"
+                }
+              ],
+              "ip": 0,
+              "op": 90,
+              "st": 0,
+              "bm": 0
+            }
+          ]
+        }
+      </script>
+
+      <div class="json-preview">
+        { "v": "5.7.4", "fr": 30, "layers": [...], "nm": "Inline Test Animation"
+        }
+      </div>
+
+      <p>
+        <strong>Expected:</strong> Detected as <code>type: "inline"</code> with
+        content parsed
+      </p>
+    </div>
+
+    <!-- LAYER 3: Network Hook - Fetch API -->
+    <div class="test-section">
+      <h2><span class="badge">Layer 3</span> Network Hook - Fetch API</h2>
+      <p>
+        This loads Lottie JSON via <code>fetch()</code> (should be intercepted
+        by MAIN world hook)
+      </p>
+
+      <div id="layer3-container" class="animation-container"></div>
+      <button id="load-fetch-animation">Load Animation via Fetch</button>
+
+      <p>
+        <strong>Expected:</strong> Detected as <code>type: "network"</code> from
+        fetch interception
+      </p>
+    </div>
+
+    <!-- LAYER 4: lottie.loadAnimation Hook -->
+    <div class="test-section">
+      <h2>
+        <span class="badge">Layer 4</span> API Hook - lottie.loadAnimation()
+      </h2>
+      <p>This uses <code>lottie.loadAnimation()</code> with external path</p>
+
+      <div id="layer4-container" class="animation-container"></div>
+      <button id="load-api-animation">Load Animation via API</button>
+
+      <p>
+        <strong>Expected:</strong> Detected via
+        <code>lottie.loadAnimation</code> hook
+      </p>
+    </div>
+
+    <!-- LAYER 3b: XMLHttpRequest Hook -->
+    <div class="test-section">
+      <h2><span class="badge">Layer 3b</span> Network Hook - XMLHttpRequest</h2>
+      <p>This loads Lottie JSON via <code>XMLHttpRequest</code></p>
+
+      <div id="layer3b-container" class="animation-container"></div>
+      <button id="load-xhr-animation">Load Animation via XHR</button>
+
+      <p>
+        <strong>Expected:</strong> Detected as <code>type: "network"</code> from
+        XHR interception
+      </p>
+    </div>
+
+    <script>
+      // Layer 3: Fetch API Test
+      document
+        .getElementById("load-fetch-animation")
+        .addEventListener("click", async () => {
+          try {
+            const response = await fetch(
+              "https://assets9.lottiefiles.com/packages/lf20_9wpyhdzo.json"
+            );
+            const animationData = await response.json();
+
+            const container = document.getElementById("layer3-container");
+            container.innerHTML = "✅ Loaded (check Media Manager)";
+
+            // Optionally render it
+            if (window.lottie) {
+              lottie.loadAnimation({
+                container: container,
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                animationData: animationData,
+              });
+            }
+          } catch (error) {
+            console.error("Fetch test failed:", error);
+            document.getElementById("layer3-container").innerHTML = "❌ Failed";
+          }
+        });
+
+      // Layer 4: lottie.loadAnimation Test
+      document
+        .getElementById("load-api-animation")
+        .addEventListener("click", () => {
+          if (!window.lottie) {
+            alert("lottie-web not loaded");
+            return;
+          }
+
+          const container = document.getElementById("layer4-container");
+          container.innerHTML = "";
+
+          lottie.loadAnimation({
+            container: container,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "https://assets2.lottiefiles.com/packages/lf20_uu0x8lqv.json",
+          });
+        });
+
+      // Layer 3b: XMLHttpRequest Test
+      document
+        .getElementById("load-xhr-animation")
+        .addEventListener("click", () => {
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "GET",
+            "https://assets10.lottiefiles.com/packages/lf20_khtt8wvz.json"
+          );
+          xhr.responseType = "json";
+
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              const container = document.getElementById("layer3b-container");
+              container.innerHTML = "✅ Loaded via XHR (check Media Manager)";
+
+              if (window.lottie) {
+                lottie.loadAnimation({
+                  container: container,
+                  renderer: "svg",
+                  loop: true,
+                  autoplay: true,
+                  animationData: xhr.response,
+                });
+              }
+            }
+          };
+
+          xhr.onerror = function () {
+            document.getElementById("layer3b-container").innerHTML =
+              "❌ XHR Failed";
+          };
+
+          xhr.send();
+        });
+    </script>
+
+    <div
+      style="
+        margin-top: 40px;
+        padding: 20px;
+        background: #fef3c7;
+        border-radius: 8px;
+        border-left: 4px solid #f59e0b;
+      "
+    >
+      <strong>⚠️ Testing Notes:</strong>
+      <ul style="margin: 8px 0; padding-left: 20px">
+        <li>
+          Layer 1 (lottie-player) should be detected immediately on page load
+        </li>
+        <li>
+          Layer 2 (inline JSON) should be detected immediately on page load
+        </li>
+        <li>
+          Layer 3/3b (network hooks) require clicking the buttons to trigger
+          fetch/XHR
+        </li>
+        <li>
+          Layer 4 (API hook) requires clicking the button to trigger
+          lottie.loadAnimation()
+        </li>
+        <li>
+          All detected animations should appear in Media Manager > Lottie tab
+        </li>
+        <li>
+          Each should be downloadable and show metadata (version, layers count)
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

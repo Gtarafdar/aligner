@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Image Features Test - Aligner Extension</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        padding: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #1f2937;
+        margin-bottom: 12px;
+        font-size: 32px;
+      }
+
+      .subtitle {
+        color: #6b7280;
+        margin-bottom: 32px;
+        font-size: 16px;
+      }
+
+      .test-section {
+        margin-bottom: 48px;
+        padding: 24px;
+        background: #f9fafb;
+        border-radius: 12px;
+        border: 2px solid #e5e7eb;
+      }
+
+      .test-section h2 {
+        color: #3b82f6;
+        margin-bottom: 16px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .test-section p {
+        color: #6b7280;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 20px;
+      }
+
+      .image-card {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .image-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .image-card .label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+      }
+
+      .image-card .info {
+        font-size: 12px;
+        color: #9ca3af;
+      }
+
+      .bg-image-card {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        font-size: 18px;
+      }
+
+      .instructions {
+        background: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+      }
+
+      .instructions h3 {
+        color: #1e40af;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .instructions ol {
+        margin-left: 20px;
+        color: #1f2937;
+        line-height: 1.8;
+      }
+
+      .instructions code {
+        background: #dbeafe;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        color: #1e40af;
+      }
+
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .feature-item {
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        font-size: 13px;
+        color: #374151;
+      }
+
+      .feature-item strong {
+        color: #1f2937;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        background: #10b981;
+        color: white;
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🖼️ Complete Image Features Test</h1>
+      <p class="subtitle">
+        Test all image manipulation features in the Aligner extension
+      </p>
+
+      <div class="instructions">
+        <h3>📋 Testing Instructions</h3>
+        <ol>
+          <li>
+            Press <code>Ctrl+Shift+I</code> (or <code>Cmd+Shift+I</code> on Mac)
+            to activate Inspector Mode
+          </li>
+          <li>Click on any image below to select it</li>
+          <li>
+            Click on the <strong>Image (🖼️)</strong> tab in the Inspector Panel
+          </li>
+          <li>Test each feature listed below</li>
+          <li>Open browser console (F12) to see detailed logs</li>
+        </ol>
+      </div>
+
+      <!-- Test Section 1: Regular Images -->
+      <div class="test-section">
+        <h2>
+          <span>📸</span>
+          Test 1: Regular IMG Elements
+          <span class="status-badge">READY</span>
+        </h2>
+        <p>
+          Click on any image to test: Upload, Replace URL, Remove, Crop, Flip,
+          Filters, Size controls, Object-fit, Border radius, and Clip paths.
+        </p>
+
+        <div class="image-grid">
+          <div class="image-card">
+            <img
+              src="https://picsum.photos/400/300?random=1"
+              alt="Test Image 1"
+            />
+            <div class="label">Landscape Image</div>
+            <div class="info">400×300px</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="https://picsum.photos/300/400?random=2"
+              alt="Test Image 2"
+            />
+            <div class="label">Portrait Image</div>
+            <div class="info">300×400px</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="https://picsum.photos/350/350?random=3"
+              alt="Test Image 3"
+            />
+            <div class="label">Square Image</div>
+            <div class="info">350×350px</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="https://picsum.photos/500/200?random=4"
+              alt="Test Image 4"
+            />
+            <div class="label">Wide Image</div>
+            <div class="info">500×200px</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Section 2: Background Images -->
+      <div class="test-section">
+        <h2>
+          <span>🎨</span>
+          Test 2: Background Images
+          <span class="status-badge">READY</span>
+        </h2>
+        <p>
+          Click on divs with background images to test background manipulation
+          features.
+        </p>
+
+        <div class="image-grid">
+          <div
+            class="bg-image-card"
+            style="
+              background-image: url('https://picsum.photos/400/300?random=5');
+            "
+          >
+            Background Image 1
+          </div>
+
+          <div
+            class="bg-image-card"
+            style="
+              background-image: url('https://picsum.photos/400/300?random=6');
+            "
+          >
+            Background Image 2
+          </div>
+
+          <div
+            class="bg-image-card"
+            style="
+              background-image: url('https://picsum.photos/400/300?random=7');
+            "
+          >
+            Background Image 3
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Section 3: Features Checklist -->
+      <div class="test-section">
+        <h2>
+          <span>✅</span>
+          Test 3: Features Checklist
+        </h2>
+        <p>Verify all these features work correctly:</p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <strong>📤 Upload Image</strong>
+            Choose a local image file to replace
+          </div>
+
+          <div class="feature-item">
+            <strong>🔗 Replace with URL</strong>
+            Enter an image URL
+          </div>
+
+          <div class="feature-item">
+            <strong>🗑️ Remove Image</strong>
+            Delete image or clear background
+          </div>
+
+          <div class="feature-item">
+            <strong>✂️ Crop</strong>
+            Enter crop values in prompt
+          </div>
+
+          <div class="feature-item">
+            <strong>🎨 Remove BG</strong>
+            Apply CSS transparency
+          </div>
+
+          <div class="feature-item">
+            <strong>↔️ Flip Horizontal</strong>
+            Mirror image horizontally
+          </div>
+
+          <div class="feature-item">
+            <strong>↕️ Flip Vertical</strong>
+            Mirror image vertically
+          </div>
+
+          <div class="feature-item">
+            <strong>🔍 Find Images</strong>
+            Scan page for all images
+          </div>
+
+          <div class="feature-item">
+            <strong>📏 Size Controls</strong>
+            Width/height inputs & presets
+          </div>
+
+          <div class="feature-item">
+            <strong>🎯 Object Fit</strong>
+            Cover, contain, fill, etc.
+          </div>
+
+          <div class="feature-item">
+            <strong>🔲 Border Radius</strong>
+            Slider & presets (circle, etc.)
+          </div>
+
+          <div class="feature-item">
+            <strong>🎨 Filters</strong>
+            Grayscale, blur, brightness, etc.
+          </div>
+
+          <div class="feature-item">
+            <strong>✂️ Clip Paths</strong>
+            Circle, star, hexagon, etc.
+          </div>
+
+          <div class="feature-item">
+            <strong>🔄 Reset Filters</strong>
+            Clear all applied filters
+          </div>
+
+          <div class="feature-item">
+            <strong>👁️ Preview</strong>
+            See uploaded image preview
+          </div>
+
+          <div class="feature-item">
+            <strong>📊 Image Info</strong>
+            View source & dimensions
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Section 4: Mixed Content -->
+      <div class="test-section">
+        <h2>
+          <span>🔀</span>
+          Test 4: Mixed Content Page
+        </h2>
+        <p>
+          Use "Find Images" button to scan and detect all images on this page.
+        </p>
+
+        <div
+          style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px"
+        >
+          <img
+            src="https://via.placeholder.com/150/FF6B6B/FFFFFF?text=Red"
+            alt="Red"
+            style="border-radius: 8px"
+          />
+          <img
+            src="https://via.placeholder.com/150/4ECDC4/FFFFFF?text=Teal"
+            alt="Teal"
+            style="border-radius: 8px"
+          />
+          <img
+            src="https://via.placeholder.com/150/FFE66D/000000?text=Yellow"
+            alt="Yellow"
+            style="border-radius: 8px"
+          />
+          <div
+            style="
+              width: 150px;
+              height: 150px;
+              background: url('https://via.placeholder.com/150/A8E6CF/000000?text=Green')
+                center/cover;
+              border-radius: 8px;
+            "
+          ></div>
+          <div
+            style="
+              width: 150px;
+              height: 150px;
+              background: url('https://via.placeholder.com/150/FF8B94/FFFFFF?text=Pink')
+                center/cover;
+              border-radius: 8px;
+            "
+          ></div>
+        </div>
+      </div>
+
+      <!-- Expected Results -->
+      <div
+        class="instructions"
+        style="background: #f0fdf4; border-left-color: #10b981"
+      >
+        <h3>✨ Expected Results</h3>
+        <ol>
+          <li>
+            <strong>Upload:</strong> File dialog opens, image is replaced
+            immediately after selection
+          </li>
+          <li>
+            <strong>Replace URL:</strong> Prompt opens, image updates with
+            entered URL
+          </li>
+          <li>
+            <strong>Remove:</strong> IMG elements removed from page, background
+            images cleared
+          </li>
+          <li>
+            <strong>Crop:</strong> Prompt for crop values, clip-path applied
+          </li>
+          <li>
+            <strong>Remove BG:</strong> Transparency effects applied via CSS
+          </li>
+          <li>
+            <strong>Flip:</strong> Image flips instantly, clicking again flips
+            back
+          </li>
+          <li>
+            <strong>Find Images:</strong> List shows all images with previews,
+            clicking selects that image
+          </li>
+          <li>
+            <strong>Size:</strong> Width/height update in real-time, presets
+            apply instantly
+          </li>
+          <li>
+            <strong>Object-fit:</strong> Image fitting changes immediately
+          </li>
+          <li>
+            <strong>Border Radius:</strong> Slider updates live, presets apply
+            shapes
+          </li>
+          <li>
+            <strong>Filters:</strong> All 5 filter sliders work smoothly, reset
+            clears all
+          </li>
+          <li>
+            <strong>Clip Paths:</strong> 8 different shapes apply instantly
+          </li>
+        </ol>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 32px;
+          padding: 20px;
+          background: #fef3c7;
+          border-radius: 12px;
+        "
+      >
+        <p style="font-size: 14px; color: #92400e; margin-bottom: 8px">
+          💡 <strong>Pro Tip:</strong> Watch the browser console for detailed
+          logs showing exactly what's happening
+        </p>
+        <p style="font-size: 12px; color: #78350f">
+          All features include comprehensive error handling and validation
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Replacement Test - Aligner</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2563eb;
+        margin-bottom: 10px;
+      }
+      .instructions {
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        padding: 16px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .test-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .image-box {
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 12px;
+        background: #f9fafb;
+      }
+      .image-box img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 8px;
+      }
+      .image-box .label {
+        font-weight: 600;
+        color: #1f2937;
+        font-size: 14px;
+      }
+      .bg-box {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 8px;
+      }
+      .steps {
+        background: #f0fdf4;
+        border-left: 4px solid #10b981;
+        padding: 16px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .steps ol {
+        margin: 10px 0 0 20px;
+        line-height: 1.8;
+      }
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🖼️ Image Replacement Test</h1>
+      <p>Test the image upload and URL replacement features</p>
+
+      <div class="instructions">
+        <strong>📋 How to Test:</strong>
+        <ol>
+          <li>
+            Press <code>Ctrl+Shift+I</code> (or <code>Cmd+Shift+I</code> on Mac)
+            to activate inspector
+          </li>
+          <li>Click on any image below</li>
+          <li>Open the <strong>Image & Media Controls</strong> tab</li>
+          <li>Try each replacement method</li>
+        </ol>
+      </div>
+
+      <div class="steps">
+        <strong>✅ Test Scenarios:</strong>
+        <ol>
+          <li>
+            <strong>Upload Local Image:</strong> Click "📤 Upload Image" →
+            Select file from computer → Image should change immediately
+          </li>
+          <li>
+            <strong>Replace with URL:</strong> Click "🔗 From URL" → Enter URL
+            like <code>https://picsum.photos/400/300</code> → Image should
+            update
+          </li>
+          <li>
+            <strong>Preview Shows:</strong> After replacement, preview section
+            should display the new image
+          </li>
+          <li>
+            <strong>Info Updates:</strong> Source URL and dimensions should
+            update
+          </li>
+        </ol>
+      </div>
+
+      <div class="test-images">
+        <div class="image-box">
+          <img
+            src="https://picsum.photos/400/300?random=1"
+            alt="Test Image 1"
+          />
+          <div class="label">Test Image 1 (IMG tag)</div>
+        </div>
+
+        <div class="image-box">
+          <img
+            src="https://picsum.photos/400/300?random=2"
+            alt="Test Image 2"
+          />
+          <div class="label">Test Image 2 (IMG tag)</div>
+        </div>
+
+        <div class="image-box">
+          <div
+            class="bg-box"
+            style="
+              background-image: url('https://picsum.photos/400/300?random=3');
+            "
+          >
+            Background Image
+          </div>
+          <div class="label">Test Image 3 (Background)</div>
+        </div>
+
+        <div class="image-box">
+          <img
+            src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Replace+Me"
+            alt="Test Image 4"
+          />
+          <div class="label">Test Image 4 (Placeholder)</div>
+        </div>
+      </div>
+
+      <div
+        style="
+          margin-top: 30px;
+          padding: 16px;
+          background: #fef3c7;
+          border-left: 4px solid #f59e0b;
+          border-radius: 4px;
+        "
+      >
+        <strong>🔍 Debugging Tips:</strong>
+        <ul style="margin: 10px 0 0 20px; line-height: 1.8">
+          <li>Open browser console (F12) to see detailed logs</li>
+          <li>Look for <code>[Aligner]</code> messages showing each step</li>
+          <li>Check if element reference is valid</li>
+          <li>Verify image data is loaded</li>
+          <li>Confirm DOM element is updated</li>
+        </ul>
+      </div>
+
+      <div
+        style="
+          margin-top: 20px;
+          padding: 16px;
+          background: #f3f4f6;
+          border-radius: 4px;
+        "
+      >
+        <strong>✨ Expected Results:</strong>
+        <ul style="margin: 10px 0 0 20px; line-height: 1.8">
+          <li>✅ Upload: File dialog opens, image changes after selection</li>
+          <li>✅ URL: Prompt appears, image updates with entered URL</li>
+          <li>✅ Preview: Shows the new image in the preview section</li>
+          <li>✅ Info: Source and dimensions update to reflect new image</li>
+          <li>✅ Visual: You see the actual image change on the page</li>
+          <li>✅ Console: Detailed logs show each step working</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
