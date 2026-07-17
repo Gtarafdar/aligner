@@ -43,6 +43,8 @@ const WORKSPACE_PRESETS = {
 
 /** Product screenshots shipped in assets/screenshots/ (user-provided CleanShot set). */
 const SCREENSHOT_SLOTS = [
+  { file: "23-aligner-home.png", caption: "Aligner Home — welcome dashboard & tool guide" },
+  { file: "24-aligner-settings.png", caption: "Aligner Settings — workspace & per-tool controls" },
   { file: "01-popup-overview.png", caption: "WP Tools — quick actions, theme & plugin detection" },
   { file: "02-rulers.png", caption: "Rulers — pixel rulers over the live page" },
   { file: "03-guides.png", caption: "Guides — alignment lines with rulers" },

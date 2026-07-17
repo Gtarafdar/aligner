@@ -13,6 +13,15 @@
 
 Aligner runs in Chrome (Manifest V3). Settings stay on the user’s device. No account. No analytics endpoint ships in the repository.
 
+## Standout capabilities
+
+- One-click extension on/off and This tab / All tabs scoping
+- Inspect & edit: box model, CSS, structure, contrast, typography
+- Design System exports DESIGN.md / SKILL.md for AI IDEs (Cursor, Claude, Codex)
+- Cache Cleaner for per-site cache, cookies, storage, service workers
+- Page Controls with Fake Filler for QA form testing
+- WordPress suite: Role switcher, Theme switcher, ACF Tools, admin menu search, hide notices, sidebar shrink, smart editor, detector, backlog, Classic Customizer
+
 ## Feature inventory
 
 ### Layout

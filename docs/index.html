@@ -127,6 +127,7 @@
           <span>Aligner</span>
         </a>
         <nav class="nav" aria-label="Primary">
+          <a href="#highlights">Highlights</a>
           <a href="#features">Overview</a>
           <a href="#layout">Tools</a>
           <a href="#wordpress">WordPress</a>
@@ -150,11 +151,12 @@
       <section class="hero wrap">
         <div>
           <p class="eyebrow">Chrome extension · fully local · MIT</p>
-          <h1>Design, measure, and ship — without leaving the tab.</h1>
+          <h1>A full web designer toolkit in one extension.</h1>
           <p class="lede">
-            Aligner packs layout tools, inspect, color &amp; media, quality checks,
-            utilities, and WordPress builder helpers into one free extension. Hide
-            what you do not need with Workspace. Keep settings on your machine.
+            Measure and mark layouts, inspect and edit live UI, pull colors and media,
+            audit accessibility and speed, export DESIGN.md / SKILL.md for AI IDEs,
+            clear cache, fill forms for QA, and run a WordPress builder suite — all
+            from one free, local-first Chrome extension.
           </p>
           <div class="cta-row">
             <a
@@ -202,12 +204,72 @@
         </div>
         <figure class="hero-visual reveal" data-reveal>
           <img
-            src="assets/09-feature-panel.png"
+            src="assets/23-aligner-home.png"
             width="1200"
             height="750"
-            alt="Aligner Responsive preview beside the tool grid on a live WordPress page"
+            alt="Aligner Home welcome dashboard with tool map and navigation"
           />
         </figure>
+      </section>
+
+      <section class="section wrap reveal" id="highlights" data-reveal>
+        <div class="section-head">
+          <h2>Standout capabilities</h2>
+          <p>
+            Beyond the tool names — these are the moments designers, QA, and WordPress
+            builders actually reach for every day.
+          </p>
+        </div>
+        <div class="detail-grid">
+          <article class="card reveal" data-reveal>
+            <h3>One-click extension on / off</h3>
+            <p>
+              Master toggle in the popup. Turn the whole toolkit off for a clean tab,
+              or scope tools to <strong>This tab</strong> vs <strong>All tabs</strong>
+              so nothing surprises you on other pages.
+            </p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Inspect &amp; edit live</h3>
+            <p>
+              Element Inspector covers box model, CSS, structure, text, colors, spacing,
+              images, effects, and HTML — with contrast checks and typography details
+              without opening full DevTools noise.
+            </p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>DESIGN.md &amp; SKILL.md for AI IDEs</h3>
+            <p>
+              Design System scans typography, colors, buttons, and inputs, then generates
+              markdown you can copy into Cursor, Claude, Codex, and similar agents —
+              so your AI works from the live site’s real tokens.
+            </p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Cache management</h3>
+            <p>
+              Cache Cleaner clears cache, cookies, storage, IndexedDB, service workers,
+              and more for the current site only — with auto-reload and an optional
+              floating quick button.
+            </p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Fake form filler for QA</h3>
+            <p>
+              Page Controls includes Fake Filler and Lorem helpers so you can stress-test
+              forms with random data, plus toggles to hide images, block JS, stop
+              animations, and isolate bugs without touching source.
+            </p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>WordPress builder suite</h3>
+            <p>
+              Role switcher, private Theme switcher, ACF field/PHP copy, admin menu
+              search, hide notices, sidebar shrink, smart page editor, theme/plugin
+              detector, update backlog, and Classic Customizer — in one WP Tools panel.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="section wrap reveal" id="features" data-reveal data-quest="overview">
@@ -261,7 +323,7 @@
             <h3>Inspect</h3>
             <p class="roster-lead">Understand structure and breakpoints.</p>
             <dl class="roster-list">
-              <div><dt>Inspect</dt><dd>Box model, type, and element details</dd></div>
+              <div><dt>Inspect</dt><dd>Box model, CSS, contrast, and live element details</dd></div>
               <div><dt>Responsive</dt><dd>Device-width preview for common sizes</dd></div>
               <div><dt>Wireframe</dt><dd>Grayscale structural page view</dd></div>
             </dl>
@@ -284,7 +346,7 @@
               <div><dt>Accessibility</dt><dd>Automated a11y audit with severity filters</dd></div>
               <div><dt>Design Check</dt><dd>Typography, color, and spacing consistency</dd></div>
               <div><dt>Page Speed</dt><dd>Core Web Vitals and performance score</dd></div>
-              <div><dt>Design System</dt><dd>Extract tokens; export DESIGN.md / SKILL.md</dd></div>
+              <div><dt>Design System</dt><dd>Tokens + DESIGN.md / SKILL.md for AI IDEs</dd></div>
             </dl>
           </article>
 
@@ -292,9 +354,9 @@
             <h3>Utilities</h3>
             <p class="roster-lead">Everyday helpers while testing.</p>
             <dl class="roster-list">
-              <div><dt>Cache Cleaner</dt><dd>Clear site browsing data selectively</dd></div>
+              <div><dt>Cache Cleaner</dt><dd>Per-site cache, cookies, storage, workers</dd></div>
               <div><dt>Page Load Timer</dt><dd>Navigation timing and paint milestones</dd></div>
-              <div><dt>Page Controls</dt><dd>Temporarily disable images, JS, popups, and more</dd></div>
+              <div><dt>Page Controls</dt><dd>Isolate bugs + Fake Filler for QA forms</dd></div>
             </dl>
           </article>
 
@@ -308,9 +370,9 @@
               <div><dt>Admin bar toggle</dt><dd>Hide or show the WP toolbar</dd></div>
               <div><dt>Admin / front switcher</dt><dd>Jump between site and wp-admin</dd></div>
               <div><dt>Smart page editor</dt><dd>Open the right editor or page builder</dd></div>
-              <div><dt>Role switcher</dt><dd>Preview as one user per role (helper)</dd></div>
+              <div><dt>Role switcher</dt><dd>Preview roles securely (helper plugin)</dd></div>
               <div><dt>Theme switcher</dt><dd>Private theme preview only for you (helper)</dd></div>
-              <div><dt>ACF Tools</dt><dd>Copy field names and PHP snippets</dd></div>
+              <div><dt>ACF Tools</dt><dd>Copy field names and PHP for theme work</dd></div>
               <div><dt>Theme &amp; plugin detector</dt><dd>Scan assets on the current page</dd></div>
               <div><dt>Update backlog</dt><dd>Copy updates from Dashboard → Updates</dd></div>
               <div><dt>Admin menu search</dt><dd>Filter the left admin menu</dd></div>
@@ -381,9 +443,9 @@
         <div class="detail-grid">
           <article class="card reveal" data-reveal>
             <h3>Inspect</h3>
-            <p><strong>What:</strong> Hover inspection for box model and type.</p>
-            <p><strong>Why:</strong> See spacing and typography without DevTools noise.</p>
-            <p><strong>How:</strong> Enable Inspect and move across elements.</p>
+            <p><strong>What:</strong> Hover inspection for box model, CSS, structure, text, colors, spacing, images, effects, and HTML.</p>
+            <p><strong>Why:</strong> Inspect and edit understanding without DevTools overload — includes WCAG contrast and typography.</p>
+            <p><strong>How:</strong> Enable Inspect, move across elements, open Details / Box Model / Tabs panels.</p>
           </article>
           <article class="card reveal" data-reveal>
             <h3>Responsive</h3>
@@ -464,9 +526,9 @@
           </article>
           <article class="card reveal" data-reveal>
             <h3>Design System</h3>
-            <p><strong>What:</strong> Extracted tokens and UI patterns from the page.</p>
-            <p><strong>Why:</strong> Document what the live UI is actually using.</p>
-            <p><strong>How:</strong> Scan with Design System and export what you need.</p>
+            <p><strong>What:</strong> Live tokens for typography, colors, buttons, and inputs — plus Preview.</p>
+            <p><strong>Why:</strong> Hand AI IDEs and teammates the real system the page uses, not a guess.</p>
+            <p><strong>How:</strong> Scan, then Generate DESIGN.md / SKILL.md, Copy, Download, or quick-install for Claude, Codex, Cursor.</p>
           </article>
         </div>
       </section>
@@ -484,9 +546,9 @@
         <div class="detail-grid">
           <article class="card reveal" data-reveal>
             <h3>Cache Cleaner</h3>
-            <p><strong>What:</strong> Selective browsing-data cleanup.</p>
-            <p><strong>Why:</strong> Clear stale state while testing changes.</p>
-            <p><strong>How:</strong> Choose data types and run a clean pass.</p>
+            <p><strong>What:</strong> Per-site cleanup for cache, cache storage, cookies, file systems, IndexedDB, local storage, and service workers.</p>
+            <p><strong>Why:</strong> See fresh builds without nuking your whole browser profile.</p>
+            <p><strong>How:</strong> Pick data types, optional auto-reload / floating button, then Clear Selected Data.</p>
           </article>
           <article class="card reveal" data-reveal>
             <h3>Page Load Timer</h3>
@@ -496,9 +558,9 @@
           </article>
           <article class="card reveal" data-reveal>
             <h3>Page Controls</h3>
-            <p><strong>What:</strong> Temporary page behavior controls while testing.</p>
-            <p><strong>Why:</strong> Isolate issues without changing source code.</p>
-            <p><strong>How:</strong> Toggle the controls you need for the session.</p>
+            <p><strong>What:</strong> Temporary controls for content, styling, JS, cookies, popups, other extensions, and Fake Filler for QA forms.</p>
+            <p><strong>Why:</strong> Isolate bugs and fill forms fast without changing source or installing separate filler extensions.</p>
+            <p><strong>How:</strong> Toggle what you need, Apply Changes, Reset All when finished.</p>
           </article>
         </div>
       </section>
@@ -550,6 +612,42 @@
               <li>Shrink sidebar</li>
               <li>Copy report</li>
             </ul>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>ACF Tools</h3>
+            <p><strong>What:</strong> Copy field names and PHP snippets from Advanced Custom Fields contexts.</p>
+            <p><strong>Why:</strong> Faster handoff between admin UI and theme/plugin code.</p>
+            <p><strong>How:</strong> Enable ACF Tools in the WP Tools toggles on an ACF screen.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Role switcher</h3>
+            <p><strong>What:</strong> Preview the site as one sample user per role, then switch back.</p>
+            <p><strong>Why:</strong> Check editor / customer / subscriber views without juggling accounts.</p>
+            <p><strong>How:</strong> Needs Aligner WP Tools Helper (or an existing trusted user-switching link).</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Theme switcher</h3>
+            <p><strong>What:</strong> Privately preview installed themes in your browser only.</p>
+            <p><strong>Why:</strong> Compare themes without changing the public active theme for visitors.</p>
+            <p><strong>How:</strong> Requires Aligner WP Tools Helper; reset when finished.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Admin menu search</h3>
+            <p><strong>What:</strong> Filter the left wp-admin menu instantly.</p>
+            <p><strong>Why:</strong> Find settings deep in crowded admin UIs.</p>
+            <p><strong>How:</strong> Enable Admin menu search while in wp-admin.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Hide admin notices</h3>
+            <p><strong>What:</strong> Clean wp-admin of noisy notices; restore when needed.</p>
+            <p><strong>Why:</strong> Focus on the screen you’re editing.</p>
+            <p><strong>How:</strong> Toggle Hide admin notices from WP Tools.</p>
+          </article>
+          <article class="card reveal" data-reveal>
+            <h3>Sidebar shrink</h3>
+            <p><strong>What:</strong> Collapse the WordPress admin sidebar for more canvas.</p>
+            <p><strong>Why:</strong> Builder and editor work feels less cramped.</p>
+            <p><strong>How:</strong> Use Shrink sidebar from the WP Tools panel or toggle.</p>
           </article>
           <article class="card wide helper-card reveal" data-reveal>
             <h3>Aligner WP Tools Helper</h3>
@@ -651,6 +749,14 @@
           <p>Real captures of Aligner tools on a live page. Click any image to enlarge.</p>
         </div>
         <div class="shot-grid">
+          <figure class="shot reveal" data-reveal>
+            <img src="assets/23-aligner-home.png" alt="Aligner Home welcome dashboard" loading="lazy" />
+            <figcaption>Aligner Home — welcome dashboard &amp; tool guide</figcaption>
+          </figure>
+          <figure class="shot reveal" data-reveal>
+            <img src="assets/24-aligner-settings.png" alt="Aligner Settings general and workspace" loading="lazy" />
+            <figcaption>Aligner Settings — workspace &amp; per-tool controls</figcaption>
+          </figure>
           <figure class="shot reveal" data-reveal>
             <img src="assets/01-popup-overview.png" alt="WP Tools panel with quick actions" loading="lazy" />
             <figcaption>WP Tools — quick actions &amp; detection</figcaption>

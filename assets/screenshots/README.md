@@ -29,6 +29,8 @@ and shows a captioned gallery (click to enlarge).
 | `20-palette.png` | Cache Cleaner |
 | `21-accessibility.png` | Page Load Timer |
 | `22-design-check.png` | Page Controls |
+| `23-aligner-home.png` | Aligner Home dashboard |
+| `24-aligner-settings.png` | Aligner Settings |
 
 Filenames are stable keys used by `welcome/welcome.js`. Captions can be edited there.
 

@@ -212,6 +212,12 @@ h1 {
   color: #fff;
 }
 
+.btn.solid:hover,
+.btn.solid:focus-visible {
+  color: #fff;
+  background: #0c5a4d;
+}
+
 .btn.ghost {
   background: transparent;
   color: var(--color-ink);
